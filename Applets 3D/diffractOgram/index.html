@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>DiffractOgram</title>
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+<table align="center">
+  <tbody>
+    <tr>
+      <td align="left" width="5%"><a href="http://www.epfl.ch"><img
+ src="epfl_log_text.gif" border="0"></a></td>
+      <td align="center" width="90%">
+      <h1>DiffractOgram</h1>
+      </td>
+      <td align="right" width="5%"><a href="http://lcr.epfl.ch"><img
+ src="logo-lcr.gif" border="0"></a></td>
+    </tr>
+    <tr>
+      <td><br>
+      </td>
+      <td align="center">
+      <h3>By: <a href="mailto:nicolas.schoeni@epfl.ch">Nicolas Schoeni</a>
+and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+Ecole Polytechnique Fédérale de Lausanne, Switzerland</h3>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<center><applet code="diffractOgram.class"
+ archive="diffractOgram-obf.jar" height="50" width="400">You need to
+enable java in your browser
+<param name="window" value="true"></applet></center>
+<h2><span style="font-weight: bold;">DiffractOgram</span></h2>
+is an applet for
+the simulation of many
+different types of <span style="font-weight: bold;">diffraction
+patterns</span>. It is based on the <span style="font-weight: bold;">Laue
+equation</span>&nbsp; <span
+ style="font-style: italic; font-weight: bold;">S</span>&nbsp;=&nbsp;<span
+ style="font-weight: bold; font-style: italic;">s</span>&nbsp;-&nbsp;<span
+ style="font-weight: bold;">s<small><sub>0</sub></small></span>&nbsp;=&nbsp;<span
+ style="font-weight: bold; font-style: italic;">h</span> where&nbsp; <span
+ style="font-weight: bold;">s<small><sub>0 </sub></small></span>is a
+vector representing the incident beam with magnitude <span
+ style="font-family: £è¼²¿»;"><span style="font-family: £è¼²¿»;">&#955;</span><sup>-1</sup></span>(&#955;
+is the
+wavelength of the incident beam), <span
+ style="font-weight: bold; font-style: italic;">s </span>is a vector
+along the diffracted beam with the same magnitude &#955;<sup>-1</sup> and <span
+ style="font-weight: bold; font-style: italic;">h</span> is a
+reciprocal lattice vector of the diffracting crystal. The diffraction
+pattern can be simulated with the <span style="font-weight: bold;">Ewald
+sphere</span> with radius &#955;<sup>-1</sup>.<br>
+<br>
+Once the lattice constants of the diffracting crystal and the number of
+possible reciprocal vectors are selected, the applet can simulate
+various
+diffraction patterns. For example<br>
+<ul>
+  <li><span style="font-weight: bold;">Laue diagram</span>. The user
+can select an arbitrary crystal orientation by selecting the &#969;, &#967;
+and &#966; angles. The animation can be started with the
+wavelength&nbsp; button.&nbsp; The diffraction pattern will be
+registered on the diffraction screen while scanning sequentially all
+the possible wavelength. Altenatively, the
+Laue button can be selected.</li>
+  <li><span style="font-weight: bold;">Laue back reflection diagram</span>.&nbsp;
+This&nbsp; mode can be simulated by setting negative crystal-screen
+distances. <br>
+  </li>
+  <li><span style="font-weight: bold;">Rotating crystal</span>. The
+user can select one of the three angles &#969;, &#967; or &#966; in order to
+rotate the crystal and record the diffraction pattern on the screen.</li>
+  <li><span style="font-weight: bold;">Debye-Scherrer</span> <span
+ style="font-weight: bold;">diagram</span>. The powder pattern can be
+simlated by sequentially selecting any arbitrary orientation of the
+crystal with a given wavelength. The user can select
+either a flat screen or a cylindrical screen to register the
+diffraction pattern.</li>
+  <li><span style="font-weight: bold;">Precession chamber</span><span
+ style="font-weight: bold;"></span>. The applet can simulate the
+precession movement of the crystal in parallel with the screen. The
+precession angle can be arbitrary selected and a mask can be introduced
+to select a single reciprocal layer.<br>
+  </li>
+</ul>
+<ul>
+</ul>
+Additional tools can be conveniently selected in order to reset various
+parameters.&nbsp; <br>
+<hr>
+<br>
+<h2>What to do if nothing happens...</h2>
+You need Java3D to run this applet. You can download it from one of
+these links : <br>
+<li> <a href="http://java.sun.com/products/java-media/3D/download.html"
+ target="_blank">Windows &amp; Solaris</a> </li>
+<li> <a
+ href="http://www.apple.com/downloads/macosx/apple/java3dandjavaadvancedimagingupdate.html"
+ target="_blank">Mac OS X</a> </li>
+<li> <a
+ href="http://www.blackdown.org/java-linux/java2-status/java-3d-status.html"
+ target="_blank">Linux</a> </li>
+<li> <a href="http://java.sun.com/products/java-media/3D/ports.html"
+ target="_blank">Others</a> </li>
+<br>
+<br>
+For unexperienced Windows users:<br>
+Choose to downalod the first one : <b>Java 3D for Windows (DirectX
+Version) Runtime for the JRE</b>.
+<br>
+<br>
+If the applet still doesn’t show up, consider updating the Java
+platform on your computer : <br>
+<li> <a href="http://www.java.com/en/download" target="_blank">http://www.java.com/en/download</a>
+</li>
+<br>
+Then you'll have to reinstall Java3D from the links above.<br>
+<hr>
+<center>You can also <a href="diffractOgram.jar">download</a> a
+standalone version of this applet to run it as a java application. <br>
+The source code is included.
+<br>
+<br>
+<!-- WOP!WEB Stats "A" BEGIN -->
+<script type="text/javascript"><!--
+ww_stats_img=new Image();ww_stats_img.src="http://fr.wopweb.com/services/counters/hit.php?id=303215516&tm="+((new Date()).getTime())+"&pg="+escape(location.href)+"&rf="+escape(document.referrer)+"&trf="+escape(top.document.referrer)+"&sw="+screen.width;
+//-->
+</script><!-- WOP!WEB Stats "A" END --><!-- WOP!WEB Counter "B1" BEGIN --><a
+ href="http://fr.wopweb.com/services/counters/stats_public_303215516.html"
+ target="_blank" title="WOP!WEB Services pour sites web... GRATUIT!"><img
+ src="http://fr.wopweb.com/services/counters/counter_img.php?id=303215516&amp;tm=1"
+ alt="WOP!WEB Services pour sites web... GRATUIT!" border="0"
+ height="30" width="120"></a><!-- WOP!WEB Counter "B1" END --><br>
+Visitors since 25 November 2004. </center>
+</body>
+</html>

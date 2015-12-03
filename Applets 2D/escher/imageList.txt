@@ -1,0 +1,10 @@
+9
+spheres
+faces
+triangles
+squares
+diamonds
+circles
+paws
+symbols
+arrows

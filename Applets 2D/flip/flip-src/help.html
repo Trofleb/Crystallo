@@ -1,0 +1,233 @@
+<html>
+<body>
+<p>
+This applet illustrates the charge flipping (CF) algorithm for the solution of the 
+phase problem in diffraction. The description of this algorithm can be found in chapter 7.4 
+of the <a href="http://escher.epfl.ch/eCrystallography/?chapter=7&sub=7_4">eCrystallography</a> course.</p>
+<p>&nbsp;</p>
+<h1>1. Drawing of the original structure</h1>
+<p>
+First you need to draw the starting structure which we shall attempt to solve by CF. You may also drop a bitmap file to the applet.
+</p>
+<div align="center"><br>
+  <table>
+    <tr>
+      <td>
+      <div align="center">Original structure        </div></td>
+    </tr>
+    <tr>
+      <td>
+        <img src="draw_example.png" border=1>      </td>
+    <td>
+      Example of an input structure      </td>
+    </tr>
+    </table>
+  <br>
+</div>
+<table>
+<tr>
+<td>
+<img src="drawing_pane.png">
+</td>
+<td>
+<p>The drawing panel allows to place single atoms with different size and weights. You can select either  flat or  gaussian shapes. 
+  Flat shapes are black spots with sharp edges.
+  Gaussian shapes have decreasing grey levels  far from center.
+  
+  You may also choose the <i>Pen size</i> which defines the peak width 
+  and the <i>Darkness</i> which defines the height of the peaks.</p>
+<p>
+The position field indicates the position of the mouse cursor (in pixels) within the drawing panel.
+To erase part of your work, draw with Darkness = 0.</p>
+</td>
+</tr>
+</table>
+
+<h1>2. Running the algorithm</h1>
+
+<table>
+<tr>
+<td rowspan=4>
+<img src="run_pane.png">
+</td>
+<td>
+  <p>The scheme in the middle indicates the sequence of steps for the CF algorithm. The top button leads you to the next step in the algorithm and changes accordingly to <strong>FFT</strong>, then to <strong>Set random phase</strong> and so on. The color indicator in the scheme changes accordingly. </p>
+  </td></tr>
+<tr><td>
+<b>Do one cycle</b>: Perform a complete cycle in the algorithm.
+</td></tr>
+<tr>
+  <td>
+<b>Loop</b>: Run the algorithm until you press again to stop.
+</td>
+</tr>
+<tr><td>
+<b>Reset</b>: Go back to the initial state. You may start again or draw another structure.
+</td></tr>
+</table>
+
+<h1>3. View of the reconstructed structure </h1>
+
+<table>
+<tr>
+<td>
+  <div align="center">Reconstructed structure
+  </div></td>
+</tr>
+<tr>
+<td>
+<img src="output_example.png" border=1>
+</td>
+<td>
+<p>
+The structure solution proposed by CF following the inverse Fourier transformation step.
+</p>
+<br><br>
+
+<p>
+The CF algorithm chooses arbitrarily an origin. Therefore you can drag the drawing with the mouse to move the origin. 
+The image is self repeated in all directions.
+</p>
+
+<p>
+You can zoom by using the mouse wheel or by holding the shift key while dragging the mouse.
+</p>
+
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td>
+<img src="image_pane.png">
+</td>
+<td>
+<p>
+Here is another way to zoom inside the reconstructed image.
+</p>
+<p>
+You can also adjust the contrast of the image, that is to increase the amplitudes in the  image.</p>
+<p>
+The image might be occasionally rotated by 180&deg; with respect to the original. The <strong><i>Rotate 180°</i></strong> button 
+ rotates the display for comparison purpose.</p>
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td>
+<img src="show_pane.png">
+</td>
+<td>
+You can specify which part of the Fourier reconstruction you want to display.
+By default, complex values are converted to colors as indicated in the <strong><i>Color ref</i></strong> diagram.
+You may also select  the real part, the imaginary part, the phases 
+or the square of the magnitudes of the complex value.</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td>
+<img src="color_ref_pane.png">
+</td>
+<td>
+<p>
+This indicates the color code for the complex values.</p>
+<p>
+When you move the mouse cursor over the <strong><i>Reconstructed structure</i></strong> image,
+the phase value is indicated.</p>
+</td>
+</tr>
+</table>
+
+
+
+<h1>4. Algorithm parameters</h1>
+
+<table>
+<tr>
+<td>
+<img src="param_pane.png">
+</td>
+<td>
+<p>
+You might adjust the algorithm parameters in order to help in resolving the structure.
+</p>
+<p>
+<strong><i>Default</i></strong> button reset all parameters to their default values.</p>
+<p>
+The bottom line shows the complex components of the pixel under the mouse pointer, 
+when you move the mouse over the
+  <strong><i>Reconstructed structure</i></strong> image.</p>
+</td>
+</tr>
+</table>
+
+
+<h3>4.1. Observation mask</h3>
+<table>
+<tr>
+<td>
+<img src="radius_exemple.png">
+</td>
+<td>
+<p>
+This is a circular mask which simulates unobserved structure factors (F(<b>H</b>) is set to 0 outside its radius). 
+The radius  can be modified by the slider. You may also disable this mask.</p>
+
+<center><img src="radius_slider.png"></center>
+<p>
+The mask is only visible over the reconstructed image at state called <i>F</i>. 
+It becomes visible when  the radius is modified with the slider.</p>
+</td>
+</tr>
+</table>
+
+
+<h3>4.2. Delta value</h3>
+
+<div align="center"><img src="delta.png">
+</div>
+<p>
+ In the <i>flipping charges</i> algorithm, 
+densities below a small but positive threshold get  inverted.
+This threshold is specified by the parameter <strong>delta</strong> .</p>
+<p>
+By default, the applet tries to find the best value for delta at each iteration of the algorithm.
+Delta is calculated so that 10% of all density pixels are above delta. 
+You can of course adjust this percentage.
+</p>
+<p>
+If you uncheck the box <img src="dyn_delta.png">, the applet calculates delta only once
+at the first iteration and keeps using the same value for all future iterations.
+</p>
+
+<h3>4.3. Weak reflections</h3>
+<div align="center"><img src="weak.png">
+</div>
+<p>
+The second variable parameter of the algorithm is the proportion of the reflections
+considered as weak in the <strong><i>Restore amplitudes</i></strong> step of the iteration cycle.
+Experience shows that about 20-40% of all reflections can be considered weak.</p>
+<p>
+Weak reflections have their phase shifted by 90°. You can specify how much of the reflections
+you'll consider as weak.
+</p>
+
+<h1>5. The chart</h1>
+<p>The R-factor defined in chapter 7.4 of the <a href="http://escher.epfl.ch/eCrystallography">eCrystallography</a> course should converge to values close to zero once the structure is solved.</p>
+<div align="center"><img src="graph.png">
+  
+  
+</div>
+<h1>6. What could I do if my structure cannot be properly reconstructed ?</h1>
+<p>
+If you are using dynamic delta adjustment <img src="dyn_delta.png">, which is the default mode, 
+it is possible that delta  decreases too fast. 
+Try to manually raise the value of delta <img src="delta_value.png"> till the algorithm escapes from its local minimum.
+When the   structure starts to be revealed, 
+it is a good practice to check back the dynamic box so that the algorithm fine tunes the result.</p>
+<p>Another method is to reset the procedure and start with a new set of random phases. </p>
