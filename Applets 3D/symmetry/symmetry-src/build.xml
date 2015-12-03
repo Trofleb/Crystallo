@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="Symmetry" name="Packaging Generator">
+	<target name="Symmetry" description="">
+		
+		<property name="outputPath" value="K:/symmetry"/>
+			
+		<zip zipfile="${outputPath}/symmetry-src.zip" basedir=".">
+			<exclude name="**/*.class"/>
+		</zip>
+		
+		<jar destfile="${outputPath}/symmetry.jar" basedir=".">
+      <manifest> 
+        <attribute name="Main-Class" value="Symmetry" />
+			</manifest> 
+			<exclude name="*.jar"/>
+		</jar>
+
+		<jar destfile="${outputPath}/symmetry-tmp.jar" basedir=".">
+      <manifest> 
+        <attribute name="Main-Class" value="Symmetry" />
+			</manifest> 
+			<exclude name="*.jar"/>
+			<exclude name="**/*.java"/>
+		</jar>
+
+		<taskdef resource="proguard/ant/task.properties" classpath="C:/Program Files/Java/proguard3.6/lib/proguard.jar" />
+		<proguard configuration="obfuscation.pro">
+			-injars '${outputPath}/symmetry-tmp.jar'
+			-outjars '${outputPath}/symmetry-obf.jar'
+
+			-libraryjars '${java.home}\lib\rt.jar'
+			-libraryjars '${java.home}\lib\ext\j3daudio.jar'
+			-libraryjars '${java.home}\lib\ext\j3dcore.jar'
+			-libraryjars '${java.home}\lib\ext\j3dutils.jar'
+			-libraryjars '${java.home}\lib\ext\vecmath.jar'
+		</proguard>
+
+		<delete file="${outputPath}/symmetry-tmp.jar"/>
+	</target>
+</project>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="Flip" name="Packaging Generator">
+	<target name="Flip" description="">
+		
+		<property name="outputPath" value="K:/flip"/>
+			
+		<zip zipfile="${outputPath}/flip-src.zip" basedir=".">
+			<exclude name="**/*.class"/>
+		</zip>
+		
+		<jar destfile="${outputPath}/flip.jar" basedir=".">
+      <manifest> 
+        <attribute name="Main-Class" value="ChargeFlip" />
+			</manifest> 
+			<exclude name="*.jar"/>
+		</jar>
+
+		<jar destfile="${outputPath}/flip-tmp.jar" basedir=".">
+      <manifest> 
+        <attribute name="Main-Class" value="ChargeFlip" />
+			</manifest> 
+			<exclude name="*.jar"/>
+			<exclude name="**/*.java"/>
+		</jar>
+
+		<taskdef resource="proguard/ant/task.properties" classpath="C:/Program Files/Java/proguard3.6/lib/proguard.jar" />
+		<proguard configuration="obfuscation.pro">
+			-injars '${outputPath}/flip-tmp.jar'
+			-outjars '${outputPath}/flip-obf.jar'
+
+			-libraryjars '${java.home}\lib\rt.jar'
+		</proguard>
+
+		<delete file="${outputPath}/flip-tmp.jar"/>
+
+		<signjar jar="${outputPath}/flip-obf.jar" alias="lcr" storepass="lcr" keypass="lcr"/>
+	</target>
+</project>
