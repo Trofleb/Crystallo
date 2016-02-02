@@ -223,6 +223,8 @@ public class SgType implements Serializable {
 						}
 					}
 				}
+				in.close();
+				
 				if (sysi==-1 || sysv==-1) throw new RuntimeException("System not found "+ss[7]+" "+ss[8]);
 				MatVect[] pp = MatVect.multiParse(ss[10]); 
 				String[] otherNames = ss[5].length()==0?null:ss[5].split(",");

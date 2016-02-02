@@ -165,6 +165,8 @@ public class SgSystem implements Serializable {
 					}
 				}
 			}
+			in.close();
+			
 			SgSystem[][][] ss = new SgSystem[dims.length][][];
 			for (int i=0; i<dims.length; i++) {
 				ss[i] = new SgSystem[vv[i].size()][];
