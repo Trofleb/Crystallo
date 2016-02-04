@@ -1,6 +1,3 @@
-
-
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -112,7 +109,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 								findComponentAt(x - comp.getX(), y - comp.getY());
 						} else {
 							// locate is deprecated
-							comp = comp.locate(x - comp.getX(), y - comp.getY());
+							comp = comp.getComponentAt(x - comp.getX(), y - comp.getY());
 						}
 						if (comp != null && comp.isVisible()) {
 							return comp;
