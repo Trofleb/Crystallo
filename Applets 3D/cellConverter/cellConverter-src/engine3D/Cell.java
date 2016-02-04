@@ -44,6 +44,8 @@ public class Cell {
 	}
 	
 	private void createBox(Color3f c) {
+		/* On définit le rectangle de couleur*/
+		// 2ème argument change la couleur du rectangle
 		Appearance app = Utils3d.createApp(c, 0.7f);
 		Box box = new Box(.5f, .5f, .5f, app);
 		Transform3D t3d = new Transform3D();
@@ -64,14 +66,25 @@ public class Cell {
 	}
 	private void createRepere(String[] labels, float size, Color3f c) {
 		Appearance app = Utils3d.createApp(c);
+		double x = 1.0; // Longueur des fleches
 		Point3d o = new Point3d(0, 0, 0);
-		Point3d e1 = new Point3d(.3, 0, 0);
-		Point3d e2 = new Point3d(0, .3, 0);
-		Point3d e3 = new Point3d(0, 0, .3);
+		Point3d e1 = new Point3d(x, 0, 0);
+		Point3d e2 = new Point3d(0, x, 0);
+		Point3d e3 = new Point3d(0, 0, x);
 		sg.transform(o);
 		sg.transform(e1);
 		sg.transform(e2);
 		sg.transform(e3);
+		/** 
+		 * createArrow:
+		 * point d'origine
+		 * point de destination
+		 * rayon du trait de la fleche
+		 * rayon de la pointe de la fleche
+		 * longueur de la pointe de la fleche
+		 * appearance
+		 * precision
+		 */
 		root.addChild(Utils3d.createArrow(o, e1, size, 2*size, 5*size, app, 20));
 		root.addChild(Utils3d.createArrow(o, e2, size, 2*size, 5*size, app, 20));
 		root.addChild(Utils3d.createArrow(o, e3, size, 2*size, 5*size, app, 20));
