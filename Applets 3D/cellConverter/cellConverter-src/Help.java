@@ -14,20 +14,20 @@ import utils.HVPanel;
 
 public class Help {
 	private JFrame frame;
-	
+
 	public Help() {
-	  frame = new JFrame("Help");
-	  frame.setSize(800, 480);
-	  frame.setVisible(false);
-	  frame.setContentPane(new HelpPanel().jPanel);
-	  frame.validate();
+		frame = new JFrame("Help");
+		frame.setSize(800, 480);
+		frame.setVisible(false);
+		frame.setContentPane(new HelpPanel().jPanel);
+		frame.validate();
 	}
-	
+
 	public void show(boolean show) {
-	  frame.setVisible(show);
-	  if (show) frame.toFront();
+		frame.setVisible(show);
+		if (show) frame.toFront();
 	}
-	
+
 	private class HelpPanel extends HVPanel.v {
 		JTextPane textPane;
 		public HelpPanel() {

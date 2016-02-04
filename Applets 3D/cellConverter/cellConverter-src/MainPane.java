@@ -68,7 +68,7 @@ import engine3D.Model3d.Position;
 public class MainPane extends HVPanel.v implements CifFileOpener {
 	public static final Color c1=Color.blue, c2=Color.red;
 	public static final float r1=.4f, r2=.4f;
-	
+
 	Model3d model3d1, model3d2;
 	BottomPanel bottomPanel;
 	Menu menu;
@@ -86,14 +86,14 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 	Transformer transformer;
 	double volumeIn;
 	CellConverter applet;
-	
+
 	public MainPane(CellConverter applet) {
 		this.applet = applet;
 		bottomPanel=new BottomPanel();
 
 		help = new Help();
 		icsd = new Icsd(applet.getCodeBase()); 
-		
+
 		tabbedPane = new JTabbedPane() {
 			public Component findComponentAt(int x, int y) {
 				if (!contains(x, y)) {
@@ -119,27 +119,27 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 				return this;
 			}
 		};
-		
-//		model3d1 = new Model3d();
-//		model3d2 = new Model3d();
-//		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, model3d1.createPanel(), model3d2.createPanel());
-//		splitPane.setResizeWeight(.5);
-//		splitPane.setContinuousLayout(true);
-//		tabbedPane.addTab("3D view", splitPane);
+
+		//		model3d1 = new Model3d();
+		//		model3d2 = new Model3d();
+		//		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, model3d1.createPanel(), model3d2.createPanel());
+		//		splitPane.setResizeWeight(.5);
+		//		splitPane.setContinuousLayout(true);
+		//		tabbedPane.addTab("3D view", splitPane);
 
 		model3d1 = new Model3d();
 		model3d2 = new Model3d(model3d1.univers);
 		model3d2.setDelta(-.05, -.05, -.05);
 		JPanel p = model3d1.createPanel();
 		tabbedPane.addTab("3D view", p);
-		
+
 		cifPane = new DoubleCifPane(); 
 		tabbedPane.addTab("CIF view", cifPane.jPanel);
 		p.setVisible(true);
-		
+
 		expand(true);
 		addComp(tabbedPane);
-		
+
 		expand(false);
 		addSubPane(bottomPanel);
 	}
@@ -152,7 +152,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 		model3d1.univers.cleanup();
 		model3d2.univers.cleanup();
 	}
-	
+
 	public void openFile(Reader in) throws Exception {
 		CifFile cif = new CifFile(in);
 		SpaceGroup sg = cif.getSg();
@@ -180,10 +180,10 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 			applet.frame.setTitle("Cif Cell Converter - "+f.getName());
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
-  		JOptionPane.showMessageDialog(applet.frame, "Can't read file or bad format !");
+			JOptionPane.showMessageDialog(applet.frame, "Can't read file or bad format !");
 		}
 	}
-	
+
 	public void saveFile(File f) {
 		try {
 			PrintStream out = new PrintStream(new FileOutputStream(f));
@@ -198,16 +198,16 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 			e.printStackTrace(System.err);
 		}
 	}
-	
+
 	public void showOpenDialog() {
-    JFileChooser chooser = new JFileChooser();
-    chooser.setMultiSelectionEnabled(false);
-    chooser.setFileFilter(new CifFileFilter());
-    if(chooser.showOpenDialog(applet.frame)==JFileChooser.APPROVE_OPTION) {
-    	File f = chooser.getSelectedFile();
-    	if (f==null) return;
-      openFile(f);
-    }
+		JFileChooser chooser = new JFileChooser();
+		chooser.setMultiSelectionEnabled(false);
+		chooser.setFileFilter(new CifFileFilter());
+		if(chooser.showOpenDialog(applet.frame)==JFileChooser.APPROVE_OPTION) {
+			File f = chooser.getSelectedFile();
+			if (f==null) return;
+			openFile(f);
+		}
 	}
 
 	public void showSaveDialog() {
@@ -227,48 +227,48 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 			if (r==0) saveFile(f);
 		}
 	}
-	
+
 	class DoubleCifPane extends HVPanel.h {
 		JTextArea edit1, edit2;
 		JScrollPane scrollPane1, scrollPane2;
 		boolean ctrlDown = false;
-		
+
 		public DoubleCifPane() {
 			edit1 = new JTextArea();
 			edit2 = new JTextArea();
 			edit1.setEditable(false);
 			edit2.setEditable(false);
-	    scrollPane1 = new JScrollPane(edit1);
-	    scrollPane2 = new JScrollPane(edit2);
-	    addComp(scrollPane1);
-	    addComp(scrollPane2);
-	    
-	    KeyboardFocusManager kbfm = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-	    kbfm.addKeyEventDispatcher(new MyKeyboardManager());
-	    
+			scrollPane1 = new JScrollPane(edit1);
+			scrollPane2 = new JScrollPane(edit2);
+			addComp(scrollPane1);
+			addComp(scrollPane2);
+
+			KeyboardFocusManager kbfm = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+			kbfm.addKeyEventDispatcher(new MyKeyboardManager());
+
 			new DropTarget(edit1, new CifFileDropper(MainPane.this)); 
 			new DropTarget(edit2, new CifFileDropper(MainPane.this)); 
-	    
-	    scrollPane1.getHorizontalScrollBar().addAdjustmentListener(new AdjustmentListener() {
+
+			scrollPane1.getHorizontalScrollBar().addAdjustmentListener(new AdjustmentListener() {
 				public void adjustmentValueChanged(AdjustmentEvent e) {
 					if (!ctrlDown) scrollPane2.getHorizontalScrollBar().setValue(e.getValue());
 				}
-	    });
-	    scrollPane1.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
+			});
+			scrollPane1.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
 				public void adjustmentValueChanged(AdjustmentEvent e) {
 					if (!ctrlDown) scrollPane2.getVerticalScrollBar().setValue(e.getValue());
 				}
-	    });
-	    scrollPane2.getHorizontalScrollBar().addAdjustmentListener(new AdjustmentListener() {
+			});
+			scrollPane2.getHorizontalScrollBar().addAdjustmentListener(new AdjustmentListener() {
 				public void adjustmentValueChanged(AdjustmentEvent e) {
 					if (!ctrlDown) scrollPane1.getHorizontalScrollBar().setValue(e.getValue());
 				}
-	    });
-	    scrollPane2.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
+			});
+			scrollPane2.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
 				public void adjustmentValueChanged(AdjustmentEvent e) {
 					if (!ctrlDown) scrollPane1.getVerticalScrollBar().setValue(e.getValue());
 				}
-	    });
+			});
 		}
 		public void setCifLeft(CifFile cif) {
 			edit1.setText(cif.toString());
@@ -302,16 +302,16 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 			}
 		}		
 	}
-	
+
 	public class Menu extends JMenuBar implements ActionListener {
 		JMenuItem icsdItem, open, save, saveAs, resetp, resetP, helpItem, editCif, applyCif, discardCif;
 		JMenuItem fav1, fav2, fav3, fav4, fav5, trans1, trans2;
 		JCheckBoxMenuItem paralel, persp, center1, center2;
 		JMenu cif;
-		
+
 		public Menu() {
 			menu=this;
-			
+
 			JMenu file = new JMenu("File");
 			addMenuItem(open=new JMenuItem("Open input file..."), file);
 			addMenuItem(save=new JMenuItem("Save output file"), file);
@@ -326,7 +326,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 			addMenuItem(fav5=new JMenuItem("3 atoms"), file);
 			enableSave(false);
 			add(file);
-			
+
 			JMenu transform = new JMenu("Transformation");
 			addMenuItem(resetP=new JMenuItem("Reset transformation matrix"), transform);
 			addMenuItem(resetp=new JMenuItem("Reset shift vector"), transform);
@@ -334,7 +334,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 			addMenuItem(trans1=new JMenuItem("a'=a+b, b'=-a+b, c'=c"), transform);
 			addMenuItem(trans2=new JMenuItem("P \u2192 F"), transform);
 			add(transform);
-			
+
 			cif = new JMenu("Cif");
 			addMenuItem(editCif=new JMenuItem("Edit input file"), cif);
 			addMenuItem(applyCif=new JMenuItem("Apply changes"), cif);
@@ -362,7 +362,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 			JMenu helpMenu = new JMenu("Help");
 			addMenuItem(helpItem=new JMenuItem("Help"), helpMenu);
 			add(helpMenu);
-			
+
 			icsd.setActionListener(this);
 		}
 
@@ -371,12 +371,12 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 			item.addActionListener(this);
 			return item;
 		}
-		
+
 		public void enableSave(boolean b) {
 			save.setEnabled(b);
 			saveAs.setEnabled(b);
 		}
-		
+
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource()==persp) {
 				model3d1.univers.setParallel(false);
@@ -448,7 +448,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 					openFile(new StringReader(cifPane.edit1.getText()));
 				} catch (Exception ex) {
 					ex.printStackTrace(System.err);
-		  		JOptionPane.showMessageDialog(applet.frame, "Bad cif format !");
+					JOptionPane.showMessageDialog(applet.frame, "Bad cif format !");
 					cifPane.setCifLeft(cifIn);
 				}
 			}
@@ -527,7 +527,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 			}
 		}
 	}
-	
+
 	class BottomPanel extends HVPanel.v {
 		LatticePane inCell, outCell;
 		TransformPane transformPane;
@@ -543,12 +543,12 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 			p1.addSubPane(outCell=new LatticePane("Output file", "'", false));
 			addSubPane(p1);
 		}
-		
-		
+
+
 		class LatticePane extends HVPanel.v {
 			FloatEditField a, b, c;
 			FloatEditField alpha, beta, gamma;
-			
+
 			public LatticePane(String name, String suffix, boolean editable) {
 				super(name);
 				expand(false);
@@ -565,7 +565,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 				gamma = new HVPanel.FloatEditField("\u03b3"+suffix, "°", 5, Float.NaN, "#.##").to(this);
 				gamma.edit.setEditable(editable);
 			}
-			
+
 			public void set(Lattice lattice) {
 				a.setValue((float)lattice.a);
 				b.setValue((float)lattice.b);
@@ -619,17 +619,17 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 				else if (e.getSource()==t[5][1]) model3d2.setExpand(model3d2.exm, model3d2.eym, model3d2.ezm, model3d2.exp, model3d2.eyp, t[5][1].getIntValue()+1);
 			}
 		}
-		
+
 		class TransformPane extends HVPanel.v {
 			EditMatrix Q, P;
 			EditVector p, q;
 			boolean invalid = false;
 			Color originalBorderColor;
-			
+
 			public TransformPane() {
 				super("Transformation");
 				originalBorderColor = ((TitledBorder)jPanel.getBorder()).getTitleColor();
-				
+
 				HVPanel.h p1 = new HVPanel.h();
 				p1.addComp(new JLabel("P = "));
 				P = new EditMatrix().to(p1);
@@ -644,7 +644,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 				addSubPane(p1);
 
 				putExtraSpace(3);
-				
+
 				HVPanel.h p2 = new HVPanel.h();
 				p2.addComp(new JLabel("Q = P"));
 				p2.addComp(new JLabel("\u05be"));
@@ -657,7 +657,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 				p2.expand(true);
 				p2.putExtraSpace();
 				p2.expand(false);
-				
+
 				p2.addComp(new OpenBracket());
 				p2.addSubPane(new VerticalVectorText(" x'", " y '", " z'"));
 				p2.addComp(new CloseBracket());
@@ -666,16 +666,16 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 				p2.addSubPane(new VerticalVectorText(" x", " y", " z"));
 				p2.addComp(new CloseBracket());
 				p2.addComp(new JLabel(" + q"));
-				
+
 				addSubPane(p2);
-				
+
 				P.set(1, 0, 0, 0, 1, 0, 0, 0, 1);
 				Q.set(1, 0, 0, 0, 1, 0, 0, 0, 1);
 				p.set(0, 0, 0);
 				q.set(0, 0, 0);
 				transformer = new Transformer(P.m, Q.m, q.v);
 			}
-			
+
 			public void displayError(String err) {
 				if (err==null) {
 					TitledBorder b = new TitledBorder("Transformation");
@@ -700,7 +700,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 					setBorder(b);
 				}
 			}
-			
+
 			public void actionPerformed(ActionEvent e) {
 				Object o = e.getSource();
 				if (o==P) {
@@ -754,11 +754,11 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 					updateModel();
 				}
 			}
-			
+
 			private void updateModel() {
 				// no file, nothing to do
 				if (latticeIn==null) return;
-				
+
 				// transformation is invalid, clear output model
 				if (invalid) {
 					centerOriginalCell();
@@ -766,22 +766,22 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 					bottomPanel.outCell.clear();
 					return;
 				}
-				
+
 				// recalculate the transformation
 				transformer.setTranform(P.m, Q.m, q.v);
 				atomsOut = transformer.getTransformedAtoms();
 				sgOut = transformer.getTransformedSg();
 				latticeOut = sgOut.cell;
-				
+
 				if (menu.center1.isSelected()) centerOriginalCell();
 				else centerTransformedCell();
 				model3d2.setAtoms(atomsOut, c2, r2);
-				
+
 				bottomPanel.outCell.set(latticeOut);
 				cifOut.updateLattice(latticeOut, (int)Math.round(cifIn.getUnitZ()*latticeOut.volume()/volumeIn));
 				cifOut.updateAtoms(atomsOut);
 				cifPane.updateCifRight(cifOut);
-				
+
 				if (!checkTransformIsCorrect()) {
 					displayError("Invalid transformation, please check your transformation ! ");
 				}
@@ -794,7 +794,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 					}
 				}
 			}
-			
+
 			public void centerOriginalCell() {
 				latticeIn = new Lattice(latticeIn.x, latticeIn.y, latticeIn.z);
 				sgIn = new SpaceGroup(sgIn.sg, latticeIn);
@@ -808,7 +808,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 				sgOut = new SpaceGroup(sgP1, latticeOut);
 				model3d2.setSg(sgOut, c2, "'");
 			}
-			
+
 			public void centerTransformedCell() {
 				latticeOut = new Lattice(latticeOut.x, latticeOut.y, latticeOut.z);
 				sgOut = new SpaceGroup(sgP1, latticeOut);
@@ -822,136 +822,136 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 				sgIn = new SpaceGroup(sgIn.sg, latticeIn);
 				model3d1.setSg(sgIn, c1, "");
 			}
-			
-			
-//			private void updateq() {
-//				Q.m.transform(p.v, q.v);
-//				q.v.negate();
-//				if (q.v.x==-0) q.v.x=0;
-//				if (q.v.y==-0) q.v.y=0;
-//				if (q.v.z==-0) q.v.z=0;
-//				q.updateFields();
-//			}
-			
-			
-//			private void updateOutLattice(boolean do3d) {
-//				if (latticeIn==null) return;
-//				if (!do3d) {
-//					model3d2.clear();
-//					return;
-//				}
-////				System.out.println("x:"+round(latticeIn.x));
-////				System.out.println("y:"+round(latticeIn.y));
-////				System.out.println("z:"+round(latticeIn.z));
-//
-//				
-//				Matrix3d m = new Matrix3d();
-//				m.setColumn(0, latticeIn.x);
-//				m.setColumn(1, latticeIn.y);
-//				m.setColumn(2, latticeIn.z);
-//				
-//				m.mul(P.m);
-//				
-//				Vector3d x = new Vector3d();
-//				Vector3d y = new Vector3d();
-//				Vector3d z = new Vector3d();
-//				m.getColumn(0, x);
-//				m.getColumn(1, y);
-//				m.getColumn(2, z);
-//				
-//				
-////				System.out.println("x':"+round(x));
-////				System.out.println("y':"+round(y));
-////				System.out.println("z':"+round(z));
-//				
-//				System.out.println("det(P)="+P.m.determinant());
-//				
-//				if (menu.center1.isSelected()) {
-//					latticeIn = new Lattice(latticeIn.x, latticeIn.y, latticeIn.z);
-//					sgIn = new SpaceGroup(sgIn.sg, latticeIn);
-//					model3d1.setSg(sgIn, c1, "");
-//
-//					Vector3d v = new Vector3d();
-//					v.scaleAdd(p.v.x, latticeIn.x, v);
-//					v.scaleAdd(p.v.y, latticeIn.y, v);
-//					v.scaleAdd(p.v.z, latticeIn.z, v);
-//					v.add(latticeIn.o);
-//					latticeOut = new Lattice(x, y, z, v);
-//					
-//					bottomPanel.outCell.set(latticeOut);
-//					sgOut = new SpaceGroup(sgP1, latticeOut);
-//					model3d2.setSg(sgOut, c2, "'");
-//				}
-//				else {
-//					latticeOut = new Lattice(x, y, z);
-//					sgOut = new SpaceGroup(sgP1, latticeOut);
-//					model3d2.setSg(sgOut, c2, "'");
-//					Vector3d v = new Vector3d();
-//					v.scaleAdd(p.v.x, latticeIn.x, v);
-//					v.scaleAdd(p.v.y, latticeIn.y, v);
-//					v.scaleAdd(p.v.z, latticeIn.z, v);
-//					v.sub(latticeOut.o, v);
-//					latticeIn = new Lattice(latticeIn.x, latticeIn.y, latticeIn.z, v);
-//					sgIn = new SpaceGroup(sgIn.sg, latticeIn);
-//					model3d1.setSg(sgIn, c1, "");
-//				}
-//				
-//				cifOut.setCellA(latticeOut.a);
-//				cifOut.setCellB(latticeOut.b);
-//				cifOut.setCellC(latticeOut.c);
-//				cifOut.setCellAlpha(latticeOut.alpha);
-//				cifOut.setCellBeta(latticeOut.beta);
-//				cifOut.setCellGamma(latticeOut.gamma);
-//				
-//				try {
-//					cifOut.setCellVolume(latticeOut.a*latticeOut.b*latticeOut.c);
-//				} catch (RuntimeException e) {}
-//				try {
-//					double vin = latticeIn.a*latticeIn.b*latticeIn.c;
-//					double vout = latticeOut.a*latticeOut.b*latticeOut.c;
-//					double uz = cifIn.getUnitZ();
-//					cifOut.setUnitZ((int)Math.round(uz*vout/vin));
-//				} catch (RuntimeException e) {}
-//			}
-//			private void updateOutAtoms(boolean do3d) {
-//				if (latticeIn==null) return;
-//				if (!do3d) {
-//					model3d2.clear();
-//					return;
-//				}
-//				Vector aa = new Vector(100, 100);
-//				for (int i=0; i<atomsIn.length; i++) {
-//					Vector3d v = new Vector3d(atomsIn[i].x, atomsIn[i].y, atomsIn[i].z);
-//					Vector3d[] vv = sgIn.getSymPos(v);
-//					for (int j=0; j<vv.length; j++) {
-//						if (vv[j]==null) continue;
-//						AtomSite a = new AtomSite(atomsIn[i]);
-//						Vector3d u = new Vector3d(vv[j]);
-//						Q.m.transform(u);
-//						u.add(q.v);
-//						a.x = u.x;
-//						a.y = u.y;
-//						a.z = u.z;
-//						aa.add(a);
-//					}
-//				}
-//				atomsOut = (AtomSite[]) aa.toArray(new AtomSite[0]);
-//				model3d2.setAtoms(atomsOut, c2, r2);
-//				Vector v = checkTranslations();
-//				System.out.println();
-//				cifOut.transformAtoms(cifIn, Q.m, q.v, v);
-//				if (!checkTransformIsCorrect()) {
-//					displayError("Invalid transformation, please check your transformation ! ");
-//				}
-//				else {
-//					displayError(null);
-//				}
-//			}
-//			private void refreshOutCif() {
-//				if (latticeIn==null) return;
-//				cifPane.updateCifRight(cifOut);
-//			}
-			
+
+
+			//			private void updateq() {
+			//				Q.m.transform(p.v, q.v);
+			//				q.v.negate();
+			//				if (q.v.x==-0) q.v.x=0;
+			//				if (q.v.y==-0) q.v.y=0;
+			//				if (q.v.z==-0) q.v.z=0;
+			//				q.updateFields();
+			//			}
+
+
+			//			private void updateOutLattice(boolean do3d) {
+			//				if (latticeIn==null) return;
+			//				if (!do3d) {
+			//					model3d2.clear();
+			//					return;
+			//				}
+			////				System.out.println("x:"+round(latticeIn.x));
+			////				System.out.println("y:"+round(latticeIn.y));
+			////				System.out.println("z:"+round(latticeIn.z));
+			//
+			//				
+			//				Matrix3d m = new Matrix3d();
+			//				m.setColumn(0, latticeIn.x);
+			//				m.setColumn(1, latticeIn.y);
+			//				m.setColumn(2, latticeIn.z);
+			//				
+			//				m.mul(P.m);
+			//				
+			//				Vector3d x = new Vector3d();
+			//				Vector3d y = new Vector3d();
+			//				Vector3d z = new Vector3d();
+			//				m.getColumn(0, x);
+			//				m.getColumn(1, y);
+			//				m.getColumn(2, z);
+			//				
+			//				
+			////				System.out.println("x':"+round(x));
+			////				System.out.println("y':"+round(y));
+			////				System.out.println("z':"+round(z));
+			//				
+			//				System.out.println("det(P)="+P.m.determinant());
+			//				
+			//				if (menu.center1.isSelected()) {
+			//					latticeIn = new Lattice(latticeIn.x, latticeIn.y, latticeIn.z);
+			//					sgIn = new SpaceGroup(sgIn.sg, latticeIn);
+			//					model3d1.setSg(sgIn, c1, "");
+			//
+			//					Vector3d v = new Vector3d();
+			//					v.scaleAdd(p.v.x, latticeIn.x, v);
+			//					v.scaleAdd(p.v.y, latticeIn.y, v);
+			//					v.scaleAdd(p.v.z, latticeIn.z, v);
+			//					v.add(latticeIn.o);
+			//					latticeOut = new Lattice(x, y, z, v);
+			//					
+			//					bottomPanel.outCell.set(latticeOut);
+			//					sgOut = new SpaceGroup(sgP1, latticeOut);
+			//					model3d2.setSg(sgOut, c2, "'");
+			//				}
+			//				else {
+			//					latticeOut = new Lattice(x, y, z);
+			//					sgOut = new SpaceGroup(sgP1, latticeOut);
+			//					model3d2.setSg(sgOut, c2, "'");
+			//					Vector3d v = new Vector3d();
+			//					v.scaleAdd(p.v.x, latticeIn.x, v);
+			//					v.scaleAdd(p.v.y, latticeIn.y, v);
+			//					v.scaleAdd(p.v.z, latticeIn.z, v);
+			//					v.sub(latticeOut.o, v);
+			//					latticeIn = new Lattice(latticeIn.x, latticeIn.y, latticeIn.z, v);
+			//					sgIn = new SpaceGroup(sgIn.sg, latticeIn);
+			//					model3d1.setSg(sgIn, c1, "");
+			//				}
+			//				
+			//				cifOut.setCellA(latticeOut.a);
+			//				cifOut.setCellB(latticeOut.b);
+			//				cifOut.setCellC(latticeOut.c);
+			//				cifOut.setCellAlpha(latticeOut.alpha);
+			//				cifOut.setCellBeta(latticeOut.beta);
+			//				cifOut.setCellGamma(latticeOut.gamma);
+			//				
+			//				try {
+			//					cifOut.setCellVolume(latticeOut.a*latticeOut.b*latticeOut.c);
+			//				} catch (RuntimeException e) {}
+			//				try {
+			//					double vin = latticeIn.a*latticeIn.b*latticeIn.c;
+			//					double vout = latticeOut.a*latticeOut.b*latticeOut.c;
+			//					double uz = cifIn.getUnitZ();
+			//					cifOut.setUnitZ((int)Math.round(uz*vout/vin));
+			//				} catch (RuntimeException e) {}
+			//			}
+			//			private void updateOutAtoms(boolean do3d) {
+			//				if (latticeIn==null) return;
+			//				if (!do3d) {
+			//					model3d2.clear();
+			//					return;
+			//				}
+			//				Vector aa = new Vector(100, 100);
+			//				for (int i=0; i<atomsIn.length; i++) {
+			//					Vector3d v = new Vector3d(atomsIn[i].x, atomsIn[i].y, atomsIn[i].z);
+			//					Vector3d[] vv = sgIn.getSymPos(v);
+			//					for (int j=0; j<vv.length; j++) {
+			//						if (vv[j]==null) continue;
+			//						AtomSite a = new AtomSite(atomsIn[i]);
+			//						Vector3d u = new Vector3d(vv[j]);
+			//						Q.m.transform(u);
+			//						u.add(q.v);
+			//						a.x = u.x;
+			//						a.y = u.y;
+			//						a.z = u.z;
+			//						aa.add(a);
+			//					}
+			//				}
+			//				atomsOut = (AtomSite[]) aa.toArray(new AtomSite[0]);
+			//				model3d2.setAtoms(atomsOut, c2, r2);
+			//				Vector v = checkTranslations();
+			//				System.out.println();
+			//				cifOut.transformAtoms(cifIn, Q.m, q.v, v);
+			//				if (!checkTransformIsCorrect()) {
+			//					displayError("Invalid transformation, please check your transformation ! ");
+			//				}
+			//				else {
+			//					displayError(null);
+			//				}
+			//			}
+			//			private void refreshOutCif() {
+			//				if (latticeIn==null) return;
+			//				cifPane.updateCifRight(cifOut);
+			//			}
+
 			private boolean checkTransformIsCorrect() {
 				for (int i=0; i<model3d2.atoms.size(); i++) {
 					Atom a = (Atom) model3d2.atoms.get(i);
@@ -973,110 +973,110 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 				}
 				return true;
 			}
-			
-//			private Vector checkTranslations() {
-//				Vector v = new Vector();
-//				Point3d p100 = new Point3d(1, 0, 0);
-//				Q.m.transform(p100);
-//				Point3d p010 = new Point3d(0, 1, 0);
-//				Q.m.transform(p010);
-//				Point3d p001 = new Point3d(0, 0, 1);
-//				Q.m.transform(p001);
-//
-//				int n = (int)Math.abs(Math.round(P.m.determinant()));
-//				if (n==1) return v;
-//
-//				
-//				//System.out.println("n="+n);
-//				System.out.println("100 -> "+round(p100));
-//				System.out.println("010 -> "+round(p010));
-//				System.out.println("001 -> "+round(p001));
-//				
-//				
-//				Vector3d t = new Vector3d(); 
-//				Vector3d tx = new Vector3d(); 
-//				Vector3d ty = new Vector3d(); 
-//				Vector3d tz = new Vector3d();
-//				
-//				for (int l=1; l<5; l++) {
-//					for (int i=0; i<=l; i++) {
-//						for (int j=0; j<=l; j++) {
-//							for (int k=0; k<=l; k++) {
-//								if (i==0&j==0&&k==0) continue;
-//								if (i<l&&j<l&&k<l) continue;
-//								tx.scale(i, p100);
-//								ty.scale(j, p010);
-//								tz.scale(k, p001);
-//								t.add(tx, ty);
-//								t.add(tz);
-//								t= round(t);
-//								//System.out.println(i+" "+j+" "+k+":"+t);
-//								if (t.x>-1&&t.y>-1&&t.z>-1&&t.x<0.9999&&t.y<0.9999&&t.z<0.9999) {
-//									boolean found=false;
-//									for (int m=0; m<v.size(); m++) {
-//										if (round(SpaceGroup.modCell((Vector3d)v.get(m))).equals(round(SpaceGroup.modCell(t)))) {
-//											found=true;
-//											break;
-//										}
-//									}
-//									if (found==false) {
-//										addTranslation(t);
-//										v.add(new Vector3d(t));
-//										System.out.println((i>0?(i>1?(i+"x"):"x"):"")+(j>0?(i>0?"+":"")+(j>1?(j+"y"):"y"):"")+(k>0?(i>0||j>0?"+":"")+(k>1?(k+"z"):"z"):"")+"  "+(round(t)));
-//										n--;
-//										if (n==1) return v;
-//									}
-//								}
-//							}
-//						}
-//					}
-//				}
-//				System.out.println("Out of loop!!!");
-//				return v;
-//				
-////				iLoop: for (int i=0; i<10; i++) {
-////					tx.scale(i, p100);
-////					for (int j=0; j<10; j++) {
-////						ty.scale(j, p010);
-////						for (int k=0; k<10; k++) {
-////							if (i==0&&j==0&&k==0) continue;
-////							tz.scale(k, p001);
-////							System.out.println(i+" "+j+" "+k+":"+tz);
-////							//if (tz.x>0.99999||tz.y>0.99999||tz.z>0.99999) break;
-////							
-////							t.add(tx, ty);
-////							t.add(tz);
-////							if (t.x>0.99999||t.y>0.99999||t.z>0.99999) continue;
-////							if (t.x<0||t.y<0||t.z<0) continue;
-////							System.out.println(i+" "+j+" "+k+" "+round(t));
-////							addTranslation(t);
-////							v.add(new Vector3d(t));
-////							n--;
-////							System.out.println(n);
-////							if (n==1) return v;
-////						}
-////						//if (ty.x>0.99999||ty.y>0.99999||ty.z>0.99999) break;
-////					}
-////					//if (tx.x>0.99999||tx.y>0.99999||tx.z>0.99999) break;
-////				}
-////				return v;
-//			}
-//			
-//			
-//			private void addTranslation(Vector3d v) {
-//				Vector3d r = new Vector3d();
-//				for (int i=0; i<atomsOut.length; i++) {
-//					r.set((atomsOut[i].x+v.x)%1, (atomsOut[i].y+v.y)%1, (atomsOut[i].z+v.z)%1);
-//					r = SpaceGroup.modCell(r);
-//					System.out.println("new atom:"+r);
-//					//System.out.println(model3d2.getAtomHere(((Atom)(model3d2.atoms.get(i))).positions, new Point3d(r)));
-//					AtomSite a = new AtomSite(atomsOut[i].atom, atomsOut[i].symbol, atomsOut[i].label, r.x, r.y, r.z, atomsOut[i].occupancy, atomsOut[i].oxydation);
-//					model3d2.addAtom(a, c2, r2);
-//				}
-//			}
+
+			//			private Vector checkTranslations() {
+			//				Vector v = new Vector();
+			//				Point3d p100 = new Point3d(1, 0, 0);
+			//				Q.m.transform(p100);
+			//				Point3d p010 = new Point3d(0, 1, 0);
+			//				Q.m.transform(p010);
+			//				Point3d p001 = new Point3d(0, 0, 1);
+			//				Q.m.transform(p001);
+			//
+			//				int n = (int)Math.abs(Math.round(P.m.determinant()));
+			//				if (n==1) return v;
+			//
+			//				
+			//				//System.out.println("n="+n);
+			//				System.out.println("100 -> "+round(p100));
+			//				System.out.println("010 -> "+round(p010));
+			//				System.out.println("001 -> "+round(p001));
+			//				
+			//				
+			//				Vector3d t = new Vector3d(); 
+			//				Vector3d tx = new Vector3d(); 
+			//				Vector3d ty = new Vector3d(); 
+			//				Vector3d tz = new Vector3d();
+			//				
+			//				for (int l=1; l<5; l++) {
+			//					for (int i=0; i<=l; i++) {
+			//						for (int j=0; j<=l; j++) {
+			//							for (int k=0; k<=l; k++) {
+			//								if (i==0&j==0&&k==0) continue;
+			//								if (i<l&&j<l&&k<l) continue;
+			//								tx.scale(i, p100);
+			//								ty.scale(j, p010);
+			//								tz.scale(k, p001);
+			//								t.add(tx, ty);
+			//								t.add(tz);
+			//								t= round(t);
+			//								//System.out.println(i+" "+j+" "+k+":"+t);
+			//								if (t.x>-1&&t.y>-1&&t.z>-1&&t.x<0.9999&&t.y<0.9999&&t.z<0.9999) {
+			//									boolean found=false;
+			//									for (int m=0; m<v.size(); m++) {
+			//										if (round(SpaceGroup.modCell((Vector3d)v.get(m))).equals(round(SpaceGroup.modCell(t)))) {
+			//											found=true;
+			//											break;
+			//										}
+			//									}
+			//									if (found==false) {
+			//										addTranslation(t);
+			//										v.add(new Vector3d(t));
+			//										System.out.println((i>0?(i>1?(i+"x"):"x"):"")+(j>0?(i>0?"+":"")+(j>1?(j+"y"):"y"):"")+(k>0?(i>0||j>0?"+":"")+(k>1?(k+"z"):"z"):"")+"  "+(round(t)));
+			//										n--;
+			//										if (n==1) return v;
+			//									}
+			//								}
+			//							}
+			//						}
+			//					}
+			//				}
+			//				System.out.println("Out of loop!!!");
+			//				return v;
+			//				
+			////				iLoop: for (int i=0; i<10; i++) {
+			////					tx.scale(i, p100);
+			////					for (int j=0; j<10; j++) {
+			////						ty.scale(j, p010);
+			////						for (int k=0; k<10; k++) {
+			////							if (i==0&&j==0&&k==0) continue;
+			////							tz.scale(k, p001);
+			////							System.out.println(i+" "+j+" "+k+":"+tz);
+			////							//if (tz.x>0.99999||tz.y>0.99999||tz.z>0.99999) break;
+			////							
+			////							t.add(tx, ty);
+			////							t.add(tz);
+			////							if (t.x>0.99999||t.y>0.99999||t.z>0.99999) continue;
+			////							if (t.x<0||t.y<0||t.z<0) continue;
+			////							System.out.println(i+" "+j+" "+k+" "+round(t));
+			////							addTranslation(t);
+			////							v.add(new Vector3d(t));
+			////							n--;
+			////							System.out.println(n);
+			////							if (n==1) return v;
+			////						}
+			////						//if (ty.x>0.99999||ty.y>0.99999||ty.z>0.99999) break;
+			////					}
+			////					//if (tx.x>0.99999||tx.y>0.99999||tx.z>0.99999) break;
+			////				}
+			////				return v;
+			//			}
+			//			
+			//			
+			//			private void addTranslation(Vector3d v) {
+			//				Vector3d r = new Vector3d();
+			//				for (int i=0; i<atomsOut.length; i++) {
+			//					r.set((atomsOut[i].x+v.x)%1, (atomsOut[i].y+v.y)%1, (atomsOut[i].z+v.z)%1);
+			//					r = SpaceGroup.modCell(r);
+			//					System.out.println("new atom:"+r);
+			//					//System.out.println(model3d2.getAtomHere(((Atom)(model3d2.atoms.get(i))).positions, new Point3d(r)));
+			//					AtomSite a = new AtomSite(atomsOut[i].atom, atomsOut[i].symbol, atomsOut[i].label, r.x, r.y, r.z, atomsOut[i].occupancy, atomsOut[i].oxydation);
+			//					model3d2.addAtom(a, c2, r2);
+			//				}
+			//			}
 		}
 	}
-	
+
 	public static void mulNegMatVect(Tuple3d p, Matrix3d m, Vector3d q) {
 		m.transform(p, q);
 		q.negate();
@@ -1084,7 +1084,7 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 		if (q.y==-0) q.y=0;
 		if (q.z==-0) q.z=0;
 	}
-	
+
 	public static Point3d round(Point3d p) {
 		return new Point3d(Math.round(1000*p.x)/1000d, Math.round(1000*p.y)/1000d, Math.round(1000*p.z)/1000d);
 	}
@@ -1097,7 +1097,7 @@ class EditMatrix {
 	private VerticalVector[] edit;
 	public Matrix3d m;
 	private HVPanel.h p;
-	
+
 	public EditMatrix() {
 		edit = new VerticalVector[3];
 		p = new HVPanel.h() {
@@ -1160,7 +1160,7 @@ class EditVector {
 	private VerticalVector edit;
 	public Vector3d v;
 	private HVPanel.h p;
-	
+
 	public EditVector() {
 		p = new HVPanel.h() {
 			public void actionPerformed(ActionEvent e) {
@@ -1190,7 +1190,7 @@ class EditVector {
 		if (v.x==-0) v.x=0; if (v.y==-0) v.y=0; if (v.z==-0) v.z=0;
 		edit.set(v.x, v.y, v.z);
 	}
-	
+
 	public static double parseFrac(String s) throws NumberFormatException {
 		int p = s.indexOf('/');
 		if (p==-1) return Double.parseDouble(s);
@@ -1227,7 +1227,7 @@ class VerticalVector extends HVPanel.v implements PropertyChangeListener {
 	public JFormattedTextField[] edit;
 	public boolean quiet = false;
 	public Color originalColor;
-	
+
 	public VerticalVector() {
 		edit = new JFormattedTextField[3];
 		expand(false);
@@ -1248,13 +1248,13 @@ class VerticalVector extends HVPanel.v implements PropertyChangeListener {
 		}
 		originalColor = edit[0].getBackground();
 	}
-	
+
 	public void setColor(Color c) {
 		edit[0].setBackground(c);
 		edit[1].setBackground(c);
 		edit[2].setBackground(c);
 	}
-	
+
 	public void set(double x, double y, double z) {
 		quiet = true;
 		edit[0].setValue(new Double(x));

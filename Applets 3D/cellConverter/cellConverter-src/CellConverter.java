@@ -33,7 +33,7 @@ public class CellConverter extends JApplet implements Runnable {
 	static final String titleInit = title+" is starting up. Please wait...";
 	private static final int width=1000, height=800;
 	private static final String defCodeBase = "http://escher.epfl.ch/crystalOgraph/";
-	
+
 	public static boolean isApplet = true;
 	public JFrame frame;
 	public MainPane mainPane;
@@ -44,12 +44,12 @@ public class CellConverter extends JApplet implements Runnable {
 		String jver = System.getProperty("java.version");
 		System.setProperty(jver.startsWith("1.3")?
 				"com.apple.macos.useScreenMenuBar" :
-				"apple.laf.useScreenMenuBar", "true");
+					"apple.laf.useScreenMenuBar", "true");
 	}
-	
+
 	public CellConverter() {
 	}
-	
+
 	public void init() {
 		try {
 			SwingUtilities.invokeAndWait(this);
@@ -59,7 +59,7 @@ public class CellConverter extends JApplet implements Runnable {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	public void start() {
 		started=true;
 	}
@@ -74,7 +74,7 @@ public class CellConverter extends JApplet implements Runnable {
 	public void destroy() {
 		mainPane.destroy();
 	}
-	
+
 	public static void main(String[] args) {
 		isApplet = false;
 		CellConverter mainApp = new CellConverter();
@@ -97,22 +97,22 @@ public class CellConverter extends JApplet implements Runnable {
 
 	private void createMainFrame() {
 		frame = new JFrame(titleInit);
-	  frame.addWindowListener(new WindowAdapter() {
-	    public void windowClosing(WindowEvent e) {
-	  		if (isApplet) {
-		    	stop();
-		    	frame.setVisible(false);
-	  		}
-	  		else {
-	  			System.exit(0);
-	  		}
-	    }
-	  });
-	  //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				if (isApplet) {
+					stop();
+					frame.setVisible(false);
+				}
+				else {
+					System.exit(0);
+				}
+			}
+		});
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(width, height);
-	  frame.setVisible(true);
+		frame.setVisible(true);
 	}
-	
+
 	private void createWebPane() {
 		if ("true".equals(getParameter("mini"))) {
 			getContentPane().add(new AppletMiniPane());
@@ -121,7 +121,7 @@ public class CellConverter extends JApplet implements Runnable {
 			getContentPane().add(new JLabel("Applet launched. Refresh page to load again...", JLabel.CENTER));
 		}
 	}
-	
+
 	private void createMainPane() {
 		try {
 			mainPane = new MainPane(this);
@@ -130,15 +130,15 @@ public class CellConverter extends JApplet implements Runnable {
 			throw e;
 		}
 	}
-	
+
 	private void showMainPane() {
 		frame.getContentPane().add(mainPane.jPanel);
 		frame.validate();
 		frame.setTitle(title);
-	  frame.setVisible(true);
-	  frame.toFront();
+		frame.setVisible(true);
+		frame.toFront();
 	}
-	
+
 	public URL getCodeBase() {
 		try {
 			return super.getCodeBase();
@@ -150,21 +150,21 @@ public class CellConverter extends JApplet implements Runnable {
 			}
 		}
 	}
-	
+
 	public void showUp() {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-		  	if (!started) start();
+				if (!started) start();
 				frame.setVisible(true);
 				frame.toFront();
 			}
 		});
 	}
-		
+
 	public void setDndDropListener(DropTargetListener listener) {
 		new DropTarget(frame, listener);
 	}
-		
+
 	public void showException(Throwable error) {
 		ErrorPane errorPane = new ErrorPane();
 		JFrame errorFrame = new JFrame("There was a problem");
@@ -178,18 +178,18 @@ public class CellConverter extends JApplet implements Runnable {
 		}
 		error.printStackTrace(errorPane.out);
 	}
-	
+
 	class ErrorPane extends JPanel {
 		public PrintStream out;
 		private JTextArea textArea;
-		
+
 		public ErrorPane() {
 			textArea = new JTextArea();
 			textArea.setEditable(false);
-	    JScrollPane scrollPane = new JScrollPane(textArea);
+			JScrollPane scrollPane = new JScrollPane(textArea);
 			setLayout(new BorderLayout());
 			add(scrollPane);
-			
+
 			out = new PrintStream(new OutputStream(){
 				public void write(byte[] bb) throws IOException {
 					write(bb, 0, bb.length);
@@ -209,11 +209,11 @@ public class CellConverter extends JApplet implements Runnable {
 			setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent e) {
-			  	if (!started) start();
-			  	if (frame!=null) {
+					if (!started) start();
+					if (frame!=null) {
 						frame.setVisible(true);
 						frame.toFront();
-			  	}
+					}
 				}
 			});
 		}

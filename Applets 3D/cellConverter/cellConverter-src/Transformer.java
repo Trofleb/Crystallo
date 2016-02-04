@@ -1,5 +1,3 @@
-
-
 import java.util.Vector;
 
 import javax.vecmath.Matrix3d;
@@ -21,7 +19,7 @@ public class Transformer {
 	private AtomSite[] atomsP1;
 	private Matrix3d P, Q;
 	private Vector3d q;
-	
+
 	public Transformer(Matrix3d P, Matrix3d Q, Vector3d q) {
 		this.P=P; this.Q=Q; this.q=q;
 		sgP1 = SgType.getSg(1);
@@ -33,7 +31,7 @@ public class Transformer {
 		calculateLatticeOut();
 		calculateAtomsOut();
 	}
-	
+
 	public void setFile(SpaceGroup sg, AtomSite[] atoms) {
 		sgIn = sg;
 		atomsIn = atoms;
@@ -42,7 +40,7 @@ public class Transformer {
 		//calculateLatticeOut();	
 		//calculateAtomsOut();
 	}
-	
+
 	public AtomSite[] getTransformedAtoms() {
 		return atomsOut;
 	}
@@ -50,7 +48,7 @@ public class Transformer {
 		sgOut.cell = latticeOut;
 		return sgOut;
 	}
-	
+
 	private void calculateLatticeOut() {
 		Matrix3d m = new Matrix3d();
 		m.setColumn(0, sgIn.cell.x);
@@ -65,7 +63,7 @@ public class Transformer {
 		m.getColumn(2, z);
 		latticeOut = new Lattice(x, y, z);
 	}
-	
+
 	private void transformToP1() {	// atomsIn -> atomsP1
 		Vector aa = new Vector(100, 100);
 		for (int i=0; i<atomsIn.length; i++) {
@@ -85,7 +83,7 @@ public class Transformer {
 		}
 		atomsP1 = (AtomSite[]) aa.toArray(new AtomSite[0]);
 	}
-	
+
 	private void calculateAtomsOut() {	// atomsP1 -> atomsOut
 		Vector aa = new Vector(100, 100);
 		Vector v = calculateTranslations();
@@ -114,7 +112,7 @@ public class Transformer {
 		}
 		atomsOut = (AtomSite[]) aa.toArray(new AtomSite[0]);
 	}
-	
+
 	private Vector calculateTranslations() {
 		System.out.println("det(P)="+P.determinant());
 
@@ -128,20 +126,20 @@ public class Transformer {
 		Q.transform(p010);
 		Point3d p001 = new Point3d(0, 0, 1);
 		Q.transform(p001);
-		
+
 		p100 = SpaceGroup.modCell(p100);
 		p010 = SpaceGroup.modCell(p010);
 		p001 = SpaceGroup.modCell(p001);
-		
+
 		System.out.println("100 -> "+round(p100));
 		System.out.println("010 -> "+round(p010));
 		System.out.println("001 -> "+round(p001));
-		
+
 		Vector3d t = new Vector3d(); 
 		Vector3d tx = new Vector3d(); 
 		Vector3d ty = new Vector3d(); 
 		Vector3d tz = new Vector3d();
-		
+
 		for (int l=1; l<20; l++) {
 			for (int i=0; i<=l; i++) {
 				for (int j=0; j<=l; j++) {
@@ -183,7 +181,7 @@ public class Transformer {
 		}
 		return false;
 	}
-	
+
 	public static Point3d round(Point3d p) {
 		return new Point3d(Math.round(100000*p.x)/100000d, Math.round(100000*p.y)/100000d, Math.round(100000*p.z)/100000d);
 	}
