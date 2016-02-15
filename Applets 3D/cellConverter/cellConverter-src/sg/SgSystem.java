@@ -17,8 +17,8 @@ import java.util.HashMap;
 import java.util.Vector;
 
 public class SgSystem implements Serializable {
-	static SgSystem[][][] systems;
-	static int[] dimensions;
+	private static SgSystem[][][] systems;
+	protected static int[] dimensions;
 
 	public final int dim;
 	public final String name;

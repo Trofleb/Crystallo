@@ -20,5 +20,5 @@ public class ParseErrorException extends java.lang.RuntimeException {
 		return this.a;
 	}
 
-	java.lang.String a;
+	private String a;
 }

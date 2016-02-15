@@ -44,23 +44,21 @@ import utils.TableSorter;
 
 public class Icsd implements ActionListener {
 	private ActionListener actionListener;
-	JFrame frame;
-	JButton searchButton;
-	JButton importButton;
-	JButton cancelButton;
-	JTextField edit1, edit2;
-	JTable table;
-	DefaultTableModel tableModel;
-	JLabel status;
-	String[] data;
-	String[][] list;
-	LogPane logPane;
-	boolean finished = false;
-	String lastError;
-	String username;
+	private JFrame frame;
+	private JButton searchButton;
+	private JButton importButton;
+	private JButton cancelButton;
+	private JTextField edit1, edit2;
+	private JTable table;
+	private DefaultTableModel tableModel;
+	private String[] data;
+	private String[][] list;
+	private LogPane logPane;
+	private boolean finished = false;
+	private String lastError;
 	private TableSorter sorter;
-	Thread thread;
-	URL codeBase;
+	private Thread thread;
+	private URL codeBase;
 
 	public Icsd(URL codeBase) {
 		this.codeBase = codeBase;
@@ -535,6 +533,7 @@ public class Icsd implements ActionListener {
 		Vector v = new Vector(100, 50);
 		try {
 			URL u = this.getClass().getResource("/" + fileName);
+			System.out.println(fileName);
 			this.stream = new BufferedReader(new InputStreamReader(u.openStream()));
 			while (true) {
 				this.currentLine = this.stream.readLine();
