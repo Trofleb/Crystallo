@@ -22,16 +22,17 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
+import dragNdrop.CifFileDropper;
 import sg.SgSystem;
 import sg.SgType;
-import dragNdrop.CifFileDropper;
 
 public class CellConverter extends JApplet implements Runnable {
 	private static final String title = "Crystallographic Cell Converter";
-	static final String titleInit = title+" is starting up. Please wait...";
-	private static final int width=1000, height=800;
+	static final String titleInit = title + " is starting up. Please wait...";
+	private static final int width = 1000, height = 800;
 	private static final String defCodeBase = "http://escher.epfl.ch/crystalOgraph/";
 
 	public static boolean isApplet = true;
@@ -42,9 +43,8 @@ public class CellConverter extends JApplet implements Runnable {
 	static {
 		// use Macintosh style screen menu bars on Mac
 		String jver = System.getProperty("java.version");
-		System.setProperty(jver.startsWith("1.3")?
-				"com.apple.macos.useScreenMenuBar" :
-					"apple.laf.useScreenMenuBar", "true");
+		System.setProperty(jver.startsWith("1.3") ? "com.apple.macos.useScreenMenuBar" : "apple.laf.useScreenMenuBar",
+				"true");
 	}
 
 	public CellConverter() {
@@ -61,18 +61,20 @@ public class CellConverter extends JApplet implements Runnable {
 	}
 
 	public void start() {
-		started=true;
+		this.started = true;
 	}
+
 	public void stop() {
-		started=false;
+		this.started = false;
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				mainPane.stop();
+				CellConverter.this.mainPane.stop();
 			}
 		});
 	}
+
 	public void destroy() {
-		mainPane.destroy();
+		this.mainPane.destroy();
 	}
 
 	public static void main(String[] args) {
@@ -85,58 +87,56 @@ public class CellConverter extends JApplet implements Runnable {
 	// initialisation in GUI thread
 	public void run() {
 		JPopupMenu.setDefaultLightWeightPopupEnabled(false);
-		createMainFrame();
-		if (isApplet) createWebPane();
+		this.createMainFrame();
+		if (isApplet)
+			this.createWebPane();
 		SgSystem.staticInit();
 		SgType.staticInit();
-		createMainPane();
-		frame.setJMenuBar(mainPane.new Menu());		
-		showMainPane();
-		new DropTarget(frame, new CifFileDropper(mainPane)); 
+		this.createMainPane();
+		this.frame.setJMenuBar(this.mainPane.new Menu());
+		this.showMainPane();
+		new DropTarget(this.frame, new CifFileDropper(this.mainPane));
 	}
 
 	private void createMainFrame() {
-		frame = new JFrame(titleInit);
-		frame.addWindowListener(new WindowAdapter() {
+		this.frame = new JFrame(titleInit);
+		this.frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				if (isApplet) {
-					stop();
-					frame.setVisible(false);
-				}
-				else {
+					CellConverter.this.stop();
+					CellConverter.this.frame.setVisible(false);
+				} else
 					System.exit(0);
-				}
 			}
 		});
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(width, height);
-		frame.setVisible(true);
+		// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setSize(width, height);
+		this.frame.setVisible(true);
 	}
 
 	private void createWebPane() {
-		if ("true".equals(getParameter("mini"))) {
-			getContentPane().add(new AppletMiniPane());
-		}
-		else {
-			getContentPane().add(new JLabel("Applet launched. Refresh page to load again...", JLabel.CENTER));
-		}
+		if ("true".equals(this.getParameter("mini")))
+			this.getContentPane().add(new AppletMiniPane());
+		else
+			this.getContentPane()
+					.add(new JLabel("Applet launched. Refresh page to load again...", SwingConstants.CENTER));
 	}
 
 	private void createMainPane() {
 		try {
-			mainPane = new MainPane(this);
+			this.mainPane = new MainPane(this);
 		} catch (Error e) {
-			showException(e);
+			this.showException(e);
 			throw e;
 		}
 	}
 
 	private void showMainPane() {
-		frame.getContentPane().add(mainPane.jPanel);
-		frame.validate();
-		frame.setTitle(title);
-		frame.setVisible(true);
-		frame.toFront();
+		this.frame.getContentPane().add(this.mainPane.jPanel);
+		this.frame.validate();
+		this.frame.setTitle(title);
+		this.frame.setVisible(true);
+		this.frame.toFront();
 	}
 
 	public URL getCodeBase() {
@@ -154,15 +154,16 @@ public class CellConverter extends JApplet implements Runnable {
 	public void showUp() {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				if (!started) start();
-				frame.setVisible(true);
-				frame.toFront();
+				if (!CellConverter.this.started)
+					CellConverter.this.start();
+				CellConverter.this.frame.setVisible(true);
+				CellConverter.this.frame.toFront();
 			}
 		});
 	}
 
 	public void setDndDropListener(DropTargetListener listener) {
-		new DropTarget(frame, listener);
+		new DropTarget(this.frame, listener);
 	}
 
 	public void showException(Throwable error) {
@@ -171,7 +172,7 @@ public class CellConverter extends JApplet implements Runnable {
 		errorFrame.getContentPane().add(errorPane);
 		errorFrame.setSize(500, 400);
 		errorFrame.setVisible(true);
-		if (error instanceof NoClassDefFoundError && error.getMessage().indexOf("javax/media/j3d")!=-1) {
+		if (error instanceof NoClassDefFoundError && error.getMessage().indexOf("javax/media/j3d") != -1) {
 			errorPane.out.println("Java3D is not installed on your computer.");
 			errorPane.out.println("Please visit http://escher.epfl.ch/java3d to learn how to install it.");
 			errorPane.out.println("");
@@ -184,21 +185,23 @@ public class CellConverter extends JApplet implements Runnable {
 		private JTextArea textArea;
 
 		public ErrorPane() {
-			textArea = new JTextArea();
-			textArea.setEditable(false);
-			JScrollPane scrollPane = new JScrollPane(textArea);
-			setLayout(new BorderLayout());
-			add(scrollPane);
+			this.textArea = new JTextArea();
+			this.textArea.setEditable(false);
+			JScrollPane scrollPane = new JScrollPane(this.textArea);
+			this.setLayout(new BorderLayout());
+			this.add(scrollPane);
 
-			out = new PrintStream(new OutputStream(){
+			this.out = new PrintStream(new OutputStream() {
 				public void write(byte[] bb) throws IOException {
-					write(bb, 0, bb.length);
+					this.write(bb, 0, bb.length);
 				}
+
 				public void write(byte[] bb, int off, int len) throws IOException {
-					textArea.setText(textArea.getText()+new String(bb, off, len));
+					ErrorPane.this.textArea.setText(ErrorPane.this.textArea.getText() + new String(bb, off, len));
 				}
+
 				public void write(int b) throws IOException {
-					textArea.setText(textArea.getText()+(char)b);
+					ErrorPane.this.textArea.setText(ErrorPane.this.textArea.getText() + (char) b);
 				}
 			});
 		}
@@ -206,19 +209,21 @@ public class CellConverter extends JApplet implements Runnable {
 
 	class AppletMiniPane extends JPanel {
 		public AppletMiniPane() {
-			setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			addMouseListener(new MouseAdapter() {
+			this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			this.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent e) {
-					if (!started) start();
-					if (frame!=null) {
-						frame.setVisible(true);
-						frame.toFront();
+					if (!CellConverter.this.started)
+						CellConverter.this.start();
+					if (CellConverter.this.frame != null) {
+						CellConverter.this.frame.setVisible(true);
+						CellConverter.this.frame.toFront();
 					}
 				}
 			});
 		}
+
 		public void paint(Graphics g) {
-			new ImageIcon(getClass().getResource("/applet-mini.png")).paintIcon(this, g, 0, 0);
+			new ImageIcon(this.getClass().getResource("/applet-mini.png")).paintIcon(this, g, 0, 0);
 		}
 	}
 }

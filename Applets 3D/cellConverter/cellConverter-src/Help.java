@@ -1,5 +1,4 @@
 
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -16,34 +15,36 @@ public class Help {
 	private JFrame frame;
 
 	public Help() {
-		frame = new JFrame("Help");
-		frame.setSize(800, 480);
-		frame.setVisible(false);
-		frame.setContentPane(new HelpPanel().jPanel);
-		frame.validate();
+		this.frame = new JFrame("Help");
+		this.frame.setSize(800, 480);
+		this.frame.setVisible(false);
+		this.frame.setContentPane(new HelpPanel().jPanel);
+		this.frame.validate();
 	}
 
 	public void show(boolean show) {
-		frame.setVisible(show);
-		if (show) frame.toFront();
+		this.frame.setVisible(show);
+		if (show)
+			this.frame.toFront();
 	}
 
 	private class HelpPanel extends HVPanel.v {
 		JTextPane textPane;
+
 		public HelpPanel() {
-			textPane = new JTextPane() {
+			this.textPane = new JTextPane() {
 				public synchronized void paint(Graphics g) {
-					Graphics2D g2d = (Graphics2D)g;
+					Graphics2D g2d = (Graphics2D) g;
 					g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 					g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 					super.paint(g);
 				}
 			};
-			textPane.setEditable(false);
-			addComp(new JScrollPane(textPane));
+			this.textPane.setEditable(false);
+			this.addComp(new JScrollPane(this.textPane));
 			try {
 				URL helpURL = Help.class.getResource("/help.html");
-				textPane.setPage(helpURL);
+				this.textPane.setPage(helpURL);
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
