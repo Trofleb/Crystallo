@@ -12,126 +12,130 @@ import ColorComboBox.IncompatibleLookAndFeelException;
 
 public class AtomsSelectPanel extends HVPanel.v {
 	private JLabel selected, hidden;
-	private int nbTotal, nbSel, nbHidden;
+	private int nbSel, nbHidden;
 	private JButton cut, crop, showAll;
 	private Model model;
 	private ColorChoice colorChoice;
-	
+
 	public AtomsSelectPanel(Model model) {
 		this.model = model;
-		setBorder(new TitledBorder("Atoms selection"));
+		this.setBorder(new TitledBorder("Atoms selection"));
 
-		addComp(selected=new JLabel());
-		addComp(hidden=new JLabel());
+		this.addComp(this.selected = new JLabel());
+		this.addComp(this.hidden = new JLabel());
 		HVPanel.h p1 = new HVPanel.h();
-		p1.addButton(cut = new JButton("Hide"));
-		p1.addButton(crop = new JButton("Keep"));
-		addSubPane(p1);
-		addButton(showAll = new JButton("Show back all"));
-		showAll.setEnabled(false);
-		
+		p1.addButton(this.cut = new JButton("Hide"));
+		p1.addButton(this.crop = new JButton("Keep"));
+		this.addSubPane(p1);
+		this.addButton(this.showAll = new JButton("Show back all"));
+		this.showAll.setEnabled(false);
+
 		HVPanel.h p2 = new HVPanel.h();
 		try {
 			p2.addComp(new JLabel("Color"));
 			p2.expandH(true);
-			p2.addComp(colorChoice=new ColorChoice());
+			p2.addComp(this.colorChoice = new ColorChoice());
 		} catch (IncompatibleLookAndFeelException e) {
 			throw new RuntimeException(e);
 		}
-		addSubPane(p2);
-		
+		this.addSubPane(p2);
+
 		JButton originalColorButton = new JButton("Original color");
 		originalColorButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				AtomsSelectPanel.this.model.changeColorSelectedBack();
 			}
 		});
-		
-		colorChoice.setAdditionalCustomButton(originalColorButton);
-		colorChoice.setPreferredSize(new Dimension(50, 20));
-		colorChoice.setSelectedIndex(0);
-		colorChoice.addActionListener(this);
-		colorChoice.setEnabled(false);
-		
-		updateLabels();
+
+		this.colorChoice.setAdditionalCustomButton(originalColorButton);
+		this.colorChoice.setPreferredSize(new Dimension(50, 20));
+		this.colorChoice.setSelectedIndex(0);
+		this.colorChoice.addActionListener(this);
+		this.colorChoice.setEnabled(false);
+
+		this.updateLabels();
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource()==cut) {
-			model.hideSelected();
-		}
-		else if (e.getSource()==crop) {
-			model.hideNotSelected();
-		}
-		else if (e.getSource()==showAll) {
-			model.unHide();
-		}
-		else if (e.getSource()==colorChoice) {
-			Color c = colorChoice.getSelectedColor();
-			model.changeColorSelected(new Color3f(c));
+		if (e.getSource() == this.cut)
+			this.model.hideSelected();
+		else if (e.getSource() == this.crop)
+			this.model.hideNotSelected();
+		else if (e.getSource() == this.showAll)
+			this.model.unHide();
+		else if (e.getSource() == this.colorChoice) {
+			Color c = this.colorChoice.getSelectedColor();
+			this.model.changeColorSelected(new Color3f(c));
 		}
 	}
-	
+
 	public void setColorChoiceEnable(boolean b) {
-		colorChoice.setEnabled(b);
+		this.colorChoice.setEnabled(b);
 	}
+
 	public void setCropEnable(boolean b) {
-		crop.setEnabled(b);
+		this.crop.setEnabled(b);
 	}
+
 	public void setCutEnable(boolean b) {
-		cut.setEnabled(b);
+		this.cut.setEnabled(b);
 	}
+
 	public void setShowAllEnable(boolean b) {
-		showAll.setEnabled(b);
+		this.showAll.setEnabled(b);
 	}
-	
-	
+
 	public void setTotalAtoms(int n) {
-		nbTotal = n;
-		updateLabels();
+		this.updateLabels();
 	}
+
 	public void setSelectedAtoms(int n) {
-		nbSel = n;
-		updateLabels();
+		this.nbSel = n;
+		this.updateLabels();
 	}
-	
+
 	public void setHiddenAtoms(int n) {
-		nbHidden = n;
-		updateLabels();
+		this.nbHidden = n;
+		this.updateLabels();
 	}
-	
+
 	public void incHiddenAtoms() {
-		nbHidden++;
-		updateLabels();
+		this.nbHidden++;
+		this.updateLabels();
 	}
+
 	public void decHiddenAtoms() {
-		nbHidden--;
-		updateLabels();
+		this.nbHidden--;
+		this.updateLabels();
 	}
+
 	public void decHiddenAtoms(int n) {
-		nbHidden-=n;
-		updateLabels();
+		this.nbHidden -= n;
+		this.updateLabels();
 	}
 
 	public void decrementSelAtoms() {
-		nbSel--;
-		updateLabels();
+		this.nbSel--;
+		this.updateLabels();
 	}
-	
+
 	private void updateLabels() {
-		//selected.setText("Selected: "+nbSel+" / "+nbTotal);
-		selected.setText(nbSel==0?"No selected atom":(nbSel+" selected Atom"+(nbSel>1?"s":"")));
-		//hidden.setText("Hidden: "+nbHidden+" / "+nbTotal);
-		hidden.setText(nbHidden==0?"No hidden atom":(nbHidden+" hidden Atom"+(nbHidden>1?"s":"")));
-		if (nbSel==0) {
-			cut.setEnabled(false);
-			crop.setEnabled(false);
-			colorChoice.setEnabled(false);
-		}
-		else {
-			cut.setEnabled(true);
-			crop.setEnabled(true);
-			colorChoice.setEnabled(true);
+		// selected.setText("Selected: "+nbSel+" / "+nbTotal);
+		this.selected.setText(
+				this.nbSel == 0 ? "No selected atom" : (this.nbSel + " selected Atom" + (this.nbSel > 1 ? "s" : "")));
+		// hidden.setText("Hidden: "+nbHidden+" / "+nbTotal);
+		this.hidden.setText(this.nbHidden == 0 ? "No hidden atom"
+				: (this.nbHidden + " hidden Atom" + (this.nbHidden > 1 ? "s" : "")));
+		if (this.nbSel == 0) {
+			this.cut.setEnabled(false);
+			this.crop.setEnabled(false);
+			this.colorChoice.setEnabled(false);
+		} else {
+			this.cut.setEnabled(true);
+			this.crop.setEnabled(true);
+			this.colorChoice.setEnabled(true);
 		}
 	}
 }

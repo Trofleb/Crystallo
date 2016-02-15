@@ -2,7 +2,6 @@ import javax.vecmath.Color3f;
 
 /*
  * Created on 22 juin 2004
- *
  * To change the template for this generated file go to
  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
@@ -10,8 +9,8 @@ import javax.vecmath.Color3f;
 /**
  * @author nschoeni
  *
- * To change the template for this generated type comment go to
- * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
+ *         To change the template for this generated type comment go to
+ *         Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
 public interface ColorConstants {
 	static final Color3f black = new Color3f(0f, 0f, 0f);

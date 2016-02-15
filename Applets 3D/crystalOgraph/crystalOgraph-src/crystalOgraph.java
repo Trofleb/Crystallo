@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Frame;
 import java.awt.Graphics;
@@ -9,7 +8,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -19,29 +17,29 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
-import javax.swing.border.LineBorder;
 
 public class crystalOgraph extends JApplet implements Runnable {
 	static final String title = "crystalOgraph";
-	static final String titleInit = title+" is starting up. Please wait...";
-	static final int width=1000, height=820;
+	static final String titleInit = title + " is starting up. Please wait...";
+	static final int width = 1000, height = 820;
 	private static final String defCodeBase = "http://escher.epfl.ch/crystalOgraph/";
 
 	public static boolean isApplet = true;
 	public Frame frame;
 	public MainPane mainPane;
 	public boolean started;
-	
+
 	public crystalOgraph() {
 	}
-	
+
+	@Override
 	public void init() {
 		try {
 			SwingUtilities.invokeAndWait(this);
@@ -51,21 +49,28 @@ public class crystalOgraph extends JApplet implements Runnable {
 			throw new RuntimeException(e);
 		}
 	}
+
+	@Override
 	public void start() {
-		started=true;
+		this.started = true;
 	}
+
+	@Override
 	public void stop() {
-		started=false;
+		this.started = false;
 		SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
-				mainPane.stop();
+				crystalOgraph.this.mainPane.stop();
 			}
 		});
 	}
+
+	@Override
 	public void destroy() {
-		mainPane.destroy();
+		this.mainPane.destroy();
 	}
-	
+
 	public static void main(String[] args) {
 		isApplet = false;
 		crystalOgraph mainApp = new crystalOgraph();
@@ -74,59 +79,60 @@ public class crystalOgraph extends JApplet implements Runnable {
 	}
 
 	// initialisation in GUI thread
+	@Override
 	public void run() {
-		createMainFrame();
-		if (isApplet) createWebPane();
-		createMainPane();
-		showMainPane();
-		new DropTarget(frame, new CifFileDropper(mainPane)); 
+		this.createMainFrame();
+		if (isApplet)
+			this.createWebPane();
+		this.createMainPane();
+		this.showMainPane();
+		new DropTarget(this.frame, new CifFileDropper(this.mainPane));
 	}
 
 	private void createMainFrame() {
-		frame = new Frame(titleInit);
-	  frame.addWindowListener(new WindowAdapter() {
-	    public void windowClosing(WindowEvent e) {
-	  		if (isApplet) {
-		    	stop();
-		    	frame.setVisible(false);
-	  		}
-	  		else {
-	  			System.exit(0);
-	  		}
-	    }
-	  });
-	  //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(width, height);
-	  frame.setVisible(true);
+		this.frame = new Frame(titleInit);
+		this.frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				if (isApplet) {
+					crystalOgraph.this.stop();
+					crystalOgraph.this.frame.setVisible(false);
+				} else
+					System.exit(0);
+			}
+		});
+		// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setSize(width, height);
+		this.frame.setVisible(true);
 	}
-	
+
 	private void createWebPane() {
-		if ("true".equals(getParameter("mini"))) {
-			getContentPane().add(new AppletMiniPane());
-		}
-		else {
-			getContentPane().add(new JLabel("Applet launched. Refresh page to load again...", JLabel.CENTER));
-		}
+		if ("true".equals(this.getParameter("mini")))
+			this.getContentPane().add(new AppletMiniPane());
+		else
+			this.getContentPane()
+					.add(new JLabel("Applet launched. Refresh page to load again...", SwingConstants.CENTER));
 	}
-	
+
 	private void createMainPane() {
 		try {
-			mainPane = new MainPane(this);
+			this.mainPane = new MainPane(this);
 		} catch (Error e) {
-			showException(e);
+			this.showException(e);
 			throw e;
 		}
 	}
-	
+
 	private void showMainPane() {
-		//frame.getContentPane().add(mainPane);
-		frame.add(mainPane);
-		frame.validate();
-		frame.setTitle(title);
-	  frame.setVisible(true);
-	  frame.toFront();
+		// frame.getContentPane().add(mainPane);
+		this.frame.add(this.mainPane);
+		this.frame.validate();
+		this.frame.setTitle(title);
+		this.frame.setVisible(true);
+		this.frame.toFront();
 	}
-	
+
+	@Override
 	public URL getCodeBase() {
 		try {
 			return super.getCodeBase();
@@ -138,55 +144,62 @@ public class crystalOgraph extends JApplet implements Runnable {
 			}
 		}
 	}
-	
+
 	public void showUp() {
 		SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
-		  	if (!started) start();
-				frame.setVisible(true);
-				frame.toFront();
+				if (!crystalOgraph.this.started)
+					crystalOgraph.this.start();
+				crystalOgraph.this.frame.setVisible(true);
+				crystalOgraph.this.frame.toFront();
 			}
 		});
 	}
-		
+
 	public void setDndDropListener(DropTargetListener listener) {
-		new DropTarget(frame, listener);
+		new DropTarget(this.frame, listener);
 	}
-		
+
 	public void showException(Throwable error) {
 		ErrorPane errorPane = new ErrorPane();
 		JFrame errorFrame = new JFrame("There was a problem");
 		errorFrame.getContentPane().add(errorPane);
 		errorFrame.setSize(500, 400);
 		errorFrame.setVisible(true);
-		if (error instanceof NoClassDefFoundError && error.getMessage().indexOf("javax/media/j3d")!=-1) {
+		if (error instanceof NoClassDefFoundError && error.getMessage().indexOf("javax/media/j3d") != -1) {
 			errorPane.out.println("Java3D is not installed on your computer.");
 			errorPane.out.println("Please visit http://escher.epfl.ch/java3d to learn how to install it.");
 			errorPane.out.println("");
 		}
 		error.printStackTrace(errorPane.out);
 	}
-	
+
 	class ErrorPane extends JPanel {
 		public PrintStream out;
 		private JTextArea textArea;
-		
+
 		public ErrorPane() {
-			textArea = new JTextArea();
-			textArea.setEditable(false);
-	    JScrollPane scrollPane = new JScrollPane(textArea);
-			setLayout(new BorderLayout());
-			add(scrollPane);
-			
-			out = new PrintStream(new OutputStream(){
+			this.textArea = new JTextArea();
+			this.textArea.setEditable(false);
+			JScrollPane scrollPane = new JScrollPane(this.textArea);
+			this.setLayout(new BorderLayout());
+			this.add(scrollPane);
+
+			this.out = new PrintStream(new OutputStream() {
+				@Override
 				public void write(byte[] bb) throws IOException {
-					write(bb, 0, bb.length);
+					this.write(bb, 0, bb.length);
 				}
+
+				@Override
 				public void write(byte[] bb, int off, int len) throws IOException {
-					textArea.setText(textArea.getText()+new String(bb, off, len));
+					ErrorPane.this.textArea.setText(ErrorPane.this.textArea.getText() + new String(bb, off, len));
 				}
+
+				@Override
 				public void write(int b) throws IOException {
-					textArea.setText(textArea.getText()+(char)b);
+					ErrorPane.this.textArea.setText(ErrorPane.this.textArea.getText() + (char) b);
 				}
 			});
 		}
@@ -194,19 +207,23 @@ public class crystalOgraph extends JApplet implements Runnable {
 
 	class AppletMiniPane extends JPanel {
 		public AppletMiniPane() {
-			setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			addMouseListener(new MouseAdapter() {
+			this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			this.addMouseListener(new MouseAdapter() {
+				@Override
 				public void mouseClicked(MouseEvent e) {
-			  	if (!started) start();
-			  	if (frame!=null) {
-						frame.setVisible(true);
-						frame.toFront();
-			  	}
+					if (!crystalOgraph.this.started)
+						crystalOgraph.this.start();
+					if (crystalOgraph.this.frame != null) {
+						crystalOgraph.this.frame.setVisible(true);
+						crystalOgraph.this.frame.toFront();
+					}
 				}
 			});
 		}
+
+		@Override
 		public void paint(Graphics g) {
-			new ImageIcon(getClass().getResource("/applet-mini.png")).paintIcon(this, g, 0, 0);
+			new ImageIcon(this.getClass().getResource("/applet-mini.png")).paintIcon(this, g, 0, 0);
 		}
 	}
 }
