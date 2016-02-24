@@ -24,10 +24,10 @@ public class CellConstraintsPanel extends JPanel implements ActionListener {
 		c.gridx = 0;
 		c.gridy = GridBagConstraints.RELATIVE;
 
-		this.cellSize = new TextFieldCoord.v(new String[] { "a", "b", "c" }, " Å");
+		this.cellSize = new TextFieldCoord.v(new String[] { "a", "b", "c" }, " Ã…");
 		this.cellSize.addActionListener(this);
 		this.add(this.cellSize, c);
-		this.cellAngles = new TextFieldCoord.v(new String[] { "alpha", "beta", "gamma" }, " °");
+		this.cellAngles = new TextFieldCoord.v(new String[] { "alpha", "beta", "gamma" }, " Â°");
 		this.cellAngles.addActionListener(this);
 		this.add(this.cellAngles, c);
 

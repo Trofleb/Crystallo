@@ -47,7 +47,7 @@ public class BondsPanel extends JPanel implements ActionListener, ColorConstants
 		cc.insets = new Insets(0, 10, 0, 0);
 		p.add(this.boundsDist, cc);
 		cc.insets = new Insets(0, 0, 0, 0);
-		p.add(new MultiLineToolTip.JLabel(" Å"), cc);
+		p.add(new MultiLineToolTip.JLabel(" Ã…"), cc);
 		this.add(p, c);
 
 		l.setToolTipText("All atoms which distance is equal or smaller\nthan this value are to be bonded.");
@@ -83,7 +83,7 @@ public class BondsPanel extends JPanel implements ActionListener, ColorConstants
 		this.boundsRadius.addActionListener(this);
 		p.add(this.boundsRadius, cc);
 		cc.insets = new Insets(0, 0, 0, 0);
-		p.add(new MultiLineToolTip.JLabel(" Å"), cc);
+		p.add(new MultiLineToolTip.JLabel(" Ã…"), cc);
 		this.add(p, c);
 
 		this.boundsRadius.setToolTipText("Change the radius of the selected bond.\nNew value for the next bond.");

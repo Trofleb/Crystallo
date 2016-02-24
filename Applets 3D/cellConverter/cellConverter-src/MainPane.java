@@ -328,9 +328,9 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 			this.addMenuItem(this.icsdItem = new JMenuItem("Get from ICSD..."), file);
 			file.addSeparator();
 			this.addMenuItem(this.fav1 = new JMenuItem("Diamond"), file);
-			this.addMenuItem(this.fav2 = new JMenuItem("5,6,7, 90°,90°,90°"), file);
-			this.addMenuItem(this.fav3 = new JMenuItem("5,5,5, 90°,90°,120°"), file);
-			this.addMenuItem(this.fav4 = new JMenuItem("5,5,5, 60°,60°,60°"), file);
+			this.addMenuItem(this.fav2 = new JMenuItem("5,6,7, 90Â°,90Â°,90Â°"), file);
+			this.addMenuItem(this.fav3 = new JMenuItem("5,5,5, 90Â°,90Â°,120Â°"), file);
+			this.addMenuItem(this.fav4 = new JMenuItem("5,5,5, 60Â°,60Â°,60Â°"), file);
 			this.addMenuItem(this.fav5 = new JMenuItem("3 atoms"), file);
 			this.enableSave(false);
 			this.add(file);
@@ -557,11 +557,11 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 				this.b.edit.setEditable(editable);
 				this.c = new HVPanel.FloatEditField("c" + suffix, "\u00c5", 5, Float.NaN, "#.#####").to(this);
 				this.c.edit.setEditable(editable);
-				this.alpha = new HVPanel.FloatEditField("\u03b1" + suffix, "°", 5, Float.NaN, "#.##").to(this);
+				this.alpha = new HVPanel.FloatEditField("\u03b1" + suffix, "Â°", 5, Float.NaN, "#.##").to(this);
 				this.alpha.edit.setEditable(editable);
-				this.beta = new HVPanel.FloatEditField("\u03b2" + suffix, "°", 5, Float.NaN, "#.##").to(this);
+				this.beta = new HVPanel.FloatEditField("\u03b2" + suffix, "Â°", 5, Float.NaN, "#.##").to(this);
 				this.beta.edit.setEditable(editable);
-				this.gamma = new HVPanel.FloatEditField("\u03b3" + suffix, "°", 5, Float.NaN, "#.##").to(this);
+				this.gamma = new HVPanel.FloatEditField("\u03b3" + suffix, "Â°", 5, Float.NaN, "#.##").to(this);
 				this.gamma.edit.setEditable(editable);
 			}
 

@@ -197,9 +197,9 @@ public abstract class HVPanel extends JPanel implements ActionListener {
 
 	public static void main(String[] args) {
 		HVPanel p1 = new HVPanel.v();
-		p1.addIntField("alpha", "°", 3, 90);
-		p1.addIntField("beta", "°", 3, 90);
-		p1.addIntField("gamma", "°", 3, 90);
+		p1.addIntField("alpha", "Â°", 3, 90);
+		p1.addIntField("beta", "Â°", 3, 90);
+		p1.addIntField("gamma", "Â°", 3, 90);
 		p1.addFloatField("lala", "m", 3, 4f, "0.00");
 
 		HVPanel p2 = new HVPanel.h();

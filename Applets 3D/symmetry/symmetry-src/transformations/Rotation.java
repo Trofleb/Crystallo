@@ -1,7 +1,7 @@
 /* Symmetry - Rotation.java
  * 
  * Author   : Nicolas Schoeni
- * Creation : 24 févr. 2005
+ * Creation : 24 fï¿½vr. 2005
  * 
  * nicolas.schoeni@epfl.ch
  */
@@ -116,7 +116,7 @@ public class Rotation extends Transformation implements ColorConstants {
 	}
 
 	private void createPanel(final String axisName, HVPanel parentPanel) {
-		slider = parentPanel.addSliderAndValueH(axisName, "°", -180, 180, 0, 0, 140);
+		slider = parentPanel.addSliderAndValueH(axisName, "Â°", -180, 180, 0, 0, 140);
 		slider.slider.setMajorTickSpacing(6);
 		slider.slider.setSnapToTicks(true);
 		parentPanel.addActionListener(new ActionListener() {

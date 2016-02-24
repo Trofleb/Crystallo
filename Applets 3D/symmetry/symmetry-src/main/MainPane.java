@@ -82,7 +82,7 @@ public class MainPane extends HVPanel.v {
 		JToggleButton[] buttons;
 		
 		Polyedre[] polyedres = {new OrthoSphenoide(), new TetraSphenoide(), new Sphericon(), new Rhomboedre(), new Bipyramide(), new Tetraedre(), new Cube(), new Octaedre(), new Dodecaedre(), new Icosaedre()};
-		String[] names = {"<html><center>Orthorhombic<p>sphenoïd", "<html><center>Tetragonal<p>sphenoïd", "Sphericon", "Rhombohedron", "<html><center>Trigonal<p>bipyramid", "Tetrahedron", "Cube", "Octahedron", "<html><center>Pentagonal<p>dodecahedron", "Icosahedron"};
+		String[] names = {"<html><center>Orthorhombic<p>sphenoid", "<html><center>Tetragonal<p>sphenoid", "Sphericon", "Rhombohedron", "<html><center>Trigonal<p>bipyramid", "Tetrahedron", "Cube", "Octahedron", "<html><center>Pentagonal<p>dodecahedron", "Icosahedron"};
 		String[] files = {"orthosphenoid.png", "tetrasphenoid.png", "sphericon.png", "rhomboedre.png", "bipyramid.png", "tetraedre.png", "cube.png", "octaedre.png", "dodecaedre.png", "icosaedre.png"};
 		
 		public ButtonPanel() {

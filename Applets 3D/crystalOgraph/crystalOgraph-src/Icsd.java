@@ -155,7 +155,7 @@ public class Icsd implements ActionListener {
 						choice = "(" + choice + ")";
 					String cat = CellSymetries.categoriesName[CellSymetries.getCategory(no)];
 					String sg2 = CellSymetries.buildSGname(no);
-					return "Space group N° " + no + "\n'" + sg2 + "' " + choice + "\n" + cat;
+					return "Space group NÂ° " + no + "\n'" + sg2 + "' " + choice + "\n" + cat;
 				} else
 					return super.getToolTipText(e);
 			}

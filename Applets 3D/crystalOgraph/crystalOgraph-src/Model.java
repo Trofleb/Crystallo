@@ -420,7 +420,7 @@ public class Model extends BranchGroup implements ColorConstants {
 			v.scale(0.5);
 			p.add(v);
 			float s = (float) ((this.cell.a + this.cell.b + this.cell.c) / 3.0 / 25.0);
-			this.distance = Atom.createLegend("d=" + (Math.round(d * 100) / 100.0) + "Å", this.cell.coord(p),
+			this.distance = Atom.createLegend("d=" + (Math.round(d * 100) / 100.0) + "Ã…", this.cell.coord(p),
 					this.cell.coord(p), s, app);
 			this.root.addChild(this.distance);
 		}
@@ -496,7 +496,7 @@ public class Model extends BranchGroup implements ColorConstants {
 			v.scale(0.5);
 			p.add(v);
 			float s = (float) ((this.cell.a + this.cell.b + this.cell.c) / 3.0 / 25.0);
-			this.distance = Atom.createLegend("d=" + (Math.round(d * 100) / 100.0) + "Å", this.cell.coord(p),
+			this.distance = Atom.createLegend("d=" + (Math.round(d * 100) / 100.0) + "Ã…", this.cell.coord(p),
 					new Point3d(0, 0, 0), s, app);
 			this.root.addChild(this.distance);
 		}

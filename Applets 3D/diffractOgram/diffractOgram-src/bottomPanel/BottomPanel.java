@@ -82,13 +82,13 @@ public class BottomPanel extends HVPanel.h {
 		public LatticePane(String name, String suffix, Lattice def) {
 			setBorder(new TitledBorder(name));
 			HVPanel p1 = new HVPanel.v();
-			a = p1.addFloatField("a"+suffix, "≈", 4, (float)def.a, "0.00");
-			b = p1.addFloatField("b"+suffix, "≈", 4, (float)def.b, "0.00");
-			c = p1.addFloatField("c"+suffix, "≈", 4, (float)def.c, "0.00");
+			a = p1.addFloatField("a"+suffix, "√Ö‚Åª¬π", 4, (float)def.a, "0.00");
+			b = p1.addFloatField("b"+suffix, "√Ö‚Åª¬π", 4, (float)def.b, "0.00");
+			c = p1.addFloatField("c"+suffix, "√Ö‚Åª¬π", 4, (float)def.c, "0.00");
 			HVPanel p2 = new HVPanel.v();
-			alpha = p2.addIntField("alpha"+suffix, "∞", 3, (int)Math.round(def.alpha));
-			beta = p2.addIntField("beta"+suffix, "∞", 3, (int)Math.round(def.beta));
-			gamma = p2.addIntField("gamma"+suffix, "∞", 3, (int)Math.round(def.gamma));
+			alpha = p2.addIntField("alpha"+suffix, "¬∞", 3, (int)Math.round(def.alpha));
+			beta = p2.addIntField("beta"+suffix, "¬∞", 3, (int)Math.round(def.beta));
+			gamma = p2.addIntField("gamma"+suffix, "¬∞", 3, (int)Math.round(def.gamma));
 			addSubPane(p1);
 			addSubPane(p2);
 		}
@@ -178,11 +178,11 @@ public class BottomPanel extends HVPanel.h {
 			this.expand(true);
 			HVPanel.v p1 = new HVPanel.v();
 			p1.expand(true);
-			rotX = p1.addSliderAndValueH("Omega", "∞", -180, 180, defaultValues.omega, 0, 120);
-			rotY = p1.addSliderAndValueH("Chi", "∞", -180, 180, defaultValues.chi, 0, 120);
-			rotZ = p1.addSliderAndValueH("Phi", "∞", -180, 180, defaultValues.phi, 0, 120);
-			lambda = p1.addSliderAndValueH("Lambda", "≈", .2f, 3.5f, (float)defaultValues.lambda, 2, 120);
-			precess = p1.addSliderAndValueH("Precession", "∞", -180, 180, defaultValues.precession, 0, 120);
+			rotX = p1.addSliderAndValueH("Omega", "¬∞", -180, 180, defaultValues.omega, 0, 120);
+			rotY = p1.addSliderAndValueH("Chi", "¬∞", -180, 180, defaultValues.chi, 0, 120);
+			rotZ = p1.addSliderAndValueH("Phi", "¬∞", -180, 180, defaultValues.phi, 0, 120);
+			lambda = p1.addSliderAndValueH("Lambda", "¬∞", .2f, 3.5f, (float)defaultValues.lambda, 2, 120);
+			precess = p1.addSliderAndValueH("Precession", "¬∞", -180, 180, defaultValues.precession, 0, 120);
 
 			HVPanel.v p3 = new HVPanel.v();
 			p3.putExtraSpace();
@@ -295,11 +295,11 @@ public class BottomPanel extends HVPanel.h {
 			p5.addButton(fromToEnable = new JCheckBox(""));
 			HVPanel.v p61 = new HVPanel.v();
 			p61.expand(false);
-			from = p61.addIntField("", "∞", 2, defaultValues.startAngle);
+			from = p61.addIntField("", "¬∞", 2, defaultValues.startAngle);
 			p5.addSubPane(p61);
 			HVPanel.v p62 = new HVPanel.v();
 			p62.expand(false);
-			to = p62.addIntField("-", "∞", 2, defaultValues.stopAngle);
+			to = p62.addIntField("-", "¬∞", 2, defaultValues.stopAngle);
 			p5.addSubPane(p62);
 			p5.putExtraSpace();
 			p1.addSubPane(p5);
@@ -317,7 +317,7 @@ public class BottomPanel extends HVPanel.h {
 			p8.addButton(precession=new JToggleButton("Precession"));
 			HVPanel.v p9 = new HVPanel.v();
 			p9.expand(false);
-			angle = p9.addIntFieldSpinner(" Angle", "∞", 2, defaultValues.mu);
+			angle = p9.addIntFieldSpinner(" Angle", "¬∞", 2, defaultValues.mu);
 			model3d.precessionClass.setAngle(defaultValues.mu);
 			model3d.mask3d.setR(Math.sin(model3d.precessionClass.mu)*(model3d.p3d.y*defaultValues.maskDistFract));
 			

@@ -1,7 +1,7 @@
 /* Symmetry - Inversion.java
  * 
  * Author   : Nicolas Schoeni
- * Creation : 24 févr. 2005
+ * Creation : 24 fÃ©vr. 2005
  * 
  * nicolas.schoeni@epfl.ch
  */
