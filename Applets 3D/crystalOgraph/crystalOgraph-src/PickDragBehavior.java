@@ -121,6 +121,8 @@ public class PickDragBehavior extends Behavior implements MouseWheelListener {
 	PickDragBehavior(Univers univers, Model model) {
 		this.univers = univers;
 		this.model = model;
+		//		this.model.compile();
+		//		this.model.root.compile();
 		this.canvas3D = univers.getCanvas();
 
 		this.editAtoms = false;
@@ -326,32 +328,39 @@ public class PickDragBehavior extends Behavior implements MouseWheelListener {
 							this.boundingPolytop.setPlanes(this.vv4d);
 							this.pickBounds.set(this.boundingPolytop);
 
-							this.sceneGraphPath = this.model.root.pickAll(this.pickBounds);// TODO
-							// optimize
-							this.k = 0;
-							if (this.sceneGraphPath != null)
-								for (int j = 0; j < this.sceneGraphPath.length; j++)
-									if (this.sceneGraphPath[j] != null) {
-										Node node = this.sceneGraphPath[j].getObject();
-										if (node instanceof Shape3D)
-											try {
-												// double dist[] = {0.0};
-												// boolean isRealHit = ((
-												// Shape3D)
-												// node).intersect(sceneGraphPath[j],
-												// pickRay, dist);
-												// if (isRealHit) {
-												Object userData = node.getUserData();
-												if (userData != null)
-													if (userData instanceof Atom) {
-														// ((Atom)userData).select();
-														this.selChanged = true;
-														this.model.selectMultipleAtoms((Atom) userData);
-														this.k++;
-													}
-											} catch (CapabilityNotSetException ex) {
-											}
-									}
+							try {
+								// FIXME: pickAll fait un nullPointerExeption parfois
+								// temporary workaroud: on catch le nullPointerException
+								this.sceneGraphPath = this.model.root.pickAll(this.pickBounds);
+								// optimize
+								this.k = 0;
+								if (this.sceneGraphPath != null) {
+									for (int j = 0; j < this.sceneGraphPath.length; j++)
+										if (this.sceneGraphPath[j] != null) {
+											Node node = this.sceneGraphPath[j].getObject();
+											if (node instanceof Shape3D)
+												try {
+													// double dist[] = {0.0};
+													// boolean isRealHit = ((
+													// Shape3D)
+													// node).intersect(sceneGraphPath[j],
+													// pickRay, dist);
+													// if (isRealHit) {
+													Object userData = node.getUserData();
+													if (userData != null)
+														if (userData instanceof Atom) {
+															// ((Atom)userData).select();
+															this.selChanged = true;
+															this.model.selectMultipleAtoms((Atom) userData);
+															this.k++;
+														}
+												} catch (CapabilityNotSetException ex) {
+												}
+										}
+								}
+							} catch (NullPointerException e) {
+								System.out.println("WorkAround: pickAll throws nullPointer");
+							}
 							this.model.watcher.setNbAtomSelected(this.k);
 
 						} else if (((MouseEvent) event[i]).isAltDown() || this.buttonIsMiddle || this.altIsDown) {
