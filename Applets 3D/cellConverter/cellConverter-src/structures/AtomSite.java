@@ -1,14 +1,12 @@
-/* IntensityCalc - AtomSite.java
- * 
- * Author   : Nicolas Schoeni
+/*
+ * IntensityCalc - AtomSite.java
+ * Author : Nicolas Schoeni
  * Creation : 3 août 2005
- * 
  * nicolas.schoeni@epfl.ch
  */
 package structures;
 
 import utils.Utils3d;
-
 
 public class AtomSite {
 	public String label;
@@ -18,8 +16,9 @@ public class AtomSite {
 	public int multiplicity;
 	public final char wyckoff;
 	public final double isoB;
-	
-	public AtomSite(String atom, String symbol, String label, double x, double y, double z, double occupancy, double oxydation, int multiplicity, char wyckoff, double isoB) {
+
+	public AtomSite(String atom, String symbol, String label, double x, double y, double z, double occupancy,
+			double oxydation, int multiplicity, char wyckoff, double isoB) {
 		this.atom = atom;
 		this.symbol = symbol;
 		this.label = label;
@@ -32,7 +31,7 @@ public class AtomSite {
 		this.wyckoff = wyckoff;
 		this.isoB = isoB;
 	}
-	
+
 	public AtomSite(AtomSite a) {
 		this.atom = a.atom;
 		this.symbol = a.symbol;
@@ -48,6 +47,9 @@ public class AtomSite {
 	}
 
 	public String toString() {
-		return atom+" "+symbol+" "+((oxydation>=0?"+":"")+Utils3d.posToString(oxydation))+" ("+Utils3d.posToString(x)+" "+Utils3d.posToString(y)+" "+Utils3d.posToString(z)+") "+Utils3d.posToString(occupancy);
+		return this.atom + " " + this.symbol + " "
+				+ ((this.oxydation >= 0 ? "+" : "") + Utils3d.posToString(this.oxydation)) + " ("
+				+ Utils3d.posToString(this.x) + " " + Utils3d.posToString(this.y) + " " + Utils3d.posToString(this.z)
+				+ ") " + Utils3d.posToString(this.occupancy);
 	}
 }

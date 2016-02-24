@@ -1,7 +1,5 @@
-import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
@@ -40,195 +38,188 @@ public class Univers implements ColorConstants {
 	private BoundingSphere bounds;
 	private Background bgNode;
 	private TransformGroup objRootTemp;
-	private int modelModify;
 	public boolean isParallel;
 	private int showRootDept;
 	private Model model;
-	
+
 	public Univers(Model model) {
 		this.model = model;
-		canvas3D = new Canvas3D(SimpleUniverse.getPreferredConfiguration()) {
-	     public void paint(Graphics g) {
-	        super.paint(g);
-	        Toolkit.getDefaultToolkit().sync();
-	    }
-	  };
-		u = new SimpleUniverse(canvas3D);
-		
-		showRootDept = 0;
-		isParallel = false;
-		
+		this.canvas3D = new Canvas3D(SimpleUniverse.getPreferredConfiguration()) {
+			@Override
+			public void paint(Graphics g) {
+				super.paint(g);
+				Toolkit.getDefaultToolkit().sync();
+			}
+		};
+		this.u = new SimpleUniverse(this.canvas3D);
+
+		this.showRootDept = 0;
+		this.isParallel = false;
+
 		// this is the root for all objects in the scene
-		objRoot = new BranchGroup();
-		objRoot.setCapability(BranchGroup.ALLOW_DETACH);
-		
+		this.objRoot = new BranchGroup();
+		this.objRoot.setCapability(BranchGroup.ALLOW_DETACH);
+
 		Transform3D t = new Transform3D();
 		t.set(new Vector3d(0, 0, -10));
-		objRootTemp = new TransformGroup(t);
-		objRootTemp.setCapability(TransformGroup.ALLOW_CHILDREN_WRITE);
-		objRootTemp.setCapability(TransformGroup.ALLOW_CHILDREN_EXTEND);
-		
-		// create the environment
-		createEnvironment();
-		environment.addChild(objRootTemp);
-		environment.setCapability(BranchGroup.ALLOW_DETACH);
-		environment.setCapability(BranchGroup.ALLOW_CHILDREN_EXTEND);
-		environment.setCapability(BranchGroup.ALLOW_CHILDREN_WRITE);
+		this.objRootTemp = new TransformGroup(t);
+		this.objRootTemp.setCapability(Group.ALLOW_CHILDREN_WRITE);
+		this.objRootTemp.setCapability(Group.ALLOW_CHILDREN_EXTEND);
 
-		objRootTemp.addChild(objRoot);
-		
-		
+		// create the environment
+		this.createEnvironment();
+		this.environment.addChild(this.objRootTemp);
+		this.environment.setCapability(BranchGroup.ALLOW_DETACH);
+		this.environment.setCapability(Group.ALLOW_CHILDREN_EXTEND);
+		this.environment.setCapability(Group.ALLOW_CHILDREN_WRITE);
+
+		this.objRootTemp.addChild(this.objRoot);
+
 		// Create the bounding leaf node
-		BoundingSphere bounds = new BoundingSphere(new Point3d(0.0,0.0,0.0), 1000.0);
+		BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 1000.0);
 		BoundingLeaf boundingLeaf = new BoundingLeaf(bounds);
-		environment.addChild(boundingLeaf);
+		this.environment.addChild(boundingLeaf);
 
 		// Create the transform group node
-		transformGroup = new TransformGroup();
-		transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
-		transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
-		transformGroup2 = new TransformGroup();
-		transformGroup2.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
-		transformGroup2.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
-		objRoot.addChild(transformGroup2);
-		transformGroup2.addChild(transformGroup);
-		
-		//transformGroup2.addChild(new Help3d());
-		
-		
-		behavior = new PickDragBehavior(this, model);
-		behavior.setSchedulingBounds(bounds);
-		transformGroup.addChild(behavior);
-		behavior.addRotations(-Math.PI/2d, -Math.PI/2d, 0);
-		canvas3D.addMouseWheelListener(behavior);
+		this.transformGroup = new TransformGroup();
+		this.transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+		this.transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+		this.transformGroup2 = new TransformGroup();
+		this.transformGroup2.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+		this.transformGroup2.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+		this.objRoot.addChild(this.transformGroup2);
+		this.transformGroup2.addChild(this.transformGroup);
+
+		// transformGroup2.addChild(new Help3d());
+
+		this.behavior = new PickDragBehavior(this, model);
+		this.behavior.setSchedulingBounds(bounds);
+		this.transformGroup.addChild(this.behavior);
+		this.behavior.addRotations(-Math.PI / 2d, -Math.PI / 2d, 0);
+		this.canvas3D.addMouseWheelListener(this.behavior);
 
 		// add mouse behaviors to the ViewingPlatform
-		ViewingPlatform viewingPlatform = u.getViewingPlatform();
+		ViewingPlatform viewingPlatform = this.u.getViewingPlatform();
 		viewingPlatform.setNominalViewingTransform();
 	}
 
-	
 	public void show() {
-		u.addBranchGraph(environment);
-		modelModify = 0;
+		this.u.addBranchGraph(this.environment);
 	}
 
 	public void showRoot() {
-		showRootDept++;
-		if (showRootDept==0) {
-			objRootTemp.addChild(objRoot);
-		}
+		this.showRootDept++;
+		if (this.showRootDept == 0)
+			this.objRootTemp.addChild(this.objRoot);
 	}
+
 	public void hideRoot() {
-		if (showRootDept==0) {
-			objRootTemp.removeChild(objRoot);
+		if (this.showRootDept == 0) {
+			this.objRootTemp.removeChild(this.objRoot);
 			try {
 				Thread.sleep(20);
-			} catch (Exception e) {}
+			} catch (Exception e) {
+			}
 		}
-		showRootDept--;
+		this.showRootDept--;
 	}
-	
-	
+
 	public BufferedImage getScreenShot() {
-		GraphicsContext3D ctx = canvas3D.getGraphicsContext3D();
-		Dimension scrDim = canvas3D.getSize();
+		GraphicsContext3D ctx = this.canvas3D.getGraphicsContext3D();
+		Dimension scrDim = this.canvas3D.getSize();
 		// setting raster component
-		ImageComponent2D ic = new ImageComponent2D(ImageComponent.FORMAT_RGB, new BufferedImage(scrDim.width, scrDim.height, BufferedImage.TYPE_INT_RGB));
-		Raster ras = new Raster(new Point3f(-1f, -1f, -1f), Raster.RASTER_COLOR, 0, 0, scrDim.width, scrDim.height, ic, null);
+		ImageComponent2D ic = new ImageComponent2D(ImageComponent.FORMAT_RGB,
+				new BufferedImage(scrDim.width, scrDim.height, BufferedImage.TYPE_INT_RGB));
+		Raster ras = new Raster(new Point3f(-1f, -1f, -1f), Raster.RASTER_COLOR, 0, 0, scrDim.width, scrDim.height, ic,
+				null);
 		ctx.readRaster(ras);
 		return ras.getImage().getImage();
 	}
-	
-	
-	
+
 	public void parallelUnivers(boolean b) {
-		boolean old_b = u.getViewer().getView().getProjectionPolicy()==View.PARALLEL_PROJECTION;
-		
-		hideRoot();
-		
-		u.getViewer().getView().setProjectionPolicy(b?View.PARALLEL_PROJECTION:View.PERSPECTIVE_PROJECTION);
-		if (old_b!=b) {
-			Transform3D modelTrans = getGlobalTransform();
+		boolean old_b = this.u.getViewer().getView().getProjectionPolicy() == View.PARALLEL_PROJECTION;
+
+		this.hideRoot();
+
+		this.u.getViewer().getView().setProjectionPolicy(b ? View.PARALLEL_PROJECTION : View.PERSPECTIVE_PROJECTION);
+		if (old_b != b) {
+			Transform3D modelTrans = this.getGlobalTransform();
 			Transform3D t = new Transform3D();
-			t.set(b?.2:5);
-	    modelTrans.mul(t, modelTrans);
-	    setGlobalTransform(modelTrans);
+			t.set(b ? .2 : 5);
+			modelTrans.mul(t, modelTrans);
+			this.setGlobalTransform(modelTrans);
 		}
 
-		showRoot();
-		isParallel = b;
+		this.showRoot();
+		this.isParallel = b;
 	}
 
-	
 	public BranchGroup getRoot() {
-		return environment;
+		return this.environment;
 	}
-	
+
 	public void setGlobalTransform(Transform3D t) {
-    transformGroup.setTransform(t);
+		this.transformGroup.setTransform(t);
 	}
 
 	public Transform3D getGlobalTransform() {
 		Transform3D t = new Transform3D();
-		transformGroup.getTransform(t);
+		this.transformGroup.getTransform(t);
 		return t;
 	}
-	
+
 	public void addChild(Node node) {
-		transformGroup.addChild(node);
+		this.transformGroup.addChild(node);
 	}
-	
+
 	public Canvas3D getCanvas() {
-		return canvas3D;
+		return this.canvas3D;
 	}
-		
+
 	public void reset() {
-		behavior.reset(model.cell);
+		this.behavior.reset(this.model.cell);
 	}
-	
+
 	public void setBackgroundColor(Color3f bgColor) {
-		bgNode.setColor(bgColor);
+		this.bgNode.setColor(bgColor);
 	}
-	
+
 	public void cleanup() {
-		u.cleanup();
-		}
-	
+		this.u.cleanup();
+	}
+
 	private void createEnvironment() {
 		// Create the root of the branch graph
-		environment = new BranchGroup();
-         
+		this.environment = new BranchGroup();
+
 		// Create a bounds for the background and lights
-		bounds = new BoundingSphere(new Point3d(0.0,0.0,0.0), 100.0);
+		this.bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
 
 		// create the background
-		bgNode = new Background(black);
-		bgNode.setCapability(Background.ALLOW_COLOR_WRITE);
-		bgNode.setApplicationBounds(bounds);
-		environment.addChild(bgNode);
+		this.bgNode = new Background(black);
+		this.bgNode.setCapability(Background.ALLOW_COLOR_WRITE);
+		this.bgNode.setApplicationBounds(this.bounds);
+		this.environment.addChild(this.bgNode);
 
 		// Set up the ambient light
 		Color3f ambientColor = new Color3f(0.4f, 0.4f, 0.4f);
 		AmbientLight ambientLightNode = new AmbientLight(ambientColor);
-		ambientLightNode.setInfluencingBounds(bounds);
-		environment.addChild(ambientLightNode);
+		ambientLightNode.setInfluencingBounds(this.bounds);
+		this.environment.addChild(ambientLightNode);
 
 		// Set up the directional lights
 		Color3f light1Color = new Color3f(0.7f, 0.7f, 0.7f);
-		Vector3f light1Direction  = new Vector3f(1.0f, 1.0f, 1.0f);
+		Vector3f light1Direction = new Vector3f(1.0f, 1.0f, 1.0f);
 		Color3f light2Color = new Color3f(0.7f, 0.7f, 0.7f);
-		Vector3f light2Direction  = new Vector3f(-1.0f, -1.0f, -1.0f);
+		Vector3f light2Direction = new Vector3f(-1.0f, -1.0f, -1.0f);
 
 		DirectionalLight light1 = new DirectionalLight(light1Color, light1Direction);
-		light1.setInfluencingBounds(bounds);
-		environment.addChild(light1);
+		light1.setInfluencingBounds(this.bounds);
+		this.environment.addChild(light1);
 
 		DirectionalLight light2 = new DirectionalLight(light2Color, light2Direction);
-		light2.setInfluencingBounds(bounds);
-		environment.addChild(light2);
+		light2.setInfluencingBounds(this.bounds);
+		this.environment.addChild(light2);
 	}
-	
+
 }
-
-
