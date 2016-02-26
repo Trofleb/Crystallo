@@ -1,0 +1,97 @@
+<html>
+<head>
+  <title>reciprOgraph Help</title>
+</head>
+<body>
+<p><big><big><b>reciprOgraph</b></big></big>
+is an applet to represent the calculated intensities of any
+substance diffracted by x-rays in form of a reciprocal lattice or a
+powder diffractogram.
+The structure to be studied can be selected
+from the ICSD (Inorganic&nbsp;Crystal&nbsp;Structure&nbsp;Database) 
+or can be read from a CIF file.
+The program can also be inititiated from a structure represented in 
+<b>crystalOgraph</b>.</p>
+
+<p>The intensities are given by the square of the structure factor modulus
+I(<b>h</b>)=|F(<b>h</b>)|<sup>2</sup> where
+<b>h</b>=<i>h</i>
+<b>a*</b>+<i>k</i>
+<b>b*</b>+<i>l</i>
+<b>c*</b> is a reciprocal vector with integer coefficients <i>hkl</i> and
+reciprocal lattice vectors 
+<b>a*</b>,<b>b*</b> and <b>c*</b>.
+In the <b>single crystal pane</b>, each intensity I(<b>h</b>) is represented
+on the node of the reciprocal lattice vector 
+<b>h</b> with size proportional to its intensity.</p>
+
+<p>The intensities can be analysed in terms of <b>reciprocal lattice planes</b> 
+defined by the normal 
+<b>u</b>=<i>u</i><b>a</b>+<i>v</i><b>b</b>+<i>w</i><b>c</b>
+where <b>a</b>, <b>b</b> and <b>c</b> are the lattice constants 
+and <i>u</i>, <i>v</i> and <i>w</i> are integers. 
+For each value of the triplet, the lattice plane can be shifted by a 
+positive or negative parrallel displacement.</p>
+
+<p>The applet can also represent the same intensities in form of a 
+powder diagram where various options can be selected, 
+inclulding wavelength, peak width and more.<br></p>
+
+<h1>Single cystal pane</h1>
+<img src="help-single-crystal.jpg"><br>
+In both 3D and 2D panes :
+<ul>
+  <li>Drag the mouse to rotate (3D model) or move (2D projection).</li>
+  <li>Zoom in or out with mouse wheel or <i>CTRL</i> key.</li>
+</ul>
+<h3>Bounds</h3>
+The bounds are maximum |<i>h</i>|<i> </i>|<i>k</i>|<i> </i>|<i>l</i>|
+indices used to represent the intensities.
+<br>
+<h3>Projection</h3>
+Here you can specify the orientation of the blue plane to select a
+specific recripocal layer:
+<ul>
+  <li>Set the plane orientation by the indices (<i>u v w</i>).</li>
+  <li>Translate the plane (<i>layer index</i>).</li>
+</ul>
+<h1>Powder diagram pane</h1>
+<center>
+<img src="help-powder.jpg"><br>
+</center>
+
+<h3>Intensities</h3>
+The intensities of the powder diffraction patterns are corrected for the 
+Lorentz-polarisation factor :
+<br><br><img src="lp-formula.png">
+
+<br>
+<h3>Lambda</h3>
+The wave length used for the diffraction.
+<br>
+<h3>Peak width</h3>
+Adjust the width at half height of the peak.
+<br>
+<h3>Zoom</h3>
+To zoom in, drag a box (from top, left to bottom, right).<br>
+To zoom out, check <i>Auto scale</i> box or drag the mouse from right
+to left on the chart.
+<br>
+<h3>Show individual peaks</h3>
+Shows the contribution of each individual line to the peak.<br>
+<img src="help-show-individual.jpg">
+<br>
+<h3>Show indices</h3>
+Shows the (<i>h k l)</i> indices for each peak or a representative
+index if at least two lines are superimposed.<br>
+<img src="help-show-indice.jpg">
+<br>
+<h3>Print</h3>
+Start a printer job to print the whole chart.
+<br>
+<h1>Structure factors pane</h1>
+A list of all structure factors including (<i>hkl</i>),
+d(<i>hkl</i>), 2theta, F(re), F(im) can be consulted.
+<br>
+</body>
+</html>

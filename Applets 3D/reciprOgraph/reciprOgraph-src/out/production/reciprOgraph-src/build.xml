@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="reciprOgraph" name="Packaging Generator">
+	<target name="reciprOgraph" description="">
+		
+		<property name="outputPath" value="K:/reciprOgraph"/>
+			
+		<zip zipfile="${outputPath}/reciprOgraph-src.zip" basedir=".">
+			<exclude name="**/*.class"/>
+		</zip>
+
+		<jar destfile="${outputPath}/reciprOgraph.jar">
+			<manifest> 
+				<attribute name="Main-Class" value="reciprOgraph" />
+			</manifest> 
+			<zipfileset dir="." prefix="">
+				<exclude name="*.jar"/>
+			</zipfileset>
+			<zipfileset dir="C:/Program Files/Java/jfreechart-1.0.0-rc1/full" prefix="" />
+		</jar>
+		
+		<jar destfile="${outputPath}/reciprOgraph-tmp.jar" basedir=".">
+			<manifest> 
+				<attribute name="Main-Class" value="reciprOgraph" />
+			</manifest> 
+			<exclude name="**/*.java"/>
+			<exclude name="*.jar"/>
+			<zipfileset dir="C:/Program Files/Java/jfreechart-1.0.0-rc1/full" prefix="" />
+		</jar>
+		
+		<taskdef resource="proguard/ant/task.properties" classpath="C:/Program Files/Java/proguard3.6/lib/proguard.jar" />
+		<proguard configuration="obfuscation.pro">
+			-injars '${outputPath}/reciprOgraph-tmp.jar'
+			-outjars '${outputPath}/reciprOgraph-obf.jar'
+
+			-libraryjars '${java.home}\lib\rt.jar'
+			-libraryjars '${java.home}\lib\ext\j3daudio.jar'
+			-libraryjars '${java.home}\lib\ext\j3dcore.jar'
+			-libraryjars '${java.home}\lib\ext\j3dutils.jar'
+			-libraryjars '${java.home}\lib\ext\vecmath.jar'
+		</proguard>
+
+		<delete file="${outputPath}/reciprOgraph-tmp.jar"/>
+
+		<signjar jar="${outputPath}/reciprOgraph-obf.jar" alias="lcr" storepass="lcr" keypass="lcr"/>
+
+	</target>
+</project>

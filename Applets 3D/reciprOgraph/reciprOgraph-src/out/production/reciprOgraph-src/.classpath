@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="jcommon.jar">
+		<attributes>
+			<attribute value="http://www.jfree.org/jfreechart/javadoc/" name="javadoc_location"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="jfreechart.jar">
+		<attributes>
+			<attribute value="http://www.jfree.org/jfreechart/javadoc/" name="javadoc_location"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path=""/>
+</classpath>
