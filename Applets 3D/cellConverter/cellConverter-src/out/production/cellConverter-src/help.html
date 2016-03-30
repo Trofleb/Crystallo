@@ -1,0 +1,85 @@
+<html>
+<body>
+Very often when comparing different crystalline structures, cell
+transformations have to be performed for comparison purposes. The
+present applet helps to transform a structure described in CIF format
+with given cell parameters to a new cell. By specifying the cell
+transformation, this applet will calculate the new unit cell
+constants and the new atom coordinate of the atoms in the new cell. <br><br>
+<center>
+<img src="twoPanes.jpg"><br>
+</center>
+<h2>3D view :</h2>
+The 3D representation of the structures. The structure in the original
+cell is colored in blue. The same structure described in the new cell
+is represented in red.
+<br>
+You may choose a parallel or a perspective view in the <b>3D view</b>
+menu. This menu allows also the setting of the point around which the
+model is rotated
+(gravity center of the red or the blue model).
+<br>
+<center>
+<img src="transform2y.jpg"><br>
+<i>A </i><i>unit cell transformed by</i><i> doubling the <b>b</b>
+parameter.</i><br>
+</center>
+<br>
+<h2>CIF view :</h2>
+The left pane shows the original imported CIF to be transformed. The
+right pane shows the transformed file, which can be saved (over the
+same file or by creating a new one).
+It is possible to edit the input structure by selecting <b>Edit input
+file</b> in <b>the CIF</b> menu. The changes will be effective as soon
+as the edition is terminated by selecting <b>Apply changes</b>.
+Please note that this does not affect the opened CIF file on your disk.<br>
+<br>
+<center>
+<img src="cifpane.jpg"><br>
+<i>The original file on the left, the transformed file on the right.</i>
+<br>
+</center>
+<h2>How to import / export files :</h2>
+<ul>
+  <li>Open a file with <b>Open input file...</b> menu item.</li>
+  <li>'Drag and drop' a file to the main window in order to open it.</li>
+  <li>You may directly retrieve a record form the ICSD database and
+open it by <b>Get from ICSD...</b> menu item.</li>
+</ul>
+<center>
+<img src="fileMenu.jpg"><br>
+<i>The <b>file</b> menu let you open or save a file from/to your hard
+disk.</i>
+</center>
+<h2>The transformation :</h2>
+The bottom panel lets you define a transformation according to the
+notation given in chapter 5.1 of volume A of the International Tables
+of Crystallography. This transformation is a combination of a matrix <b>P</b>
+and a <i>shift of origin</i> defined by the vector <b>p</b>.
+The new cell parameters <b>a' b' c'</b> are :<br>
+<center><b>(a', b', c') = (a, b, c) P</b></center>
+<br>
+To calculate the new positions of the atoms we use the matrix<b> Q</b>&nbsp;
+= <b>P</b><sup>-1</sup> and the vector <b>q</b> = <b>-Q p</b>.
+<br>
+<br>
+The new positions <b>x' y' z'</b> are then :
+<center><img src="atomsTransform.jpg"></center>
+<br>
+<br>
+You may edit either values of the matrix <b>P</b> or <b>Q</b>. The
+inversion is then automatically calculated. The same applies for
+vectors <b>p</b> and <b>q</b>.
+<br>
+<br>
+If <b>P</b> or <b>Q</b> is not invertible, then the transformation is
+invalid.
+<br>
+<br>
+Another invalid transformation occurs when the transformed atoms
+positions don't match exactly the original positions. In this case the
+output file can't be saved.
+<center><img src="invalidTransform.jpg"><br>
+</center>
+</body>
+</html>

@@ -132,7 +132,6 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 
 		this.cifPane = new DoubleCifPane();
 		this.tabbedPane.addTab("CIF view", this.cifPane.jPanel);
-		this.tabbedPane.setSelectedIndex(1);
 
 		this.expand(true);
 		this.addComp(this.tabbedPane);
