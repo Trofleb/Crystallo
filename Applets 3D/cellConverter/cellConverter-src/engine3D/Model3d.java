@@ -1,8 +1,6 @@
 package engine3D;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
 import java.util.Vector;
 
 import javax.media.j3d.Appearance;
@@ -14,14 +12,16 @@ import javax.media.j3d.Node;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
 import javax.media.j3d.TransparencyAttributes;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
 
+import apple.laf.JRSUIUtils;
 import com.sun.j3d.utils.geometry.Primitive;
 import com.sun.j3d.utils.geometry.Sphere;
 
+import com.sun.j3d.utils.scenegraph.io.retained.SymbolTable;
 import sg.SpaceGroup;
 import structures.AtomSite;
 import structures.AtomType;
@@ -75,7 +75,7 @@ public class Model3d {
 		this.setAtoms(sites);
 	}
 
-	public JPanel createPanel() {
+	public JPanel createPanel(final JTabbedPane tabbedPane) {
 		JPanel p = new JPanel() {
 			public void setVisible(boolean v) {
 				super.setVisible(v);
@@ -84,7 +84,7 @@ public class Model3d {
 		};
 		p.setLayout(new BorderLayout());
 		p.add(this.univers.getCanvas());
-		p.setMinimumSize(new Dimension(1, 1));
+		p.setMinimumSize(new Dimension(0, 0));
 		return p;
 	}
 

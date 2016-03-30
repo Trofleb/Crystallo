@@ -1,7 +1,7 @@
 /* reciprOgraph - Powder.java
  * 
  * Author   : Nicolas Schoeni
- * Creation : 25 août 2005
+ * Creation : 25 aoï¿½t 2005
  * 
  * nicolas.schoeni@epfl.ch
  */
@@ -52,11 +52,11 @@ public class PowderPane extends HVPanel.v {
 		p1.left();
 		p1.expand(false);
 		p1.putExtraSpace(5);
-		lambda = (FloatSpinnerEditField)new HVPanel.FloatSpinnerEditField("Lambda  ", " Å", 4, (float)IntensitiesData.lambda, "0.000", .01).to(p1);
+		lambda = (FloatSpinnerEditField)new HVPanel.FloatSpinnerEditField("Lambda  ", " Ã…", 4, (float)IntensitiesData.lambda, "0.000", .01).to(p1);
 		lambda.setMinimum(0.5f);
 		lambda.setMaximum(3f);
 		p1.putExtraSpace(5);
-		peakwidth = (FloatSpinnerEditField)new HVPanel.FloatSpinnerEditField("Peak width  ", " °", 3, (float)dataset.Hg, "0.0", .1).to(p1);
+		peakwidth = (FloatSpinnerEditField)new HVPanel.FloatSpinnerEditField("Peak width  ", " Â°", 3, (float)dataset.Hg, "0.0", .1).to(p1);
 		peakwidth.setMinimum(0);
 		//HVPanel.v p2 = new HVPanel.v();
 		p1.putExtraSpace(10);

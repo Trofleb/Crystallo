@@ -68,8 +68,8 @@ public class BottomPanel extends HVPanel.h {
 		lattice.setOrientation(defaultValues.uvw[0], defaultValues.uvw[1], defaultValues.uvw[2]);
 		reciprocal = lattice.reciprocal();
 		
-		addSubPane(lPane = new LatticePane("Unit cell", "", lattice));
-		addSubPane(rPane = new LatticePane("Reciprocal lattice", "*", reciprocal));
+		addSubPane(lPane = new LatticePane("Unit cell", "", lattice, "Å"));
+		addSubPane(rPane = new LatticePane("Reciprocal lattice", "*", reciprocal, "Å⁻¹"));
 		addSubPane(new CrystalSize());
 		addSubPane(paramPane = new Parameters());
 		addSubPane(animPane=new Animation());
@@ -79,12 +79,12 @@ public class BottomPanel extends HVPanel.h {
 	private boolean sync = true;
 	class LatticePane extends HVPanel.v {
 		private EditField a, b, c, alpha, beta, gamma;
-		public LatticePane(String name, String suffix, Lattice def) {
+		public LatticePane(String name, String suffix, Lattice def, String units) {
 			setBorder(new TitledBorder(name));
 			HVPanel p1 = new HVPanel.v();
-			a = p1.addFloatField("a"+suffix, "Å⁻¹", 4, (float)def.a, "0.00");
-			b = p1.addFloatField("b"+suffix, "Å⁻¹", 4, (float)def.b, "0.00");
-			c = p1.addFloatField("c"+suffix, "Å⁻¹", 4, (float)def.c, "0.00");
+			a = p1.addFloatField("a"+suffix, units, 4, (float)def.a, "0.00");
+			b = p1.addFloatField("b"+suffix, units, 4, (float)def.b, "0.00");
+			c = p1.addFloatField("c"+suffix, units, 4, (float)def.c, "0.00");
 			HVPanel p2 = new HVPanel.v();
 			alpha = p2.addIntField("alpha"+suffix, "°", 3, (int)Math.round(def.alpha));
 			beta = p2.addIntField("beta"+suffix, "°", 3, (int)Math.round(def.beta));

@@ -269,7 +269,7 @@ public class IntensitiesData implements XYItemLabelGenerator {
 				item = toolTipIndex[item];
 			}
 			if (item==-1) return null;
-			return hkl[item][2]+"\n2\u03b8="+theta2Deg[item]+"° d="+Math.round(d[item]*1000)/1000d+" m="+mi[item];
+			return hkl[item][2]+"\n2\u03b8="+theta2Deg[item]+"Â° d="+Math.round(d[item]*1000)/1000d+" m="+mi[item];
 		}
 	}
 	
@@ -295,7 +295,7 @@ public class IntensitiesData implements XYItemLabelGenerator {
 		}
 		public String generateToolTip(XYDataset dataset, int series, int item) {
 			item = braggs[item];
-			return hkl[item][2]+"\n2\u03b8="+theta2Deg[item]+"° d="+Math.round(d[item]*1000)/1000d+" m="+mi[item];
+			return hkl[item][2]+"\n2\u03b8="+theta2Deg[item]+"Â° d="+Math.round(d[item]*1000)/1000d+" m="+mi[item];
 		}
 	}
 }

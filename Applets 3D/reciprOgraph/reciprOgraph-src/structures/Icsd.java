@@ -158,7 +158,7 @@ public class Icsd implements ActionListener {
         	sgName = revertMinusInSgSymbol(sgName);
         	SgType sg = SgType.getSg(sgName);
         	if (sg==null) return "Unknown space group !";
-        	return "Space group N° "+sg.no+"\n'"+sg.fullName+"' "+sg.variantDesc+"\n"+sg.getSystem().name;
+        	return "Space group NÂ° "+sg.no+"\n'"+sg.fullName+"' "+sg.variantDesc+"\n"+sg.getSystem().name;
         }
         else return super.getToolTipText(e);
 	    }

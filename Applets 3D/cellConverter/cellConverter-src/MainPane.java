@@ -127,12 +127,12 @@ public class MainPane extends HVPanel.v implements CifFileOpener {
 		this.model3d1 = new Model3d();
 		this.model3d2 = new Model3d(this.model3d1.univers);
 		this.model3d2.setDelta(-.05, -.05, -.05);
-		JPanel p = this.model3d1.createPanel();
+		JPanel p = this.model3d1.createPanel(tabbedPane);
 		this.tabbedPane.addTab("3D view", p);
 
 		this.cifPane = new DoubleCifPane();
 		this.tabbedPane.addTab("CIF view", this.cifPane.jPanel);
-		p.setVisible(true);
+		this.tabbedPane.setSelectedIndex(1);
 
 		this.expand(true);
 		this.addComp(this.tabbedPane);

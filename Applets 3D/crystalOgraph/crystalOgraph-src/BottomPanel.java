@@ -59,7 +59,7 @@ public class BottomPanel extends HVPanel.h implements ActionListener {
 		this.univers = univers;
 		this.rightPanel = rightPanel;
 
-		String[] columnNames = { "Label", "Atom", "x", "y", "z", "radius Å", "color", "show", "" };
+		String[] columnNames = { "Label", "Atom", "x", "y", "z", "radius Ã…", "color", "show", "" };
 		DefaultTableModel tableModel = new DefaultTableModel() {
 			@Override
 			public Class getColumnClass(int c) {
