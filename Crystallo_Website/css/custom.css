@@ -1,0 +1,19 @@
+.nav-still {
+	padding-top: 20px;
+}
+
+.nav-move {
+	position: fixed;
+	top: 20px;
+}
+
+.container-applet {
+	padding: 20px;
+	border: 1px lightgray solid;
+	border-radius: 20px;
+	margin-top: 20px;
+}
+
+.btn-glyph {
+	margin-right: 3px;
+}
