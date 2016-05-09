@@ -1,17 +1,15 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.image.*;
-import java.net.*;
 import java.util.Vector;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,7 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import sun.misc.IOUtils;
+import org.jfree.io.IOUtils;
+
 
 public
 class imgDisplay extends Canvas {
@@ -37,7 +36,7 @@ class imgDisplay extends Canvas {
 	//Button b1, b2;
 	//Checkbox ck1, ck2;
 
-	//TODO: transformer ça en enum
+	//TODO: transformer ï¿½a en enum
 	static final int INIT = -1;
 	static final int STARTING = 0;
 	static final int FINDHZSTRIP = 1;
@@ -1075,8 +1074,7 @@ class imgDisplay extends Canvas {
 		if (desc != s) {
 			desc = s;
 			try {
-				File htmlFile = new File(desc);
-				byte[] t = IOUtils.readFully(new FileInputStream(htmlFile), -1, true);
+				byte[] t = Files.readAllBytes(Paths.get(desc));
 
 				panel.clear();
 				panel.setupPanel(new String(t), null, "Continue");
