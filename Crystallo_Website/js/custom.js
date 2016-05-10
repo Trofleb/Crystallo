@@ -18,5 +18,5 @@ $('body').scrollspy({ target: '#navbar' });
 
 // What to do when scrollspy activates something ?
 $('#myScrollspy').on('activate.bs.scrollspy', function () {
-  // do something…
+  
 })
