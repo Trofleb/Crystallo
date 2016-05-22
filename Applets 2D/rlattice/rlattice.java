@@ -3,8 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -26,10 +25,14 @@ public class rlattice  {
 	Pane pan;
 	Canvas canvas;
 	boolean quick;
+	static public rlattice instance;
+
+	private rlattice() {}
 
 	public static void main(String[] args) {
 		images = new HashMap<>();
-		choose();
+		rlattice.instance = new rlattice();
+		rlattice.instance.choose();
 	}
 	
 	private static void runApp() {
@@ -55,17 +58,29 @@ public class rlattice  {
 		frame.validate();	
 	}
 
-	public static void choose() {
+	public InputStream open(String name) {
+		return getClass().getResourceAsStream(name);
+	}
+
+	public void choose() {
 		JPanel choosePanel = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		final JFrame chooseFrame = new JFrame("Choose your pattern");
 		chooseFrame.add(choosePanel);
 		try {
-			File htmlFile = new File("intro.html");
-			byte[] t = Files.readAllBytes(Paths.get("intro.html"));
+			InputStream in = open("/intro.html");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			StringBuffer stringBuffer = new StringBuffer();
+			String line = null;
+
+			while((line =reader.readLine())!=null){
+				stringBuffer.append(line).append("\n");
+			}
+
+			String t = stringBuffer.toString();
 
 			JLabel text = new JLabel();
-			text.setText("<html><body>"+new String(t)+"</body></html>");
+			text.setText("<html><body>"+ t +"</body></html>");
 			c.gridx = 0;
 			c.gridy = 0;
 			c.gridwidth = 5;
@@ -137,10 +152,10 @@ public class rlattice  {
 		}
 	}
 	
-	private static JLabel createImage(final String name) {
+	private JLabel createImage(final String name) {
 		JLabel im = null;
 		try {
-			im = new JLabel(new ImageIcon(ImageIO.read(new File(name))));
+			im = new JLabel(new ImageIcon(ImageIO.read(open(name))));
 
 			im.addMouseListener(new MouseListener() {
 

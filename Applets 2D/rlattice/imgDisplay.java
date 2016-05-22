@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import org.jfree.io.IOUtils;
+//import org.jfree.io.IOUtils;
 
 
 public
@@ -27,7 +27,7 @@ class imgDisplay extends Canvas {
 	String desc="";
 	JApplet apl;
 	Image img = null;
-	String imageName="save_0.gif";
+	String imageName="/save_0.gif";
 	String dataName=null;
 	//Pane pan, pan2, master;
 	Pane panel;
@@ -148,10 +148,11 @@ class imgDisplay extends Canvas {
 			return true;
 		} else if ("New Pattern".equals(arg)){
 			try {
-				rlattice.choose();
+				rlattice.instance.choose();
 				frame.dispose();
 			} catch (Exception e) {
-				System.err.println("Unable to go web page.");
+				e.printStackTrace();
+				System.err.println("Unable to go web page. : ");
 			}
 			return true;
 		} else if ("Finished".equals(arg)){
@@ -193,7 +194,7 @@ class imgDisplay extends Canvas {
 	public void init() {
 
 		try {
-			img = ImageIO.read(new File(imageName));
+			img = ImageIO.read(rlattice.instance.open(imageName));
 		} catch (Exception e) {throw new RuntimeException(e);}
 
 		try {
@@ -1074,10 +1075,19 @@ class imgDisplay extends Canvas {
 		if (desc != s) {
 			desc = s;
 			try {
-				byte[] t = Files.readAllBytes(Paths.get(desc));
+				InputStream in = rlattice.instance.open(desc);
+				BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+				StringBuffer stringBuffer = new StringBuffer();
+				String line = null;
+
+				while((line =reader.readLine())!=null){
+					stringBuffer.append(line).append("\n");
+				}
+
+				String t = stringBuffer.toString();
 
 				panel.clear();
-				panel.setupPanel(new String(t), null, "Continue");
+				panel.setupPanel(t, null, "Continue");
 
 			} catch (Exception e) {
 				System.err.println("Unable to show web description.");

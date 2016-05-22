@@ -1,0 +1,644 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Crystallo</title>
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="http://static.epfl.ch/latest/styles/epfl-built.css" media="all" rel="stylesheet" type="text/css"/>-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+      </head>
+      <body>
+        <div class="container">
+          <div class="row">
+            <!-- content -->
+            <div class="col-md-9">
+              <h1 class="page-header">Crystallographic applets and simulations</h1>
+              <h2 id="introduction">Introduction</h2>
+              <p>This site is dedicated to the teaching of crystallography and was developed at the EPFL in Lausanne (Switzerland). It was first developed by Wes Hardaker and further extended by Nicolas Schoeni under the responsibility of Prof. G. Chapuis. Recently, all the applets have been updated by Nicolas Casademont et Maria Sisto.</p>
+
+              <h2 id="applets">Applets</h2>
+              <p>There are two types of applets : </p>
+              <ul>
+                <li>3D applets you have to download as jar files. 
+                  <ul>
+                    <li>For these applets to work you must have java (jre) 7 installed on your computer. If you don't have it you can download it here: <a href="http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html">jre 7 download</a></li>
+                    <li>To download the applets click on the download links below corresponding to your system. We provide support for most usual systems : Windows 32/64 bits, Mac OS X, Linux 32/64. If you are having any trouble making the applet work <a href="#contact">contact us</a></li>
+                  </ul>
+                </li>
+                <li>2D applets which are web based (you will have to install java or flash to make them work) you will find the link for them below.</li>
+              </ul>
+
+              <h3 id="Symmetry">Symmetry</h3>
+
+              <div class="container-applet">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <img data-toggle="modal" data-target="#imageModal" src="images/Symmetry.png" class="img-responsive" alt="Responsive image">
+                  </div>
+                  <div class="col-sm-8">
+                    <h3>Initiation to the discovery of point symmetry groups</h3>
+                    <p>An applet to explore the point group symmetry of platonic and other polyhedra. In particular, rotations, inversion and combinations of them can be simulated.</p>
+                    <div>
+                      <a href="applets/symmetry.jar" download>
+                        <button class="btn"><span class="glyphicon glyphicon-circle-arrow-down btn-glyph" aria-hidden="true"></span>Download</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container-applet">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <img data-toggle="modal" data-target="#imageModal" src="images/Escher_Web_Sketch.png" class="img-responsive" alt="Responsive image">
+                  </div>
+                  <div class="col-sm-8">
+                    <h2>Escher Web Sketch 2</h2>
+                    <p>An applet to simulate any periodic pattern corresponding to one of the 17 possible two-dimensional symmetry groups (17 planar groups).</p>
+                    <div>
+                      <a href="applets/escher.jar" download>
+                        <button class="btn"><span class="glyphicon glyphicon-circle-arrow-down btn-glyph" aria-hidden="true"></span>Download</button>
+                      </a>
+                      <button class="btn" data-toggle="modal" data-target="#infoModalEscher" ><span class="glyphicon glyphicon-file btn-glyph" aria-hidden="true"></span>More info</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container-applet">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <img data-toggle="modal" data-target="#imageModal" src="images/CrystalOgraph.png" class="img-responsive" alt="Responsive image">
+                  </div>
+                  <div class="col-sm-8">
+                    <h2>CrystalOgraph</h2>
+                    <p>An applet to represent any type of crystalline structure given the lattice parameters, the space group and the atomic coordinates of symmetry independent atoms. It is also possible to import directly a structure from the ICSD database or from a CIF file.</p>
+                    <div>
+                      <a href="applets/crystalOgraph.jar" download>
+                        <button class="btn"><span class="glyphicon glyphicon-circle-arrow-down btn-glyph" aria-hidden="true"></span>Download</button>
+                      </a>
+                      <button class="btn" data-toggle="modal" data-target="#infoModalCrystalO"><span class="glyphicon glyphicon-file btn-glyph" aria-hidden="true"></span>More info</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container-applet">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <img data-toggle="modal" data-target="#imageModal" src="images/CellConverter.png" class="img-responsive" alt="Responsive image">
+                  </div>
+                  <div class="col-sm-8">
+                    <h2>CellConverter</h2>
+                    <p>An applet to transform any unit cell ant its content to another cell. Based on the original CIF file, the applet generates a new CIF file resulting from the transformation specified by the user.</p>
+                    <div>
+                      <a href="applets/cellConverter.jar" download>
+                        <button class="btn"><span class="glyphicon glyphicon-circle-arrow-down btn-glyph" aria-hidden="true"></span>Download</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <h3 id="Diffraction">Diffraction</h3>
+
+                <!-- CrystalOgraph container -->
+                <div class="container-applet">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <img data-toggle="modal" data-target="#imageModal" src="images/crystalograph-screen-shot.png" class="img-responsive" alt="Responsive image">
+                    </div>
+                    <div class="col-sm-8">
+                      <h2>Bragg scatering</h2>
+                      <p>A Flash animation to illustrate constructive or destructive interferences as expressed by Bragg's law</p>
+                      <div>
+                        <button class="btn"><span class="glyphicon glyphicon-link btn-glyph" aria-hidden="true"></span>Link</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="container-applet">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <img data-toggle="modal" data-target="#imageModal" src="images/rLattice.png" class="img-responsive" alt="Responsive image">
+                    </div>
+                    <div class="col-sm-8">
+                      <h2>Reciprocal lattice generator</h2>
+                      <p>From a periodic diagram generated by Escher Web Sketch, the user is guided step by step by the applet in order to create the reciprocal lattice corresponding to the periodicity of the initial periodic pattern.</p>
+                      <div>
+                        <a href="applets/rlattice.jar" download>
+                          <button class="btn"><span class="glyphicon glyphicon-circle-arrow-down btn-glyph" aria-hidden="true"></span>Download</button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="container-applet">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <img data-toggle="modal" data-target="#imageModal" src="images/cellconverter-screen-shot.png" class="img-responsive" alt="Responsive image">
+                    </div>
+                    <div class="col-sm-8">
+                      <h2>Ewald sphere animation</h2>
+                      <p>Video sequence illustrating the diffraction phenomenon based on the Ewald sphere.</p>
+                      <div>
+                        <!-- TODO les link -->
+                        <button class="btn"><span class="glyphicon glyphicon-link btn-glyph" aria-hidden="true"></span>Link</button>
+                        <!--<button class="btn" data-toggle="modal" data-target="#infoModalErwald"><span class="glyphicon glyphicon-file btn-glyph" aria-hidden="true"></span>More info</button>-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="container-applet">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <img data-toggle="modal" data-target="#imageModal" src="images/DiffractOgram.png" class="img-responsive" alt="Responsive image">
+                    </div>
+                    <div class="col-sm-8">
+                      <h2>DiffractOgram</h2>
+                      <p>An applet to simulate any type of diffraction pattern based on the Ewald sphere and the reciprocal lattice. In particular, Laue patterns, Debye Scherrer diagrams, rotating crystals and even precession photographs can be generated.</p>
+                      <div>
+                        <a href="applets/diffractOgram.jar" download>
+                          <button class="btn"><span class="glyphicon glyphicon-circle-arrow-down btn-glyph" aria-hidden="true"></span>Download</button>
+                        </a>
+                        <button class="btn" data-toggle="modal" data-target="#infoModalDiffractO"><span class="glyphicon glyphicon-file btn-glyph" aria-hidden="true"></span>More info</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="container-applet">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <img data-toggle="modal" data-target="#imageModal" src="images/Fourier_Transform.png" class="img-responsive" alt="Responsive image">
+                    </div>
+                    <div class="col-sm-8">
+                      <h3>Diffraction and Fourier Transform </h3>
+                      <p>An applet to calculate the Fourrier Transform of a density function ρ(x) yielding the complex magnitude G(S). The density function can be either periodic or non-periodic.
+
+                      The applet is also able to calculate the inverse Fourier transform of G(S). Numerous tools can be applied in order to understand the role of amplitudes and phases, which are of particular importance in diffraction phenomena.</p>
+                      <div>
+                        <a href="applets/fft.jar" download>
+                          <button class="btn"><span class="glyphicon glyphicon-circle-arrow-down btn-glyph" aria-hidden="true"></span>Download</button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="container-applet">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <img data-toggle="modal" data-target="#imageModal" src="images/ReciprOgraph.png" class="img-responsive" alt="Responsive image">
+                    </div>
+                    <div class="col-sm-8">
+                      <h2>ReciprOgraph</h2>
+                      <p>An applet to simulate the X-ray diffraction intensities for single crystal in reciprocal space and powder diffraction patterns. Structures can be selected from from CIF files.</p>
+                      <div>
+                        <a href="applets/recipOgraph.jar" download>
+                          <button class="btn"><span class="glyphicon glyphicon-circle-arrow-down btn-glyph" aria-hidden="true"></span>Download</button>
+                        </a>
+                        <button class="btn" data-toggle="modal" data-target="#infoModalReciproG"><span class="glyphicon glyphicon-file btn-glyph" aria-hidden="true"></span>More info</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <h3 id="Structure_resolution">Structure resolution</h3>
+
+                <div class="container-applet">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <img data-toggle="modal" data-target="#imageModal" src="images/Flipping.png" class="img-responsive" alt="Responsive image">
+                    </div>
+                    <div class="col-sm-8">
+                      <h2>Charge Flipping</h2>
+                      <p>An applet to solve the phase problem in diffraction by the charge flipping algorithm. The user can create a 2D crystalline structure and follow the evolution of the algorithm in solving the structure.</p>
+                      <div>
+                        <a href="applets/flip.jar" download>
+                          <button class="btn"><span class="glyphicon glyphicon-circle-arrow-down btn-glyph" aria-hidden="true"></span>Download</button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <h2 id="contact">Contact us</h2>
+
+              </div> <!-- end content -->
+
+              <!-- Navbar -->
+          <!--<div id="navbar" class="col-md-3">
+            <ul id="nav-tabs" class="nav nav-pills nav-stacked nav-move">
+              <li><a href="#introduction">Introduction</a></li>
+              <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#applets" role="button" aria-haspopup="true" aria-expanded="false" >Applets</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#Symmetry">Symmetry</a></li>
+                  <li><a href="#Diffraction">Diffraction</a></li>
+                  <li><a href="#Structure_resolution">Structure resolution</a></li>
+                </ul>
+              </li>
+
+              <li><a href="#contact">Contact us</a></li>
+            </ul>
+          </div>-->
+
+        </div> <!-- end row -->
+      </div> <!-- end container -->
+
+
+      <!-- image modal -->
+      <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content maodal-lg">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="imageModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+              <img src="" class="img-responsive modal-img" alt="Modal image">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--<div class="modal fade" id="infoModalErwald" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content maodal-lg">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h2 class="modal-title" id="imageModalLabel">Introduction to diffraction</h2>
+              <p>
+                By: Nicolas
+                Schoeni and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+                École Polytechnique Fédérale de
+                Lausanne, Switzerland
+              </p>
+            </div>
+            <div class="modal-body">
+              <div style="text-align:center">
+                <h3>The Laue Condition for Diffraction</h3>
+                <br>and<br>
+                <h3>The Ewald Sphere</h3>
+              </div>
+              <hr>
+              <br>
+              <h3>
+                The Laue Condition for Diffraction.</h3>
+                From the Reciprocal Lattice Generator application, we can learn that each reciprocal lattice
+                vector <b>h</b> is an integer combination of the three reciprocal basis
+                vectors <b>a<sup>*</sup>,</b> <b>b<sup>*</sup> </b>and <b>c<sup>*</sup></b>:
+                <center><b>h</b> = <i>h</i><span style="font-weight: bold;">a</span><sup>*</sup> + <i>k</i><span style="font-weight: bold;">b</span><sup>*</sup> + <i>l</i><span style="font-weight: bold;">c</span><sup>*</sup></center>
+                where the triplet of integers (<i>h, k, l</i>) characterizes uniquely each
+                reciprocal lattice vector.
+
+                <p>The recipocal lattice vectors <b>a<sup>*</sup>,</b> <b>b<sup>*</sup> </b>and <b>c<sup>*</sup></b>can be derived from the lattice vectors <b>a,</b> <b>b </b>and <b>c </b>from the vector products<br>
+                </p>
+                <p style="text-align: center;"><span style="font-weight: bold;">a</span>*= <span style="font-weight: bold;">b</span> x <span style="font-weight: bold;">c</span>/<span style="font-style: italic;">V</span>&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">b</span>*= <span style="font-weight: bold;">c</span> x <span style="font-weight: bold;">a</span>/<span style="font-style: italic;">V</span> &nbsp; <span style="font-weight: bold;">c</span>*= <span style="font-weight: bold;">a</span> x <span style="font-weight: bold;">b/</span><span style="font-style: italic;">V</span></p>
+                <p style="text-align: left;">where <span style="font-style: italic;">V</span> is the volume of the unit cell defined by the vectors <b>a,</b> <b>b </b>and <b>c </b></p>
+                <p>It is convenient to introduce the vector <b>s<sub>0</sub></b> which
+                  is parallel to the direction of the incident beam. Its magnitude is set
+                  as the inverse of the wavelength <i><font face="Symbol">l</font></i> of
+                  the incident beam:
+                </p>
+                <center><img src="images/Image16.gif"></center>
+                Similarly, the direction of the diffracted beam is described by the vector
+                <b>s</b> with its magnitude
+                <center><img src="images/Image17.gif"></center>
+                The <b><i>Laue condition</i></b> states that the following equality must
+                be fulfilled:
+                <center><b>s</b> = <b>s</b><sub>0</sub> + <b>h</b></center>
+                for diffraction to occur.
+                <h3>
+                  The Ewald Sphere</h3>
+                  The Laue condition requires that the three vectors <b>s<sub>0</sub></b>,
+                  <b>s</b> and <b>h</b> must form a triangle with two identical sides:
+                  <center><img src="images/Image19.gif"></center>
+                  If a sphere is constructed with the center at the origin of <b>s<sub>0</sub></b>
+                  and |<b>s<sub>0</sub></b>| as radius, the diffracting conditions are satisfied
+                  only if the endpoint of a reciprocal lattice vector <b>h</b> is located
+                  on the surface of the (Ewald-) sphere. The direction of the diffracted
+                  beam is than given by the direction of the vector <b>s</b>. By changing
+                  the orientation of the reciprocal lattice relative to the incident beam
+                  <b>s<sub>0</sub></b>, each vector <b>h</b> which cuts the Ewald sphere
+                  gives rise to a diffracted beam which is parallel to the direction of the
+                  corresponding vector <b>s</b>.
+                  <center><img style="width: 483px; height: 452px;" alt="" src="images/Ewald_sphere.png"><br>
+                  </center>
+
+
+                  <p>Based on the Ewald sphere, it is clear that each reciprocal lattice
+                    vector can only give rise to a diffracted beam if the reciprocal lattice
+                    takes successively different orientations. This means that with <b>a monochromatic
+                    beam</b>, i.e. a unique wavelength, the <b>crystal has to be moved</b>
+                    relative to the incident beam in order to generate diffraction peaks. For
+                    a complete measurement of all the accessible diffraction intensities, the
+                    crystal must be displaced so that each reciprocal lattice vector satisfies
+                    the Ewald conditions.
+                    <br>To illustrate this point further, we offer an
+                    animation of a simple lattice rotating through an Ewald Sphere:
+                  </p><p>
+                  The white beam in this animation is the incident beam and the yellow
+                  beams are the diffracted beams.  For didactical reasons, the origin of 
+                  the diffracted beam has been placed at the center of the Ewald
+                  sphere.  In practice, the diffracted beam originates from the
+                  diffracting crystal, <span style="font-style: italic;">i.e.</span> from the origin of the reciprocal lattice.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>-->
+
+        <div class="modal fade" id="infoModalReciproG" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content maodal-lg">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title" id="imageModalLabel">ReciprOgraph</h2>
+                <p>
+                  By: Nicolas
+                  Schoeni and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+                  École Polytechnique Fédérale de
+                  Lausanne, Switzerland
+                </p>
+              </div>
+              <div class="modal-body">
+                ReciprOgraph is an applet to calculate the intensities of any substance diffracted
+                by x-rays. The structure to be studied can be read from a CIF
+                file.&nbsp; The intensities are given by the square of the&nbsp;
+                structure factor modulus <span style="font-style: italic;">I</span>(<span style="font-weight: bold;">h</span>)=|<span style="font-style: italic;">F</span>(<span style="font-weight: bold;">h</span>)|<sup>2</sup> where&nbsp; <span style="font-weight: bold;">h</span>=h<span style="font-weight: bold;">a</span>*+k<span style="font-weight: bold;">b</span>*+l<span style="font-weight: bold;">c</span>*
+                is a reciprocal vector.&nbsp; The intensities are represented on the
+                reciprocal lattice where the size of each lattice point <span style="font-weight: bold;">h</span> is proportional to its intensity.<br>
+                <br>
+                The intensities can be analysed by selecting a reciprocal lattice plane
+                <span style="font-weight: bold;">u</span>=u<span style="font-weight: bold;">a</span>+v<span style="font-weight: bold;">b</span>+w<span style="font-weight: bold;">c </span>where <span style="font-weight: bold;">a</span>, <span style="font-weight: bold;">b</span>
+                and <span style="font-weight: bold;">c</span> are the lattice
+                constants and u, v and w are integers. For each value of the triplet,
+                the lattice plane can be shifted by parrallel displacement.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="infoModalDiffractO" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content maodal-lg">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title" id="imageModalLabel">DiffractOgram</h2>
+                <p>
+                  By: Nicolas
+                  Schoeni and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+                  École Polytechnique Fédérale de
+                  Lausanne, Switzerland
+                </p>
+              </div>
+              <div class="modal-body">
+                DiffractOgram is an applet for the simulation of many
+                different types of <span style="font-weight: bold;">diffraction
+                patterns</span>. It is based on the <span style="font-weight: bold;">Laue
+                equation</span>&nbsp; <span style="font-style: italic; font-weight: bold;">S</span>&nbsp;=&nbsp;<span style="font-weight: bold; font-style: italic;">s</span>&nbsp;-&nbsp;<span style="font-weight: bold;">s<small><sub>0</sub></small></span>&nbsp;=&nbsp;<span style="font-weight: bold; font-style: italic;">h</span> where&nbsp; <span style="font-weight: bold;">s<small><sub>0 </sub></small></span>is a
+                vector representing the incident beam with magnitude <span style="font-family: £è¼²¿»;"><span style="font-family: £è¼²¿»;">λ</span><sup>-1</sup></span>(λ
+                is the
+                wavelength of the incident beam), <span style="font-weight: bold; font-style: italic;">s </span>is a vector
+                along the diffracted beam with the same magnitude λ<sup>-1</sup> and <span style="font-weight: bold; font-style: italic;">h</span> is a
+                reciprocal lattice vector of the diffracting crystal. The diffraction
+                pattern can be simulated with the <span style="font-weight: bold;">Ewald
+                sphere</span> with radius λ<sup>-1</sup>.<br>
+                <br>
+                Once the lattice constants of the diffracting crystal and the number of
+                possible reciprocal vectors are selected, the applet can simulate
+                various
+                diffraction patterns. For example<br>
+                <ul>
+                  <li>
+                    <span style="font-weight: bold;">Laue diagram</span>. The user
+                    can select an arbitrary crystal orientation by selecting the ω, χ
+                    and φ angles. The animation can be started with the
+                    wavelength&nbsp; button.&nbsp; The diffraction pattern will be
+                    registered on the diffraction screen while scanning sequentially all
+                    the possible wavelength. Altenatively, the
+                    Laue button can be selected.
+                  </li>
+                  <li>
+                    <span style="font-weight: bold;">Laue back reflection diagram</span>.&nbsp;
+                    This&nbsp; mode can be simulated by setting negative crystal-screen
+                    distances. <br>
+                  </li>
+                  <li>
+                    <span style="font-weight: bold;">Rotating crystal</span>. The
+                    user can select one of the three angles ω, χ or φ in order to
+                    rotate the crystal and record the diffraction pattern on the screen.
+                  </li>
+                  <li>
+                    <span style="font-weight: bold;">Debye-Scherrer</span> <span style="font-weight: bold;">diagram</span>. The powder pattern can be
+                    simlated by sequentially selecting any arbitrary orientation of the
+                    crystal with a given wavelength. The user can select
+                    either a flat screen or a cylindrical screen to register the
+                    diffraction pattern.
+                  </li>
+                  <li>
+                    <span style="font-weight: bold;">Precession chamber</span><span style="font-weight: bold;"></span>. The applet can simulate the
+                    precession movement of the crystal in parallel with the screen. The
+                    precession angle can be arbitrary selected and a mask can be introduced
+                    to select a single reciprocal layer.<br>
+                  </li>
+                </ul>
+                Additional tools can be conveniently selected in order to reset various
+                parameters.&nbsp; <br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="infoModalCrystalO" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content maodal-lg">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title" id="imageModalLabel">CrystalOgraph</h2>
+                <h3>An interactive applet for drawing crystal structures</h3>
+                <p>
+                  By: Nicolas
+                  Schoeni and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+                  École Polytechnique Fédérale de
+                  Lausanne, Switzerland
+                </p>
+              </div>
+              <div class="modal-body">
+                CrystalOgraph allows you to draw interactively on the screen any
+                simple crystallographic structure by specifying the lattice constantsspace group
+                and the coordinates of the symmetry independent atoms. <br>
+                The structure parameters can be either entered by hand on the screen
+                or from a selection of examples.
+                <br>
+                <br>
+                In addition to the panel functions, the following key combinations
+                can be used:
+                <ul>
+                  <li> Rotate the structure : Drag the mouse inside the screen. </li>
+                  <li> Rotate around the normal to the plane : Shift+drag the mouse or mouse right button. </li>
+                  <li> Zoom in/out : Alt+drag the mouse or mouse wheel or up/down arrow keys. </li>
+                </ul>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="infoModalEscher" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content maodal-lg">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title" id="imageModalLabel">Escher Web Sketch</h2>
+                <p>
+                  By: <a href="mailto:nicolas.schoeni@epfl.ch">Nicolas Schoeni</a>,
+                  Wes Hardaker and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+                  At: The Swiss Federal Institute of Technology (EPFL), Switzerland
+                </p>
+              </div>
+              <div class="modal-body">
+                <h2>Instructions to get started quickly</h2>
+                <p>
+                  <cite>Escher Web Sketch</cite> allows you to draw repeating patterns in the plane.
+                  You can select the symmetry of the patterns by clicking on one of the
+                  icons above the drawing area. The drawing tools are selected
+                  under the drawing area. You can also change the
+                  pattern size and location with the <i>Modify cell</i> button. The
+                  right hand side of the drawing area is
+                  reserved for each drawing tool's usage. Typically it changes the pen
+                  size and color.
+                </p>
+                <h2>How to save your creation</h2>
+                The "<i>Save...</i>" button allows to store the file by opening a new
+                page in your browser. You can save this file on your local computer by
+                using the save facility of your browser. The file is saved in the
+                format PNG and can be opened with most of the drawing programs.
+                <h2>Information on M.C. Escher</h2>
+                <p>
+                  Numerous web sites exist dealing with the work and biography of M.C:
+                  Escher. Only a very short selection is given here:
+                </p>
+                <ul>
+                  <li><a href="http://www.mcescher.com" target="_blank">http://www.mcescher.com</a>
+                  </li>
+                  <li><a href="http://www.erols.com/ziring/escher_bio.htm%20" target="_blank">http://www.erols.com/ziring/escher_bio.htm</a> </li>
+                </ul>
+                <h2>Crystallographically interesting aspects illustrated by <cite>Escher
+                  Web
+                  Sketch</cite></h2>
+                  <p>
+                    Crystallographers will recognize the list of 17 2D space groups (plane
+                    groups) characterized by their international symbol as described in the
+                    <a href="http://www.iucr.ac.uk/iucr-top/it/index.html" target="_blank"><cite>International
+                      Tables of Crystallography (Vol. A)</cite></a>.
+                      The interested reader can consult the following websites : </p>
+                      <ul>
+                        <li><a href="http://journals.iucr.org/iucr-top/comm/cteach/pamphlets/14" target="_blank">http://journals.iucr.org/iucr-top/comm/cteach/pamphlets/14</a>
+                        </li>
+                        <li><a href="http://www.clarku.edu/%7Edjoyce/wallpaper/seventeen.html" target="_blank">http://www.clarku.edu/~djoyce/wallpaper/seventeen.html</a>
+                        </li>
+                      </ul>
+                      in order to have some additional informations on the seventeen plane
+                      groups. <br>
+                      <h3>General and special positions</h3>
+                      <p>
+                        After selecting one of the 17 plane groups, the user may choose an
+                        object (a colored circle for example) and move it around within the
+                        unit
+                        cell. In some specific positions, the object and some of its
+                        symmetry-generated equivalents may converge into a single point. This
+                        single point is called a <i>special position</i>. All the others are
+                        <i>general positions</i>.
+                      </p>
+                      <p>It is also easy to see that the number of symmetry-equivalent points
+                        in
+                        each unit cell depends on the point's position. The number is largest
+                        for general positions and smaller on special positions. The number of
+                        symmetry-equivalent positions on special positions is always an
+                        integral
+                        fraction of the largest possible number.
+                      </p>
+                      <p>This concept of general and special positions is important and is
+                        directly linked to the stoichiometry as expressed by the chemical
+                        formula of a crystalline sample.
+                      </p>
+                      <h3>Site symmetry</h3>
+                      <p>
+                        Special positions have not only the property of reducing the number of
+                        equivalent points in a unit cell but also of increasing the symmetry of
+                        the object sitting on a special position. The interested reader may
+                        discover for himself the symmetry of the special positions.
+                      </p>
+                      <h3>Simple two dimensional structures</h3>
+                      <ul>
+                        <li> A <b>graphite</b> sheet: Select plane group <var>p</var>6<var>mm</var>.
+                          Select a carbon atom (colored
+                          circle) and move it until you obtain the typical honeycomb arrangement:
+                          <br>
+                          <div align="center"><img src="images/e1.gif"></div>
+                        </li>
+                        <li>A chevron like <b>parquet-floor</b>: Select space group <var>p</var>2<var>gg</var>.
+                          Select the line tool. With one single
+                          line
+                          placed suitably you can generate the full pattern. Observe the effect
+                          of
+                          the unit cell size on the pattern! <br>
+                          <div align="center"><img src="images/e2.gif"></div>
+                        </li>
+                      </ul>
+                      <h2>History of <cite>Escher Web Sketch</cite></h2>
+                      <p>
+                        Since 1987, many crystallographers and many other specialists enjoyed
+                        the attractive software written for the Macintosh by Terry Flaherty
+                        from
+                        Loyola University in New Orleans. <i>Escher Sketch</i> was originally
+                        created for the purpose of designing periodic decorations. It was soon
+                        realized however that this application was an excellent teaching tool
+                        for the illustration of basic crystallography courses. It was easy to
+                        select one of the 17 symmetry possibilities in two-dimensional space
+                        (the 17 two-dimensional space groups or plane groups) and use the
+                        symmetry operations to generate automatically 2D periodic pattern. With
+                        the various tools available, it was thus easy to generate all
+                        conceivable wall-paper (periodic) patterns.
+                      </p>
+                      <p>In order to make such a program readily accessible to students and
+                        teachers of crystallography, and others interested in the art of
+                        periodic decorations, the current program has been developed in Java in
+                        order to be directly accessible on the World Wide Web (W3). In
+                        addition,
+                        the possibility of coloring the patterns has been introduced along with
+                        other tools to facilitate the creation of two-dimensional crystalline
+                        structures.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+              <!-- Include all compiled plugins (below), or include individual files as needed -->
+              <script src="js/bootstrap.min.js"></script>
+              <!-- Custom js-->
+              <script type="text/javascript" src="js/custom.js"></script>
+            </body>
+            </html>

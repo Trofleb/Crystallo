@@ -17,3 +17,33 @@
 .btn-glyph {
 	margin-right: 3px;
 }
+
+.text-applet {
+	padding-left: 20px!important;
+}
+
+.container-applet .img-responsive {
+	margin-top: 15px;
+	display: inline-block;
+}
+
+.container-applet .g-span-col8 {
+	text-align: left;
+}
+
+.container-applet h3 {
+	margin-top: 15px;
+}
+
+.container-applet .g-row {
+	text-align: center;
+}
+
+.modal-header .btn-abort{
+	margin-right: 0;
+}
+
+/*a {
+	color: black!important;
+	text-decoration: none!important;
+}*/

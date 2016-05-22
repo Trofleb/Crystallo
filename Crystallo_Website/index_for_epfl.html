@@ -1,0 +1,1166 @@
+	<!DOCTYPE html>
+	<html xmlns="http://www.w3.org/1999/xhtml">
+	  <head>
+	    <title>Crystallo</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	    <!--<link href="http://www.epfl.ch/css/epfl.css" media="all" rel="stylesheet" type="text/css"/>-->
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>	
+	    <link href="css/bootstrap.min2.css" rel="stylesheet">
+	    <link rel="stylesheet" href="css/custom.css">
+	    <script> 
+	    $.get( "http://static.epfl.ch/latest/includes/head-links-sb.html", function( data ) {
+		  $( "head" ).append(data);
+		});
+		$.get( "http://static.epfl.ch/latest/includes/head-scripts.html", function( data ) {
+		  $( "head" ).append(data);
+		});
+		$.get( "http://static.epfl.ch/latest/includes/foot-scripts.html", function( data ) {
+		  $( "#foot-script" ).html(data);
+		});
+	    </script> 
+	  </head>
+	  <body>
+	  	<div id="page" class="site site-wrapper" itemscope itemtype="http://schema.org/WebPage">
+	     <header id="epfl-header" class="site-header epfl" role="banner" aria-label="Global EPFL banner" data-ajax-header="http://static.epfl.ch/latest/includes/epfl-header.en.html"></header>
+	     <header id="header" class="site-header">
+
+	      <!-- The site title -->
+	      <h1 class="site-title" itemprop="isPartOf" itemscope="" itemtype="http://schema.org/CollectionPage">
+	        <a href="..." itemprop="url" accesskey="1" rel="home">
+	          <span itemprop="name">
+	            <span class="visuallyhidden-xs visuallyhidden-xxs">LABORATORY OF CRYSTALLOGRAPHY</span>
+	            <abbr title="A long description for the site acronym">LCR</abbr>
+	          </span>
+	        </a>
+	      </h1>
+
+	      <!-- The breadcrumb navigation -->
+	      <nav class="nav nav-inline bcnav" role="navigation" itemprop="breadcrumb" aria-label="Breadcrumb navigation">
+	        <ol class="nav-list">
+	          <li class="nav-item" itemprop="sourceOrganization" itemscope="" itemtype="http://schema.org/CollegeOrUniversity">
+	            <a class="nav-link" href="http://www.epfl.ch" itemprop="url"><span itemprop="name">EPFL</span></a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="...">Parent page</a>
+	          </li>
+	          <li class="nav-item nav-item-active">
+	            <a class="nav-link" href="...">Current page</a>
+	          </li>
+	        </ol>
+	      </nav>
+
+	      <!-- The language selector -->
+	      <nav class="nav nav-inline lang" role="navigation" aria-label="Language selector">
+	        <ul class="nav-list">
+	          <li class="nav-item nav-item-active">
+	            <a class="nav-link" href="..." lang="en">
+	              <span class="visuallyhidden">Current language: </span>
+	              <span class="visuallyhidden-xxs visuallyhidden-xs">English</span>
+	            </a>
+	          </li>
+	        </ul>
+	      </nav>
+
+	      <!-- The main/horizontal navigation -->
+	      <div class="mainnav">
+	        <a id="main-navigation-label" class="hidden visible-xxs visible-xs toggle-collapsed ui-collapse ui-toggle" href="#main-navigation" data-widget="collapse" tabindex="0" role="button" aria-controls="main-navigation" aria-expanded="false">Main navigation</a>
+	        
+	        <nav id="main-navigation" class="nav nav-block nav-horizontal themed visible-s visible-m visible-l visible-xl visible-xxl toggle-collapsed" role="navigation" aria-labelledby="main-navigation-label" aria-hidden="true" aria-expanded="false">
+	          <ul class="nav-list ui-menubar ui-toolbar" data-widget="menubar" role="menubar">
+	            <li class="nav-item hidden-xxs hidden-xs" role="menuitem" aria-labelledby="menu-item-label-26" tabindex="0">
+	              <!-- TODO : where to go on acceuil -->
+	              <a class="nav-link" href="http://ccc.epfl.ch/page-6355.html" id="menu-item-label-26">
+	                <span class="hidden-xxs hidden-xs icon icon-inline icon-big icon-home" role="presentation" hidden="hidden"></span>
+	                <span class="hidden-s hidden-m hidden-l hidden-xl hidden-xxl">Homepage</span>
+	              </a>
+	            </li>
+	            <!--<li class="nav-item" role="menuitem" aria-haspopup="true" aria-labelledby="toggle-1">
+	              <span class="nav-link toggle-collapsed ui-collapse ui-toggle" data-widget="collapse" tabindex="0" role="button" aria-controls="toggle-pane-0" id="toggle-1" aria-expanded="false">Menu 1 [dropdown]</span>
+	              <ul class="nav-list nav-vertical toggle-collapsed ui-menu" data-widget="menu" data-items=".nav-link" aria-hidden="true" id="toggle-pane-0" aria-expanded="false" aria-labelledby="toggle-1" role="menu"><span class="menu-item menu-item-back" data-role="back">Menu 1 [dropdown]</span>
+	                <li class="nav-item">
+	                  <a class="nav-link" href="..." role="menuitem" tabindex="0">Menu 1.1</a>
+	                  <ul class="nav-list">
+	                    <li class="nav-item">
+	                      <a class="nav-link" href="..." role="menuitem">Menu 1.1.1</a>
+	                    </li>
+	                  </ul>
+	                </li>
+	              </ul>
+	            </li>
+	            <li class="nav-item" role="menuitem" aria-haspopup="true" aria-labelledby="menu-item-label-27">
+	              <a class="nav-link" href="..." id="menu-item-label-27">Menu 2 [combo]</a>
+	              <span data-widget="collapse" tabindex="0" class="toggle-collapsed ui-collapse ui-toggle" role="button" aria-controls="toggle-pane-2" id="menu-item-label-27" aria-expanded="false"></span>
+	              <ul class="nav-list nav-vertical toggle-collapsed ui-menu" data-widget="menu" data-items=".nav-link" aria-hidden="true" id="toggle-pane-2" aria-expanded="false" aria-labelledby="toggle-3" role="menu"><span class="menu-item menu-item-back" data-role="back">Menu 2 [combo]</span>
+	                <li class="nav-item">
+	                  <a class="nav-link" href="..." role="menuitem" tabindex="0">Menu 2.1</a>
+	                  <ul class="nav-list">
+	                    <li class="nav-item">
+	                      <a class="nav-link" href="..." role="menuitem">Menu 2.1.1</a>
+	                    </li>
+	                  </ul>
+	                </li>
+	              </ul>
+	            </li>
+	            <li class="nav-item" role="menuitem" aria-haspopup="true" aria-labelledby="menu-item-label-28">
+	              <a class="nav-link" href="..." id="menu-item-label-28">Menu 3 [combo]</a>
+	              <span data-widget="collapse" tabindex="0" class="toggle-collapsed ui-collapse ui-toggle" role="button" aria-controls="toggle-pane-4" id="menu-item-label-28" aria-expanded="false"></span>
+	              <ul class="nav-list nav-vertical toggle-collapsed ui-menu" data-widget="menu" aria-hidden="true" id="toggle-pane-4" aria-expanded="false" aria-labelledby="toggle-5" role="menu"><span class="menu-item menu-item-back" data-role="back">Menu 3 [combo]</span>
+	                <li class="nav-item" role="menuitem" aria-haspopup="true" aria-labelledby="menu-item-label-29" tabindex="0">
+	                  <a class="nav-link" href="..." id="menu-item-label-29">Menu 3.1</a>
+	                  <span data-widget="collapse" tabindex="0" class="toggle-collapsed ui-collapse ui-toggle" role="button" aria-controls="toggle-pane-6" id="menu-item-label-29" aria-expanded="false"></span>
+	                  <ul class="nav-list toggle-collapsed ui-menu" data-widget="menu" aria-hidden="true" id="toggle-pane-6" aria-expanded="false" aria-labelledby="toggle-7" role="menu"><span class="menu-item menu-item-back" data-role="back">Menu 3.1</span>
+	                    <li class="nav-item" role="menuitem" aria-haspopup="true" aria-labelledby="menu-item-label-31" tabindex="0">
+	                      <a class="nav-link" href="..." id="menu-item-label-31">Menu 3.1.1</a>
+	                      <span data-widget="collapse" tabindex="0" class="toggle-collapsed ui-collapse ui-toggle" role="button" aria-controls="toggle-pane-8" id="menu-item-label-31" aria-expanded="false"></span>
+	                      <ul class="nav-list toggle-collapsed ui-menu" data-widget="menu" aria-hidden="true" id="toggle-pane-8" aria-expanded="false" aria-labelledby="toggle-9" role="menu"><span class="menu-item menu-item-back" data-role="back">Menu 3.1.1</span>
+	                        <li class="nav-item" role="menuitem" aria-haspopup="true" aria-labelledby="menu-item-label-33" tabindex="0">
+	                          <a class="nav-link" href="..." id="menu-item-label-33">Menu 3.1.1.1</a>
+	                          <span data-widget="collapse" tabindex="0" class="toggle-collapsed ui-collapse ui-toggle" role="button" aria-controls="toggle-pane-10" id="menu-item-label-33" aria-expanded="false"></span>
+	                          <ul class="nav-list toggle-collapsed ui-menu" data-widget="menu" aria-hidden="true" id="toggle-pane-10" aria-expanded="false" aria-labelledby="toggle-11" role="menu"><span class="menu-item menu-item-back" data-role="back">Menu 3.1.1.1</span>
+	                            <li class="nav-item" role="menuitem" tabindex="0">
+	                              <a class="nav-link" href="...">Menu 3.1.1.1.1</a>
+	                            </li>
+	                          </ul>
+	                        </li>
+	                      </ul>
+	                    </li>
+	                    <li class="nav-item" role="menuitem" aria-haspopup="true" aria-labelledby="menu-item-label-32">
+	                      <a class="nav-link" href="..." id="menu-item-label-32">Menu 3.1.2</a>
+	                      <span data-widget="collapse" tabindex="0" class="toggle-collapsed ui-collapse ui-toggle" role="button" aria-controls="toggle-pane-12" id="menu-item-label-32" aria-expanded="false"></span>
+	                      <ul class="nav-list toggle-collapsed ui-menu" data-widget="menu" aria-hidden="true" id="toggle-pane-12" aria-expanded="false" aria-labelledby="toggle-13" role="menu"><span class="menu-item menu-item-back" data-role="back">Menu 3.1.2</span>
+	                        <li class="nav-item" role="menuitem" aria-haspopup="true" aria-labelledby="menu-item-label-34" tabindex="0">
+	                          <a class="nav-link" href="..." id="menu-item-label-34">Menu 3.1.2.1</a>
+	                          <span data-widget="collapse" tabindex="0" class="toggle-collapsed ui-collapse ui-toggle" role="button" aria-controls="toggle-pane-14" id="menu-item-label-34" aria-expanded="false"></span>
+	                          <ul class="nav-list toggle-collapsed ui-menu" data-widget="menu" aria-hidden="true" id="toggle-pane-14" aria-expanded="false" aria-labelledby="toggle-15" role="menu"><span class="menu-item menu-item-back" data-role="back">Menu 3.1.2.1</span>
+	                              <li class="nav-item" role="menuitem" tabindex="0">
+	                                  <a class="nav-link" href="...">Menu 3.1.2.1.1</a>
+	                              </li>
+	                          </ul>
+	                        </li>
+	                      </ul>
+	                    </li>
+	                  </ul>
+	                </li>
+	                <li class="nav-item" role="menuitem" aria-haspopup="true" aria-labelledby="menu-item-label-30">
+	                   <a class="nav-link" href="..." id="menu-item-label-30">Menu 3.2</a>
+	                   <span data-widget="collapse" tabindex="0" class="toggle-collapsed ui-collapse ui-toggle" role="button" aria-controls="toggle-pane-16" id="menu-item-label-30" aria-expanded="false"></span>
+	                   <ul class="nav-list toggle-collapsed ui-menu" data-widget="menu" aria-hidden="true" id="toggle-pane-16" aria-expanded="false" aria-labelledby="toggle-17" role="menu"><span class="menu-item menu-item-back" data-role="back">Menu 3.2</span>
+	                      <li class="nav-item" role="menuitem" aria-haspopup="true" aria-labelledby="menu-item-label-35" tabindex="0">
+	                          <a class="nav-link" href="..." id="menu-item-label-35">Menu 3.2.1</a>
+	                          <span data-widget="collapse" tabindex="0" class="toggle-collapsed ui-collapse ui-toggle" role="button" aria-controls="toggle-pane-18" id="menu-item-label-35" aria-expanded="false"></span>
+	                          <ul class="nav-list toggle-collapsed ui-menu" data-widget="menu" aria-hidden="true" id="toggle-pane-18" aria-expanded="false" aria-labelledby="toggle-19" role="menu"><span class="menu-item menu-item-back" data-role="back">Menu 3.2.1</span>
+	                            <li class="nav-item" role="menuitem" aria-haspopup="true" aria-labelledby="menu-item-label-37" tabindex="0">
+	                              <a class="nav-link" href="..." id="menu-item-label-37">Menu 3.2.1.1</a>
+	                              <span data-widget="collapse" tabindex="0" class="toggle-collapsed ui-collapse ui-toggle" role="button" aria-controls="toggle-pane-20" id="menu-item-label-37" aria-expanded="false"></span>
+	                              <ul class="nav-list toggle-collapsed ui-menu" data-widget="menu" aria-hidden="true" id="toggle-pane-20" aria-expanded="false" aria-labelledby="toggle-21" role="menu"><span class="menu-item menu-item-back" data-role="back">Menu 3.2.1.1</span>
+	                                  <li class="nav-item" role="menuitem" tabindex="0">
+	                                      <a class="nav-link" href="...">Menu 3.2.1.1.1</a>
+	                                  </li>
+	                              </ul>
+	                             </li>
+	                          </ul>
+	                      </li>
+	                      <li class="nav-item" role="menuitem" aria-haspopup="true" aria-labelledby="menu-item-label-36">
+	                        <a class="nav-link" href="..." id="menu-item-label-36">Menu 3.2.2</a>
+	                        <span data-widget="collapse" tabindex="0" class="toggle-collapsed ui-collapse ui-toggle" role="button" aria-controls="toggle-pane-22" id="menu-item-label-36" aria-expanded="false"></span>
+	                        <ul class="nav-list toggle-collapsed ui-menu" data-widget="menu" aria-hidden="true" id="toggle-pane-22" aria-expanded="false" aria-labelledby="toggle-23" role="menu"><span class="menu-item menu-item-back" data-role="back">Menu 3.2.2</span>
+	                            <li class="nav-item" role="menuitem" aria-haspopup="true" aria-labelledby="menu-item-label-38" tabindex="0">
+	                              <a class="nav-link" href="..." id="menu-item-label-38">Menu 3.2.2.1</a>
+	                              <span data-widget="collapse" tabindex="0" class="toggle-collapsed ui-collapse ui-toggle" role="button" aria-controls="toggle-pane-24" id="menu-item-label-38" aria-expanded="false"></span>
+	                              <ul class="nav-list toggle-collapsed ui-menu" data-widget="menu" aria-hidden="true" id="toggle-pane-24" aria-expanded="false" aria-labelledby="toggle-25" role="menu"><span class="menu-item menu-item-back" data-role="back">Menu 3.2.2.1</span>
+	                                 <li class="nav-item" role="menuitem" tabindex="0">
+	                                     <a class="nav-link" href="...">Menu 3.2.2.1.1</a>
+	                                 </li>
+	                              </ul>
+	                            </li>
+	                        </ul>
+	                      </li>
+	                   </ul>
+	                </li>
+	              </ul>
+	            </li>-->
+	          </ul>
+	        </nav>
+
+	      </div>
+
+	      <!-- The tools bar -->
+	      <div id="tools" class="tools">
+	        <div role="toolbar" aria-label="Page tools">
+	          <span class="secondary-content" data-role="label">Share:</span>
+	        <a class="share-link share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fstatic.epfl.ch%2Flatest%2Ftemplates%2Fpage.en.html" target="_blank" title="Facebook"><span class="icon icon-share-facebook_button"></span><span class="visuallyhidden">Facebook</span></a><a class="share-link share-twitter" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fstatic.epfl.ch%2Flatest%2Ftemplates%2Fpage.en.html&amp;text=Current%20page%20title&amp;hashtags=epfl" target="_blank" title="Twitter"><span class="icon icon-share-twitter_button"></span><span class="visuallyhidden">Twitter</span></a><a class="share-link share-linkedin" href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fstatic.epfl.ch%2Flatest%2Ftemplates%2Fpage.en.html&amp;title=Current%20page%20title%20%23epfl" target="_blank" title="LinkedIn"><span class="icon icon-share-linkedin_button"></span><span class="visuallyhidden">LinkedIn</span></a><a class="share-link share-googleplus" href="https://plus.google.com/share?url=http%3A%2F%2Fstatic.epfl.ch%2Flatest%2Ftemplates%2Fpage.en.html" target="_blank" title="Google+"><span class="icon icon-share-googleplus_button"></span><span class="visuallyhidden">Google+</span></a><a class="share-link share-mail" href="mailto:?subject=Current%20page%20title%20%23epfl&amp;body=http%3A%2F%2Fstatic.epfl.ch%2Flatest%2Ftemplates%2Fpage.en.html" target="_blank" title="Email"><span class="icon icon-share-mail_button"></span><span class="visuallyhidden">Email</span></a></div>
+	      </div>
+
+	    </header>
+
+		<main id="content" role="main" class="site-content page page-wrapper" itemprop="mainEntityOfPage">
+
+	      <!-- The main column -->
+	      <div class="g-span-2_3 g-span-s-1_1">
+
+	        <!-- The page header -->
+	        <header class="page-header">
+	          <h1 class="page-title heading" id="current-page-title">Crystallographic applets and simulations<a href="#current-page-title" class="heading-anchor" rel="bookmark"><span class="visuallyhidden">Crystallographic applets and simulations</span></a></h1>
+	        </header>
+
+	        <!-- The page content -->
+	        <div class="page-content">
+
+	              <h2 id="introduction">Introduction</h2>
+	              <p>This site is dedicated to the teaching of crystallography and was developed at the EPFL in Lausanne (Switzerland). It was first developed by Wes Hardaker and further extended by Nicolas Schoeni under the responsibility of Prof. G. Chapuis. Recently, all the applets have been updated in 2016 by Nicolas Casademont et Maria Sisto.</p>
+
+	              <h2 id="what">What types of applets can you find on this site ?</h2>
+	              
+	              <p>You will find applets dedicated to the three basic topics of crystallography, namely symmetry, diffraction and structure solution algorithms.</p>
+
+								<p>The symmetry applets range form learning the concept of point group symmetry, get familiar with the symmetry of periodic objects in two dimensions, and also learn about the space group concept for the description of crystalline structures in 3D. An additional applets will help you in finding the new atomic coordinates of a new unit cell provided the matrix transformation from the original unit cell to the new one.</p>
+
+								<p>For diffraction, a simple animation of Bragg’s law will help to find  the constructive interferences depending on the diffraction angle. Another applet will teach how to obtain the reciprocal lattice based on the original unit cell. Two applets illustrate the concept of Ewald sphere in order to understand the diffraction principles and simulate various diffraction methods. The user will be able to play with the concept of Fourier transform to generate the crystalline structures on the basis of diffraction patterns. From any CIF file (a crystallographic standard to describe atomic structures), the user will be able to simulate either the powder of single crystals difraction pattern.</p>
+
+								<p>Finally, the concepts of the Patterson function and the charge filliping algorithms are illustrated for a better understanding of the phase problem in crystallography.</p>
+	              
+								<h2 id="how-to">How to use the applets ?</h2>
+								<p>Most of the applets are written in Java and need to be downloaded.</p>
+              	<ul>
+                  <li>For these applets to work you must have the java runtime environement 7 (java 8 seems to work too) installed on your computer. If you don't have it you can download it here: <a href="http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html">jre 7 download</a></li>
+                  <li>To download the applets click on the download links below corresponding to your system. We provide support for most usual systems : Windows 32/64 bits, Mac OS X, Linux 32/64. If you are having any trouble making the applet work <a href="#contact">contact us</a></li>
+                </ul>
+
+								<h2 id="applets">Applets</h2>
+
+	              <h3 id="symmetry">Symmetry</h3>
+
+	              <div class="container-applet" id="disco-sym">
+	                <div class="g-row">
+	                  <div class="g-span-col4">
+	                    <img data-toggle="modal" data-target="#imageModal" src="images/Symmetry.png" class="img-responsive" alt="Responsive image">
+	                  </div>
+	                  <div class="g-span-col8 text-applet">
+	                    <h3>Initiation to the discovery of point group symmetry groups</h3>
+	                    <p>An applet to explore the point group symmetry of platonic and other polyhedra. In particular, rotations, inversion and combinations of them can be simulated.</p>
+	                    <div>
+	                      <a class="btn themed" href="applets/symmetry.jar" download>
+	                        <span class="icon icon-download" role="presentation" hidden="hidden"></span> Download
+	                      </a>
+	                      <a class="btn themed" data-toggle="modal" data-target="#infoModalSymmetry" download>
+	                      	<span class="icon icon-plus" role="presentation" hidden="hidden"></span> More info
+	                      </a>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	              <div class="container-applet" id="escher">
+	                <div class="g-row">
+	                  <div class="g-span-col4">
+	                    <img data-toggle="modal" data-target="#imageModal" src="images/Escher_Web_Sketch.png" class="img-responsive" alt="Responsive image">
+	                  </div>
+	                  <div class="g-span-col8 text-applet">
+	                    <h3>Escher Web Sketch 2</h3>
+	                    <p>An applet to simulate any periodic pattern corresponding to one of the 17 possible two-dimensional symmetry groups (17 planar groups).</p>
+	                    <div>
+	                      <a class="btn themed" href="applets/escher.jar" download>
+	                        <span class="icon icon-download" role="presentation" hidden="hidden"></span> Download
+	                      </a>
+	                      <a class="btn themed" data-toggle="modal" data-target="#infoModalEscher" download>
+	                      	<span class="icon icon-plus" role="presentation" hidden="hidden"></span> More info
+	                      </a>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	              <div class="container-applet" id="crystalograph">
+	                <div class="g-row">
+	                  <div class="g-span-col4">
+	                    <img data-toggle="modal" data-target="#imageModal" src="images/CrystalOgraph.png" class="img-responsive" alt="Responsive image">
+	                  </div>
+	                  <div class="g-span-col8 text-applet">
+	                    <h3>CrystalOgraph</h3>
+	                    <p>An applet to represent any type of crystalline structure given the lattice parameters, the space group and the atomic coordinates of symmetry independent atoms. It is also possible to import directly a structure from the ICSD database or from a CIF file.</p>
+	                    <div>
+	                      <a class="btn themed" href="applets/crystalOgraph.jar" download>
+	                        <span class="icon icon-download" role="presentation" hidden="hidden"></span> Download
+	                      </a>
+	                      <a class="btn themed" data-toggle="modal" data-target="#infoModalCrystalO" download>
+	                      	<span class="icon icon-plus" role="presentation" hidden="hidden"></span> More info
+	                      </a>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	              <div class="container-applet" id="cellconverter">
+	                <div class="g-row">
+	                  <div class="g-span-col4">
+	                    <img data-toggle="modal" data-target="#imageModal" src="images/CellConverter.png" class="img-responsive" alt="Responsive image">
+	                  </div>
+	                  <div class="g-span-col8 text-applet">
+	                    <h3>CellConverter</h3>
+	                    <p>An applet to transform any unit cell ant its content to another cell. Based on the original CIF file, the applet generates a new CIF file resulting from the transformation specified by the user.</p>
+	                    <div>
+	                      <a class="btn themed" href="applets/cellConverter.jar" download>
+	                        <span class="icon icon-download" role="presentation" hidden="hidden"></span> Download
+	                      </a>
+	                      <a class="btn themed" data-toggle="modal" data-target="#infoModalCellConv" download>
+	                      	<span class="icon icon-plus" role="presentation" hidden="hidden"></span> More info
+	                      </a>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+
+
+	              <h3 id="diffraction">Diffraction</h3>
+
+	                <!-- CrystalOgraph container -->
+	                <div class="container-applet" id="bragg">
+	                  <div class="g-row">
+	                    <div class="g-span-col4">
+	                      <img data-toggle="modal" data-target="#imageModal" src="images/bragg.png" class="img-responsive" alt="Responsive image">
+	                    </div>
+	                    <div class="g-span-col8 text-applet">
+	                      <h3>Bragg scattering</h3>
+	                      <p>A Flash animation to illustrate constructive or destructive interferences as expressed by Bragg's law</p>
+	                      <div>
+	                        <a class="btn themed" href="http://escher.epfl.ch/Bragg/">
+	                          <span class="icon icon-link" role="presentation" hidden="hidden"></span> Link
+	                        </a>
+	                      </div>
+	                    </div>
+	                  </div>
+	                </div>
+
+	                <div class="container-applet" id="rlattice">
+	                  <div class="g-row">
+	                    <div class="g-span-col4">
+	                      <img data-toggle="modal" data-target="#imageModal" src="images/rLattice.png" class="img-responsive" alt="Responsive image">
+	                    </div>
+	                    <div class="g-span-col8 text-applet">
+	                      <h3>Reciprocal lattice generator</h3>
+	                      <p>From a periodic diagram generated by Escher Web Sketch, the user is guided step by step by the applet in order to create the reciprocal lattice corresponding to the periodicity of the initial periodic pattern.</p>
+	                      <div>
+	                        <a class="btn themed" href="applets/rlattice.jar" download>
+	                          <span class="icon icon-download" role="presentation" hidden="hidden"></span> Download
+	                        </a>
+	                      </div>
+	                    </div>
+	                  </div>
+	                </div>
+
+	                <div class="container-applet" id="ewald">
+	                  <div class="g-row">
+	                    <div class="g-span-col4">
+	                      <img data-toggle="modal" data-target="#imageModal" src="images/ewald.png" class="img-responsive" alt="Responsive image">
+	                    </div>
+	                    <div class="g-span-col8 text-applet">
+	                      <h3>Ewald sphere animation</h3>
+	                      <p>Video sequence illustrating the diffraction phenomenon based on the Ewald sphere.</p>
+	                      <div>
+	                        <!-- TODO les link -->
+	                        <a class="btn themed" data-toggle="modal" data-target="#videoModal1">
+	                          <span class="icon icon-arrow-head-right" role="presentation" hidden="hidden"></span> Video
+	                        </a>
+	                        <a class="btn themed" data-toggle="modal" data-target="#infoModalEwald">
+	                          <span class="icon icon-plus" role="presentation" hidden="hidden"></span> More info
+	                        </a>
+	                        <!--<button class="btn" data-toggle="modal" data-target="#infoModalErwald"><span class="glyphicon glyphicon-file btn-glyph" aria-hidden="true"></span>More info</button>-->
+	                      </div>
+	                    </div>
+	                  </div>
+	                </div>
+
+	                <div class="container-applet" id="diffractogram">
+	                  <div class="g-row">
+	                    <div class="g-span-col4">
+	                      <img data-toggle="modal" data-target="#imageModal" src="images/DiffractOgram.png" class="img-responsive" alt="Responsive image">
+	                    </div>
+	                    <div class="g-span-col8 text-applet">
+	                      <h3>DiffractOgram</h3>
+	                      <p>An applet to simulate any type of diffraction pattern based on the Ewald sphere and the reciprocal lattice. In particular, Laue patterns, Debye Scherrer diagrams, rotating crystals and even precession photographs can be generated.</p>
+	                      <div>
+	                        <a class="btn themed" href="applets/diffractOgram.jar" download>
+	                          <span class="icon icon-download" role="presentation" hidden="hidden"></span> Download
+	                        </a>
+	                        <a class="btn themed" data-toggle="modal" data-target="#infoModalDiffractO">
+	                      		<span class="icon icon-plus" role="presentation" hidden="hidden"></span> More info
+	                      	</a>
+	                      </div>
+	                    </div>
+	                  </div>
+	                </div>
+
+	                <div class="container-applet" id="diffraction">
+	                  <div class="g-row">
+	                    <div class="g-span-col4">
+	                      <img data-toggle="modal" data-target="#imageModal" src="images/Fourier_Transform.png" class="img-responsive" alt="Responsive image">
+	                    </div>
+	                    <div class="g-span-col8 text-applet">
+	                      <h3>Diffraction and Fourier Transform </h3>
+	                      <p>An applet to calculate the Fourrier Transform of a density function ρ(x) yielding the complex magnitude G(S). The density function can be either periodic or non-periodic.
+
+	                      The applet is also able to calculate the inverse Fourier transform of G(S). Numerous tools can be applied in order to understand the role of amplitudes and phases, which are of particular importance in diffraction phenomena.</p>
+	                      <div>
+	                        <a class="btn themed" href="applets/fft.jar" download>
+	                          <span class="icon icon-download" role="presentation" hidden="hidden"></span> Download
+	                        </a>
+	                      </div>
+	                    </div>
+	                  </div>
+	                </div>
+
+	                <div class="container-applet" id="reciprograph">
+	                  <div class="g-row">
+	                    <div class="g-span-col4">
+	                      <img data-toggle="modal" data-target="#imageModal" src="images/ReciprOgraph.png" class="img-responsive" alt="Responsive image">
+	                    </div>
+	                    <div class="g-span-col8 text-applet">
+	                      <h3>ReciprOgraph</h3>
+	                      <p>An applet to simulate the X-ray diffraction intensities for single crystal in reciprocal space and powder diffraction patterns. Structures can be selected from from CIF files.</p>
+	                      <div>
+	                        <a class="btn themed" href="applets/recipOgraph.jar" download>
+	                          <span class="icon icon-download" role="presentation" hidden="hidden"></span> Download
+	                        </a>
+	                        <a class="btn themed" data-toggle="modal" data-target="#infoModalReciproG">
+	                      		<span class="icon icon-plus" role="presentation" hidden="hidden"></span> More info
+	                      	</a>
+	                      </div>
+	                    </div>
+	                  </div>
+	                </div>
+
+
+	                <h3 id="structure_resolution">Structure resolution</h3>
+
+	                <div class="container-applet" id="flipping">
+	                  <div class="g-row">
+	                    <div class="g-span-col4">
+	                      <img data-toggle="modal" data-target="#imageModal" src="images/Flipping.png" class="img-responsive" alt="Responsive image">
+	                    </div>
+	                    <div class="g-span-col8 text-applet">
+	                      <h3>Charge Flipping</h3>
+	                      <p>An applet to solve the phase problem in diffraction by the charge flipping algorithm. The user can create a 2D crystalline structure and follow the evolution of the algorithm in solving the structure.</p>
+	                      <div>
+	                        <a class="btn themed" href="applets/flip.jar" download>
+	                          <span class="icon icon-download" role="presentation" hidden="hidden"></span> Download
+	                        </a>
+	                        <a class="btn themed" data-toggle="modal" data-target="#infoModalFlip">
+	                        	<span class="icon icon-plus" role="presentation" hidden="hidden"></span> More info
+	                        </a>
+	                      </div>
+	                    </div>
+	                  </div>
+	                </div>
+
+	                <h2 id="contact">Contact us</h2>
+
+	                <p> These applet are now maintained by <a href="mailto:nicolas.casademont@epfl.ch">Nicolas Casademont</a> and <a href="mailto:maria.sisto@epfl.ch">Maria Sisto</a>. They work for <a href="mailto:gervais.chapuis@epfl.ch">Dr. Gervais Chapuis</a> who created them with the help of Nicolas
+	                Schoeni.</p>
+	          
+	        </div>
+
+	        <!-- The page footer -->
+	        <footer class="page-footer">
+	          
+	        </footer>
+
+	      </div>
+	      
+	      <!-- The side bar -->
+	      <div class="g-span-1_3 g-span-s-1_1">
+	        <aside id="sidebar" class="sidebar" role="complementary">
+	          <!-- The secondary/vertical navigation -->
+	          <div class="localnav panel">
+	          	<nav id="secondary-navigation" class="nav nav-block nav-vertical themed" role="navigation">
+
+	              <ul class="nav-list ui-tree ui-toolbar" data-widget="tree" role="tree">
+
+	                <li class="nav-item nav-item-parent" data-category="modules" role="treeitem" aria-haspopup="true" aria-labelledby="tree-item-label-introduction" aria-hidden="false">
+										<a class="nav-link" href="#introduction" id="tree-item-label-introduction">Introduction</a>
+									</li>
+
+									<li class="nav-item nav-item-parent" data-category="modules" role="treeitem" aria-haspopup="true" aria-labelledby="tree-item-label-introduction" aria-hidden="false">
+										<a class="nav-link" href="#what" id="tree-item-label-introduction">What types of applets</a>
+									</li>
+
+									<li class="nav-item nav-item-parent" data-category="modules" role="treeitem" aria-haspopup="true" aria-labelledby="tree-item-label-introduction" aria-hidden="false">
+										<a class="nav-link" href="#how-to" id="tree-item-label-introduction">How to use the applets</a>
+									</li>
+
+	                <li class="nav-item nav-item-parent" data-category="modules" role="treeitem" aria-haspopup="true" aria-labelledby="tree-item-label-applets" aria-hidden="false">
+
+	                  <a class="nav-link" href="#applets" id="tree-item-label-applets">Applets</a>
+
+	                  <span data-widget="collapse" tabindex="-1" class="ui-collapse ui-toggle toggle-collapsed" role="button" aria-controls="toggle-pane-applets" id="toggle-applets" aria-expanded="false" aria-labelledby="tree-item-label-applets"></span>
+
+	                  <ul class="nav-list toggle-collapsed" role="group" aria-hidden="true" id="toggle-pane-applets" aria-expanded="false" aria-labelledby="tree-item-label-applets" tabindex="-1">
+
+	                    <li class="nav-item" role="treeitem" aria-haspopup="true" aria-labelledby="tree-item-label-symmetry" tabindex="0">
+	                      
+	                      <a class="nav-link" href="#symmetry" id="tree-item-label-symmetry"applets>Symmetry</a>
+	                      
+	                      <span data-widget="collapse" tabindex="-2" class="ui-collapse ui-toggle toggle-collapsed" role="button" aria-controls="toggle-pane-symmetry" id="toggle-symmetry" aria-expanded="false" aria-labelledby="tree-item-label-symmetry"></span>
+	                      
+	                      <ul class="nav-list toggle-collapsed" role="group" aria-hidden="true" id="toggle-pane-symmetry" aria-expanded="false" aria-labelledby="tree-item-label-symmetry" tabindex="-1">
+	                        <li class="nav-item" data-category="modules" role="treeitem" aria-labelledby="tree-item-label-discov-sym" aria-hidden="false">
+	                          <a class="nav-link" href="#disco-sym" id="tree-item-label-discov-sym">Initiation to the discovery of point symmetry groups</a>
+	                        </li>
+	                        <li class="nav-item" data-category="modules" role="treeitem" aria-labelledby="tree-item-label-escher" aria-hidden="false">
+	                          <a class="nav-link" href="#escher" id="tree-item-label-escher">Escher Web Sketch 2</a>
+	                        </li>
+	                        <li class="nav-item" data-category="modules" role="treeitem" aria-labelledby="tree-item-label-crystalograph" aria-hidden="false">
+	                          <a class="nav-link" href="#crystalograph" id="tree-item-label-crystalograph">CrystalOgraph</a>
+	                        </li>
+	                        <li class="nav-item" data-category="modules" role="treeitem" aria-labelledby="tree-item-label-cellconverter" aria-hidden="false">
+	                          <a class="nav-link" href="#cellconverter" id="tree-item-label-cellconverter">CellConverter</a>
+	                        </li>
+	                      </ul>
+
+	                    </li>
+
+	                    <li class="nav-item nav-item" role="treeitem" aria-haspopup="true" aria-labelledby="tree-item-label-diffract" tabindex="0">
+	                      
+	                      <a class="nav-link" href="#diffraction" id="tree-item-label-diffract"applets>Diffraction</a>
+	                      
+	                      <span data-widget="collapse" tabindex="-2" class="ui-collapse ui-toggle toggle-collapsed" role="button" aria-controls="toggle-pane-diffract" id="toggle-diffract" aria-expanded="false" aria-labelledby="tree-item-label-diffract"></span>
+	                      
+	                      <ul class="nav-list toggle-collapsed" role="group" aria-hidden="true" id="toggle-pane-diffract" aria-expanded="false" aria-labelledby="tree-item-label-diffract" tabindex="-1">
+	                        
+	                        <li class="nav-item" data-category="modules" role="treeitem" aria-labelledby="tree-item-label-bragg" aria-hidden="false">
+	                          <a class="nav-link" href="#bragg" id="tree-item-label-bragg">Bragg scattering</a>
+	                        </li>
+	                        <li class="nav-item" data-category="modules" role="treeitem" aria-labelledby="tree-item-label-rlattice" aria-hidden="false">
+	                          <a class="nav-link" href="#rlattice" id="tree-item-label-rlattice">Reciprocal lattice generator</a>
+	                        </li>
+	                        <li class="nav-item" data-category="modules" role="treeitem" aria-labelledby="tree-item-label-ewald" aria-hidden="false">
+	                          <a class="nav-link" href="#ewald" id="tree-item-label-ewald">Ewald sphere animation</a>
+	                        </li>
+	                        <li class="nav-item" data-category="modules" role="treeitem" aria-labelledby="tree-item-label-diffractOgram" aria-hidden="false">
+	                          <a class="nav-link" href="#diffractogram" id="tree-item-label-diffractOgram">DiffractOgram</a>
+	                        </li>
+	                        <li class="nav-item" data-category="modules" role="treeitem" aria-labelledby="tree-item-label-diffraction" aria-hidden="false">
+	                          <a class="nav-link" href="#diffraction" id="tree-item-label-diffraction">Diffraction and Fourier Transform</a>
+	                        </li>
+	                        <li class="nav-item" data-category="modules" role="treeitem" aria-labelledby="tree-item-label-reciprograph" aria-hidden="false">
+	                          <a class="nav-link" href="#reciprograph" id="tree-item-label-reciprograph">ReciprOgraph</a>
+	                        </li>
+	                      </ul>
+
+	                    </li>
+
+	                    <li class="nav-item nav-item" role="treeitem" aria-haspopup="true" aria-labelledby="tree-item-label-struct" tabindex="0">
+	                      
+	                      <a class="nav-link" href="#structure_resolution" id="tree-item-label-struct"applets>Structure resolution</a>
+	                      
+	                      <span data-widget="collapse" tabindex="-2" class="ui-collapse ui-toggle toggle-collapsed" role="button" aria-controls="toggle-pane-struct" id="toggle-struct" aria-expanded="false" aria-labelledby="tree-item-label-struct"></span>
+	                      
+	                      <ul class="nav-list toggle-collapsed" role="group" aria-hidden="true" id="toggle-pane-struct" aria-expanded="false" aria-labelledby="tree-item-label-struct" tabindex="-1">
+	                        <li class="nav-item" data-category="modules" role="treeitem" aria-labelledby="tree-item-label-flip" aria-hidden="false">
+	                          <a class="nav-link" href="#flipping" id="tree-item-label-flip">Charge Flipping</a>
+	                        </li>
+	                      </ul>
+
+	                    </li>
+	                  </ul>
+	                </li>
+
+	                <li class="nav-item nav-item-parent" data-category="modules" role="treeitem" aria-haspopup="true" aria-labelledby="tree-item-label-introduction" aria-hidden="false">
+										<a class="nav-link" href="#contact" id="tree-item-label-introduction">Contact us</a>
+									</li>
+
+	              </ul>
+	            </nav>
+
+
+	            <!--<nav id="secondary-navigation" class="nav nav-block nav-vertical themed" role="navigation">
+	              <ul class="nav-list ui-tree ui-toolbar" data-widget="tree" role="tree">
+	                <li class="nav-item nav-item-parent" role="treeitem" aria-haspopup="true" aria-labelledby="tree-item-label-1">
+	                  <a class="nav-link" href="..." id="tree-item-label-1">Level 1 item</a>
+	                  <span data-widget="collapse" tabindex="-1" class="ui-collapse ui-toggle toggle-expanded" role="button" aria-controls="toggle-pane-39" id="toggle-40" aria-expanded="true" aria-labelledby="tree-item-label-1"></span><ul class="nav-list toggle-expanded" role="group" aria-hidden="false" id="toggle-pane-39" aria-expanded="true" aria-labelledby="tree-item-label-1" tabindex="">
+	                    <li class="nav-item nav-item-parent" role="treeitem" aria-haspopup="true" aria-labelledby="tree-item-label-2">
+	                      <a class="nav-link" href="..." id="tree-item-label-2">Level 2 item</a>
+	                      <span data-widget="collapse" tabindex="-1" class="ui-collapse ui-toggle toggle-expanded" role="button" aria-controls="toggle-pane-41" id="toggle-42" aria-expanded="true" aria-labelledby="tree-item-label-2"></span><ul class="nav-list toggle-expanded" role="group" aria-hidden="false" id="toggle-pane-41" aria-expanded="true" aria-labelledby="tree-item-label-2" tabindex="">
+	                        <li class="nav-item nav-item-active" role="treeitem" aria-haspopup="true" aria-labelledby="tree-item-label-3" tabindex="0">
+	                          <a class="nav-link" href="..." id="tree-item-label-3">Level 3 item</a>
+	                          <span data-widget="collapse" tabindex="-1" class="ui-collapse ui-toggle toggle-expanded" role="button" aria-controls="toggle-pane-43" id="toggle-44" aria-expanded="true" aria-labelledby="tree-item-label-3"></span><ul class="nav-list toggle-expanded" role="group" aria-hidden="false" id="toggle-pane-43" aria-expanded="true" aria-labelledby="tree-item-label-3" tabindex="">
+	                            <li class="nav-item" role="treeitem" aria-haspopup="true" aria-labelledby="tree-item-label-50">
+	                              <a class="nav-link" href="..." id="tree-item-label-50">Level 4 item</a>
+	                                <span data-widget="collapse" tabindex="-1" class="toggle-collapsed ui-collapse ui-toggle" role="button" aria-controls="toggle-pane-45" id="toggle-46" aria-expanded="false" aria-labelledby="tree-item-label-50"></span><ul class="nav-list toggle-collapsed" role="group" aria-hidden="true" id="toggle-pane-45" aria-expanded="false" aria-labelledby="tree-item-label-50">
+	                                  <li class="nav-item" role="treeitem" aria-labelledby="tree-item-label-51">
+	                                    <a class="nav-link" href="..." id="tree-item-label-51">Level 5 item</a>
+	                                  </li>
+	                                </ul>
+	                            </li>
+	                          </ul>
+	                        </li>
+	                      </ul>
+	                    </li>
+	                  </ul>
+	                </li>
+	              </ul>
+	            </nav>-->
+
+	          </div>
+
+	          <!-- A sidebar box -->
+	          <!--<section class="panel">
+	            <h2 class="panel-header">Side box 1</h2>
+	            <div class="panel-content">
+	            </div>
+	          </section>-->
+
+	        </aside>
+	      </div>
+
+	    </main>
+
+	    <footer id="footer" class="site-footer" role="contentinfo">
+	      <div class="g-span-1_1">
+	        <nav class="nav nav-inline" role="navigation" aria-label="Footer links">
+	          <ul class="nav-list">
+	            <li class="nav-item">
+	              <a class="nav-link" href="#header" accesskey="t">Back to top</a>
+	            </li>
+	            <li class="nav-item">
+	              <a class="nav-link" href="..." accesskey="3">Sitemap</a>
+	            </li>
+	            <li class="nav-item">
+	              <a class="nav-link" href="mailto:...@epfl.ch" accesskey="9">Webmaster</a>
+	            </li>
+	            <li class="nav-item">
+	              <a class="nav-link" href="http://static.epfl.ch/latest/accessibility.en.html" accesskey="0"><meta itemprop="accessibilityAPI" content="ARIA">Accessibility</a>
+	            </li>
+	            <li class="nav-item secondary-content"><meta itemprop="lastReviewed" content="...">...</li>
+	            <li class="nav-item secondary-content"> © <span itemprop="copyrightHolder">EPFL</span> <span itemprop="copyrightYear">2015</span></li>
+	            <li class="nav-item login">
+	              <a class="nav-link" href="..."><span class="icon icon-inline icon-lock-locked" role="presentation" hidden="hidden"></span> Login</a>
+	            </li>
+	          </ul>
+	        </nav>
+	      </div>
+	    </footer>
+	    </div>
+
+		    <!-- image modal -->
+	      <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel">
+	        <div class="modal-dialog" role="document">
+	          <div class="modal-content maodal-lg">
+	            <div class="modal-header">
+	              <a class="btn btn-inline btn-abort" data-dismiss="modal" style="float: right; border: none;" href="#"><span class="icon icon-cross" role="presentation" hidden="hidden"></span></a>
+	              <h4 class="modal-title" id="imageModalLabel"></h4>
+	            </div>
+	            <div class="modal-body">
+	              <img src="" class="img-responsive modal-img" alt="Modal image">
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+
+	      <div class="modal fade" id="videoModal1" tabindex="-1" aria-labelledby="imageModalLabel">
+	        <div class="modal-dialog" role="document">
+	          <div class="modal-content maodal-lg">
+	            <div class="modal-header">
+	              <a class="btn btn-inline btn-abort" data-dismiss="modal" style="float: right; border: none;" href="#"><span class="icon icon-cross" role="presentation" hidden="hidden"></span></a>
+	              <h4 class="modal-title" id="imageModalLabel">Ewald sphere diffraction video</h4>
+	            </div>
+	            <div class="modal-body">
+	              <div class="embed-responsive embed-responsive-16by9">
+      						<video width="420" height="360" controls loop autoplay>
+      							<source src="vids/diff360.mp4" type="video/mp4">
+  									<source src="vids/diff360.mpeg" type="video/mpeg">
+  									Your browser does not support the video tag.
+      						</video>
+  							</div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+
+				<div class="modal fade" id="infoModalCellConv" tabindex="-1" aria-labelledby="imageModalLabel">
+	        <div class="modal-dialog modal-lg" role="document">
+	          <div class="modal-content maodal-lg">
+	            <div class="modal-header">
+	              <a class="btn btn-inline btn-abort" data-dismiss="modal" style="float: right; border: none;" href="#"><span class="icon icon-cross" role="presentation" hidden="hidden"></span></a>
+	              <h3 class="modal-title" id="imageModalLabel">Crystallographic cell converter</h3>
+	              <p>
+	                By: Nicolas
+	                Schoeni and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+	                École Polytechnique Fédérale de
+	                Lausanne, Switzerland
+	              </p>
+	            </div>
+	            <div class="modal-body">
+	              <p>It is often necessary to describe a crystal structure in a new unit cell different from the original.</p> 
+								<div style="text-align: center"><img style="display: inline-block" src="images/cellconv_graph.png" alt=""></div>
+	              <p>If <strong>a</strong>, <strong>b</strong> and <strong>c</strong> are the lattice vectors defining the unit cell, the new lattice vectors <strong>a'</strong>, <strong>b'</strong> and <strong>c'</strong> are obtained from the following matrix transformation P</p>
+								<div style="text-align: center"><img style="display: inline-block" src="images/cellconv_equ1.png" alt=""></div>
+								<p>where P is the matrix</p>
+								<div style="text-align: center"><img style="display: inline-block" src="images/cellconv_equ2.png" alt=""></div>
+								<p>In some cases, the new origin of the unit cell is not identical to the old one. The origin shift is given by the column vector</p>
+								<div style="text-align: center"><img  style="display: inline-block"src="images/cellconv_equ3.png" alt=""></div>
+								<p>In the new unit cell, the atomic coordinates are given by the following relation</p>
+								<div style="text-align: center"><img style="display: inline-block" src="images/cellconv_equ4.png" alt=""></div>
+								<p>where</p>
+								<div style="text-align: center"><img style="display: inline-block" src="images/cellconv_equ5.png" alt=""></div>
+								<p>and</p>
+								<div style="text-align: center"><img style="display: inline-block" src="images/cellconv_equ6.png" alt=""></div>
+								<p>In the absence of a CIF file, the user can select on the existing one in the menu and edit the file ignorer to introduce the original lattice constants. The <strong>P</strong> and <strong>p</strong> arrays can introduced in the applet along wth the atomic coordinates. After transformation a new CIF file is created with the new atomic coordinates referring to the new unit cell.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+	      <div class="modal fade" id="infoModalEwald" tabindex="-1" aria-labelledby="imageModalLabel">
+	        <div class="modal-dialog modal-lg" role="document">
+	          <div class="modal-content maodal-lg">
+	            <div class="modal-header">
+	              <a class="btn btn-inline btn-abort" data-dismiss="modal" style="float: right; border: none;" href="#"><span class="icon icon-cross" role="presentation" hidden="hidden"></span></a>
+	              <h3 class="modal-title" id="imageModalLabel">The Laue Condition for Diffraction and The Ewald Sphere</h3>
+	              <p>
+	                By: Nicolas
+	                Schoeni and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+	                École Polytechnique Fédérale de
+	                Lausanne, Switzerland
+	              </p>
+	            </div>
+	            <div class="modal-body">
+	              <h3>
+	                The Laue Condition for Diffraction.</h3>
+	                From the Reciprocal Lattice Generator application, we can learn that each reciprocal lattice
+	                vector <b>h</b> is an integer combination of the three reciprocal basis
+	                vectors <b>a<sup>*</sup>,</b> <b>b<sup>*</sup> </b>and <b>c<sup>*</sup></b>:
+	                <center><b>h</b> = <i>h</i><span style="font-weight: bold;">a</span><sup>*</sup> + <i>k</i><span style="font-weight: bold;">b</span><sup>*</sup> + <i>l</i><span style="font-weight: bold;">c</span><sup>*</sup></center>
+	                where the triplet of integers (<i>h, k, l</i>) characterizes uniquely each
+	                reciprocal lattice vector.
+
+	                <p>The recipocal lattice vectors <b>a<sup>*</sup>,</b> <b>b<sup>*</sup> </b>and <b>c<sup>*</sup></b>can be derived from the lattice vectors <b>a,</b> <b>b </b>and <b>c </b>from the vector products<br>
+	                </p>
+	                <p style="text-align: center;"><span style="font-weight: bold;">a</span>*= <span style="font-weight: bold;">b</span> x <span style="font-weight: bold;">c</span>/<span style="font-style: italic;">V</span>&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">b</span>*= <span style="font-weight: bold;">c</span> x <span style="font-weight: bold;">a</span>/<span style="font-style: italic;">V</span> &nbsp; <span style="font-weight: bold;">c</span>*= <span style="font-weight: bold;">a</span> x <span style="font-weight: bold;">b/</span><span style="font-style: italic;">V</span></p>
+	                <p style="text-align: left;">where <span style="font-style: italic;">V</span> is the volume of the unit cell defined by the vectors <b>a,</b> <b>b </b>and <b>c </b></p>
+	                <p>It is convenient to introduce the vector <b>s<sub>0</sub></b> which
+	                  is parallel to the direction of the incident beam. Its magnitude is set
+	                  as the inverse of the wavelength <i><font face="Symbol">l</font></i> of
+	                  the incident beam:
+	                </p>
+	                <center><img src="images/Image16.gif"></center>
+	                Similarly, the direction of the diffracted beam is described by the vector
+	                <b>s</b> with its magnitude
+	                <center><img src="images/Image17.gif"></center>
+	                The <b><i>Laue condition</i></b> states that the following equality must
+	                be fulfilled:
+	                <center><b>s</b> = <b>s</b><sub>0</sub> + <b>h</b></center>
+	                for diffraction to occur.
+	                <h3>
+	                  The Ewald Sphere</h3>
+	                  The Laue condition requires that the three vectors <b>s<sub>0</sub></b>,
+	                  <b>s</b> and <b>h</b> must form a triangle with two identical sides:
+	                  <center><img src="images/Image19.gif"></center>
+	                  If a sphere is constructed with the center at the origin of <b>s<sub>0</sub></b>
+	                  and |<b>s<sub>0</sub></b>| as radius, the diffracting conditions are satisfied
+	                  only if the endpoint of a reciprocal lattice vector <b>h</b> is located
+	                  on the surface of the (Ewald-) sphere. The direction of the diffracted
+	                  beam is than given by the direction of the vector <b>s</b>. By changing
+	                  the orientation of the reciprocal lattice relative to the incident beam
+	                  <b>s<sub>0</sub></b>, each vector <b>h</b> which cuts the Ewald sphere
+	                  gives rise to a diffracted beam which is parallel to the direction of the
+	                  corresponding vector <b>s</b>.
+	                  <center><img style="width: 483px; height: 452px;" alt="" src="images/Ewald_sphere.png"><br>
+	                  </center>
+
+
+	                  <p>Based on the Ewald sphere, it is clear that each reciprocal lattice
+	                    vector can only give rise to a diffracted beam if the reciprocal lattice
+	                    takes successively different orientations. This means that with <b>a monochromatic
+	                    beam</b>, i.e. a unique wavelength, the <b>crystal has to be moved</b>
+	                    relative to the incident beam in order to generate diffraction peaks. For
+	                    a complete measurement of all the accessible diffraction intensities, the
+	                    crystal must be displaced so that each reciprocal lattice vector satisfies
+	                    the Ewald conditions.
+	                    <br>To illustrate this point further, we offer an
+	                    animation of a simple lattice rotating through an Ewald Sphere:
+	                  </p><p>
+	                  The white beam in this animation is the incident beam and the yellow
+	                  beams are the diffracted beams.  For didactical reasons, the origin of 
+	                  the diffracted beam has been placed at the center of the Ewald
+	                  sphere.  In practice, the diffracted beam originates from the
+	                  diffracting crystal, <span style="font-style: italic;">i.e.</span> from the origin of the reciprocal lattice.
+	                </p>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+
+	        <div class="modal fade" id="infoModalSymmetry" tabindex="-1" aria-labelledby="imageModalLabel">
+	          <div class="modal-dialog modal-lg" role="document">
+	            <div class="modal-content maodal-lg">
+	              <div class="modal-header">
+	                <a class="btn btn-inline btn-abort" data-dismiss="modal" style="float: right; border: none;" href="#"><span class="icon icon-cross" role="presentation" hidden="hidden"></span></a>
+	                <h2 class="modal-title" id="imageModalLabel">Initiation to the discovery of point group symmetry</h2>
+	                <p>
+	                  By: Nicolas
+	                  Schoeni and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+	                  École Polytechnique Fédérale de
+	                  Lausanne, Switzerland
+	                </p>
+	              </div>
+	              <div class="modal-body">
+	                <p>Every symmetry operation of an object (polyhedron, molecule, etc) which leaves at least on point invariant (i.e. unchanged) is described by its point group symmetry. If we limit ourselves to rotations of order 1, 2, 3, 4 or 6, we can find a total of 32 different groups, the so called 32 point group symmetries.</p>
+									<p>The symbols of the 32 point groups in the international notation are given in the following table</p>
+									<div class="table-container">
+								    <table class="table" summary="Some summary describing the table and how to read it" max-width="80%">
+								      <thead>
+								        <tr>
+								          <th>Systems</th>
+								          <th>point group</th>
+								        </tr>
+								      </thead>
+								      <tbody>
+								        <tr>
+								          <td>Cubic</td>
+								          <td>m<span style="text-decoration: overline;" >3</span>m, <span style="text-decoration: overline;" >4</span>3m, m<span style="text-decoration: overline;" >3</span>, 432, 23</td>
+								        </tr>
+								        <tr>
+								          <td>Tetragonal</td>
+								          <td>4/mmm, <span style="text-decoration: overline;" >4</span>2m, 4mm, 422, 4/m, <span style="text-decoration: overline;" >4</span>, 4</td>
+								        </tr>
+								        <tr>
+								          <td>Hexagonal</td>
+								          <td>6/mmm, <span style="text-decoration: overline;" >6</span>2m, 6mm, 622, 6/m, <span style="text-decoration: overline;" >6</span>, 6</td>
+								        </tr>
+								        <tr>
+								          <td>Trigonal</td>
+								          <td><span style="text-decoration: overline;" >3</span>m, 3m, 32, <span style="text-decoration: overline;" >3</span>, 3</td>
+								        </tr>
+								        <tr>
+								          <td>Orthorhombic</td>
+								          <td>mmm, mm2, 222</td>
+								        </tr>
+								        <tr>
+								          <td>Monoclinic</td>
+								          <td>2/m, m, 2</td>
+								        </tr>
+								        <tr>
+								          <td>Triclinic</td>
+								          <td><span style="text-decoration: overline;" >1</span>span>, 1</td>
+								        </tr>
+								      </tbody>
+								    </table>
+
+								    <p>The applet allows to study the symmetry operations of a small selection of polyhedra.</p>
+								  </div>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+
+	        <div class="modal fade" id="infoModalReciproG" tabindex="-1" aria-labelledby="imageModalLabel">
+	          <div class="modal-dialog modal-lg" role="document">
+	            <div class="modal-content maodal-lg">
+	              <div class="modal-header">
+	                <a class="btn btn-inline btn-abort" data-dismiss="modal" style="float: right; border: none;" href="#"><span class="icon icon-cross" role="presentation" hidden="hidden"></span></a>
+	                <h2 class="modal-title" id="imageModalLabel">ReciprOgraph</h2>
+	                <p>
+	                  By: Nicolas
+	                  Schoeni and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+	                  École Polytechnique Fédérale de
+	                  Lausanne, Switzerland
+	                </p>
+	              </div>
+	              <div class="modal-body">
+	                ReciprOgraph is an applet to calculate the intensities of any substance diffracted
+	                by x-rays. The structure to be studied can be read from a CIF
+	                file.&nbsp; The intensities are given by the square of the&nbsp;
+	                structure factor modulus <span style="font-style: italic;">I</span>(<span style="font-weight: bold;">h</span>)=|<span style="font-style: italic;">F</span>(<span style="font-weight: bold;">h</span>)|<sup>2</sup> where&nbsp; <span style="font-weight: bold;">h</span>=h<span style="font-weight: bold;">a</span>*+k<span style="font-weight: bold;">b</span>*+l<span style="font-weight: bold;">c</span>*
+	                is a reciprocal vector.&nbsp; The intensities are represented on the
+	                reciprocal lattice where the size of each lattice point <span style="font-weight: bold;">h</span> is proportional to its intensity.<br>
+	                <br>
+	                The intensities can be analysed by selecting a reciprocal lattice plane
+	                <span style="font-weight: bold;">u</span>=u<span style="font-weight: bold;">a</span>+v<span style="font-weight: bold;">b</span>+w<span style="font-weight: bold;">c </span>where <span style="font-weight: bold;">a</span>, <span style="font-weight: bold;">b</span>
+	                and <span style="font-weight: bold;">c</span> are the lattice
+	                constants and u, v and w are integers. For each value of the triplet,
+	                the lattice plane can be shifted by parrallel displacement.
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+
+	        <div class="modal fade" id="infoModalFlip" tabindex="-1" aria-labelledby="imageModalLabel">
+	          <div class="modal-dialog modal-lg" role="document">
+	            <div class="modal-content maodal-lg">
+	              <div class="modal-header">
+	                <a class="btn btn-inline btn-abort" data-dismiss="modal" style="float: right; border: none;" href="#"><span class="icon icon-cross" role="presentation" hidden="hidden"></span></a>
+	                <h2 class="modal-title" id="imageModalLabel">The charge flipping algorithm</h2>
+	                <p>
+	                  By: Nicolas
+	                  Schoeni and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+	                  École Polytechnique Fédérale de
+	                  Lausanne, Switzerland
+	                </p>
+	              </div>
+	              <div class="modal-body">
+
+									<p>This algorithm was proposed by G. Oszlanyi & A. Süto, (Oszlanyi & Süto, Acta Cryst.  2004, 2005). This algorithm does not requires any a priori information other than the diffracted intensities. It consists of four steps indicated in the figure below:</p>
+									<ol>
+										<li>Calculate the inverse Fourier transform of the structure factors. The resulting electron density ρ(<strong>x</strong>) has positive and negative peaks due to the wrong phases</li>
+										<li>The negative peaks (up to a small limit δ) are set positive (charge flipping) and a new electron density function is established.</li>
+										<li>The Fourier transform of this new density is calculated</li>
+										<li>The phases of the new structure factors are kept but the amplitudes of the structure factors are replaced by the experimental ones.</li>			
+									</ol>							
+									<p>This procedure continues in a loop with step 1 to 4 until a converging solution is found. The final result should indicate the proper electron density of the structure based on the experimental structure amplitudes.</p>
+
+									<p>Note that during this process, the origin of the unit cell is arbitrary. It is up to the user to find the proper origin by rotating the final model by 180° followed by a translation.</p>
+
+									<p>In some cases, The user might have to play with different parameters to solve the structure.</p>
+
+									<div style="text-align: center"><img src="images/flip1.png" style="display: inline-block" class="img-responsive" ></div>
+
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+
+	        <div class="modal fade" id="infoModalDiffractO" tabindex="-1" aria-labelledby="imageModalLabel">
+	          <div class="modal-dialog modal-lg" role="document">
+	            <div class="modal-content maodal-lg">
+	              <div class="modal-header">
+	                <a class="btn btn-inline btn-abort" data-dismiss="modal" style="float: right; border: none;" href="#"><span class="icon icon-cross" role="presentation" hidden="hidden"></span></a>
+	                <h2 class="modal-title" id="imageModalLabel">DiffractOgram</h2>
+	                <p>
+	                  By: Nicolas
+	                  Schoeni and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+	                  École Polytechnique Fédérale de
+	                  Lausanne, Switzerland
+	                </p>
+	              </div>
+	              <div class="modal-body">
+	                DiffractOgram is an applet for the simulation of many
+	                different types of <span style="font-weight: bold;">diffraction
+	                patterns</span>. It is based on the <span style="font-weight: bold;">Laue
+	                equation</span>&nbsp; <span style="font-style: italic; font-weight: bold;">S</span>&nbsp;=&nbsp;<span style="font-weight: bold; font-style: italic;">s</span>&nbsp;-&nbsp;<span style="font-weight: bold;">s<small><sub>0</sub></small></span>&nbsp;=&nbsp;<span style="font-weight: bold; font-style: italic;">h</span> where&nbsp; <span style="font-weight: bold;">s<small><sub>0 </sub></small></span>is a
+	                vector representing the incident beam with magnitude <span style="font-family: £è¼²¿»;"><span style="font-family: £è¼²¿»;">λ</span><sup>-1</sup></span>(λ
+	                is the
+	                wavelength of the incident beam), <span style="font-weight: bold; font-style: italic;">s </span>is a vector
+	                along the diffracted beam with the same magnitude λ<sup>-1</sup> and <span style="font-weight: bold; font-style: italic;">h</span> is a
+	                reciprocal lattice vector of the diffracting crystal. The diffraction
+	                pattern can be simulated with the <span style="font-weight: bold;">Ewald
+	                sphere</span> with radius λ<sup>-1</sup>.<br>
+	                <br>
+	                Once the lattice constants of the diffracting crystal and the number of
+	                possible reciprocal vectors are selected, the applet can simulate
+	                various
+	                diffraction patterns. For example<br>
+	                <ul>
+	                  <li>
+	                    <span style="font-weight: bold;">Laue diagram</span>. The user
+	                    can select an arbitrary crystal orientation by selecting the ω, χ
+	                    and φ angles. The animation can be started with the
+	                    wavelength&nbsp; button.&nbsp; The diffraction pattern will be
+	                    registered on the diffraction screen while scanning sequentially all
+	                    the possible wavelength. Altenatively, the
+	                    Laue button can be selected.
+	                  </li>
+	                  <li>
+	                    <span style="font-weight: bold;">Laue back reflection diagram</span>.&nbsp;
+	                    This&nbsp; mode can be simulated by setting negative crystal-screen
+	                    distances. <br>
+	                  </li>
+	                  <li>
+	                    <span style="font-weight: bold;">Rotating crystal</span>. The
+	                    user can select one of the three angles ω, χ or φ in order to
+	                    rotate the crystal and record the diffraction pattern on the screen.
+	                  </li>
+	                  <li>
+	                    <span style="font-weight: bold;">Debye-Scherrer</span> <span style="font-weight: bold;">diagram</span>. The powder pattern can be
+	                    simlated by sequentially selecting any arbitrary orientation of the
+	                    crystal with a given wavelength. The user can select
+	                    either a flat screen or a cylindrical screen to register the
+	                    diffraction pattern.
+	                  </li>
+	                  <li>
+	                    <span style="font-weight: bold;">Precession chamber</span><span style="font-weight: bold;"></span>. The applet can simulate the
+	                    precession movement of the crystal in parallel with the screen. The
+	                    precession angle can be arbitrary selected and a mask can be introduced
+	                    to select a single reciprocal layer.<br>
+	                  </li>
+	                </ul>
+	                Additional tools can be conveniently selected in order to reset various
+	                parameters.&nbsp; <br>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+
+	        <div class="modal fade" id="infoModalCrystalO" tabindex="-1" aria-labelledby="imageModalLabel">
+	          <div class="modal-dialog modal-lg" role="document">
+	            <div class="modal-content maodal-lg">
+	              <div class="modal-header">
+	                <a class="btn btn-inline btn-abort" data-dismiss="modal" style="float: right; border: none;" href="#"><span class="icon icon-cross" role="presentation" hidden="hidden"></span></a>
+	                <h2 class="modal-title" id="imageModalLabel">CrystalOgraph</h2>
+	                <h3>An interactive applet for drawing crystal structures</h3>
+	                <p>
+	                  By: Nicolas
+	                  Schoeni and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+	                  École Polytechnique Fédérale de
+	                  Lausanne, Switzerland
+	                </p>
+	              </div>
+	              <div class="modal-body">
+	                CrystalOgraph allows you to draw interactively on the screen any
+	                simple crystallographic structure by specifying the lattice constantsspace group
+	                and the coordinates of the symmetry independent atoms. <br>
+	                The structure parameters can be either entered by hand on the screen
+	                or from a selection of examples.
+	                <br>
+	                <br>
+	                In addition to the panel functions, the following key combinations
+	                can be used:
+	                <ul>
+	                  <li> Rotate the structure : Drag the mouse inside the screen. </li>
+	                  <li> Rotate around the normal to the plane : Shift+drag the mouse or mouse right button. </li>
+	                  <li> Zoom in/out : Alt+drag the mouse or mouse wheel or up/down arrow keys. </li>
+	                </ul>
+	                <br>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+
+	        <div class="modal fade" id="infoModalEscher" tabindex="-1" aria-labelledby="imageModalLabel">
+	          <div class="modal-dialog modal-lg" role="document">
+	            <div class="modal-content maodal-lg">
+	              <div class="modal-header">
+	                <a class="btn btn-inline btn-abort" data-dismiss="modal" style="float: right; border: none;" href="#"><span class="icon icon-cross" role="presentation" hidden="hidden"></span></a>
+	                <h2 class="modal-title" id="imageModalLabel">Escher Web Sketch</h2>
+	                <p>
+	                  By: <a href="mailto:nicolas.schoeni@epfl.ch">Nicolas Schoeni</a>,
+	                  Wes Hardaker and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+	                  At: The Swiss Federal Institute of Technology (EPFL), Switzerland
+	                </p>
+	              </div>
+	              <div class="modal-body">
+	                <h2>Instructions to get started quickly</h2>
+	                <p>
+	                  <cite>Escher Web Sketch</cite> allows you to draw repeating patterns in the plane.
+	                  You can select the symmetry of the patterns by clicking on one of the
+	                  icons above the drawing area. The drawing tools are selected
+	                  under the drawing area. You can also change the
+	                  pattern size and location with the <i>Modify cell</i> button. The
+	                  right hand side of the drawing area is
+	                  reserved for each drawing tool's usage. Typically it changes the pen
+	                  size and color.
+	                </p>
+	                <h2>How to save your creation</h2>
+	                The "<i>Save...</i>" button allows to store the file by opening a new
+	                page in your browser. You can save this file on your local computer by
+	                using the save facility of your browser. The file is saved in the
+	                format PNG and can be opened with most of the drawing programs.
+	                <h2>Information on M.C. Escher</h2>
+	                <p>
+	                  Numerous web sites exist dealing with the work and biography of M.C:
+	                  Escher. Only a very short selection is given here:
+	                </p>
+	                <ul>
+	                  <li><a href="http://www.mcescher.com" target="_blank">http://www.mcescher.com</a>
+	                  </li>
+	                  <li><a href="http://www.erols.com/ziring/escher_bio.htm%20" target="_blank">http://www.erols.com/ziring/escher_bio.htm</a> </li>
+	                </ul>
+	                <h2>Crystallographically interesting aspects illustrated by <cite>Escher
+	                  Web
+	                  Sketch</cite></h2>
+	                  <p>
+	                    Crystallographers will recognize the list of 17 2D space groups (plane
+	                    groups) characterized by their international symbol as described in the
+	                    <a href="http://www.iucr.ac.uk/iucr-top/it/index.html" target="_blank"><cite>International
+	                      Tables of Crystallography (Vol. A)</cite></a>.
+	                      The interested reader can consult the following websites : </p>
+	                      <ul>
+	                        <li><a href="http://journals.iucr.org/iucr-top/comm/cteach/pamphlets/14" target="_blank">http://journals.iucr.org/iucr-top/comm/cteach/pamphlets/14</a>
+	                        </li>
+	                        <li><a href="http://www.clarku.edu/%7Edjoyce/wallpaper/seventeen.html" target="_blank">http://www.clarku.edu/~djoyce/wallpaper/seventeen.html</a>
+	                        </li>
+	                      </ul>
+	                      in order to have some additional informations on the seventeen plane
+	                      groups. <br>
+	                      <h3>General and special positions</h3>
+	                      <p>
+	                        After selecting one of the 17 plane groups, the user may choose an
+	                        object (a colored circle for example) and move it around within the
+	                        unit
+	                        cell. In some specific positions, the object and some of its
+	                        symmetry-generated equivalents may converge into a single point. This
+	                        single point is called a <i>special position</i>. All the others are
+	                        <i>general positions</i>.
+	                      </p>
+	                      <p>It is also easy to see that the number of symmetry-equivalent points
+	                        in
+	                        each unit cell depends on the point's position. The number is largest
+	                        for general positions and smaller on special positions. The number of
+	                        symmetry-equivalent positions on special positions is always an
+	                        integral
+	                        fraction of the largest possible number.
+	                      </p>
+	                      <p>This concept of general and special positions is important and is
+	                        directly linked to the stoichiometry as expressed by the chemical
+	                        formula of a crystalline sample.
+	                      </p>
+	                      <h3>Site symmetry</h3>
+	                      <p>
+	                        Special positions have not only the property of reducing the number of
+	                        equivalent points in a unit cell but also of increasing the symmetry of
+	                        the object sitting on a special position. The interested reader may
+	                        discover for himself the symmetry of the special positions.
+	                      </p>
+	                      <h3>Simple two dimensional structures</h3>
+	                      <ul>
+	                        <li> A <b>graphite</b> sheet: Select plane group <var>p</var>6<var>mm</var>.
+	                          Select a carbon atom (colored
+	                          circle) and move it until you obtain the typical honeycomb arrangement:
+	                          <br>
+	                          <div align="center"><img src="images/e1.gif"></div>
+	                        </li>
+	                        <li>A chevron like <b>parquet-floor</b>: Select space group <var>p</var>2<var>gg</var>.
+	                          Select the line tool. With one single
+	                          line
+	                          placed suitably you can generate the full pattern. Observe the effect
+	                          of
+	                          the unit cell size on the pattern! <br>
+	                          <div align="center"><img src="images/e2.gif"></div>
+	                        </li>
+	                      </ul>
+	                      <h2>History of <cite>Escher Web Sketch</cite></h2>
+	                      <p>
+	                        Since 1987, many crystallographers and many other specialists enjoyed
+	                        the attractive software written for the Macintosh by Terry Flaherty
+	                        from
+	                        Loyola University in New Orleans. <i>Escher Sketch</i> was originally
+	                        created for the purpose of designing periodic decorations. It was soon
+	                        realized however that this application was an excellent teaching tool
+	                        for the illustration of basic crystallography courses. It was easy to
+	                        select one of the 17 symmetry possibilities in two-dimensional space
+	                        (the 17 two-dimensional space groups or plane groups) and use the
+	                        symmetry operations to generate automatically 2D periodic pattern. With
+	                        the various tools available, it was thus easy to generate all
+	                        conceivable wall-paper (periodic) patterns.
+	                      </p>
+	                      <p>In order to make such a program readily accessible to students and
+	                        teachers of crystallography, and others interested in the art of
+	                        periodic decorations, the current program has been developed in Java in
+	                        order to be directly accessible on the World Wide Web (W3). In
+	                        addition,
+	                        the possibility of coloring the patterns has been introduced along with
+	                        other tools to facilitate the creation of two-dimensional crystalline
+	                        structures.
+	                      </p>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min2.js"></script>
+		<!-- Custom js-->
+		<script type="text/javascript" src="js/custom.js"></script>
+		
+	    <span id="foot-script"></span>
+	  </body>
+
+	</html>
