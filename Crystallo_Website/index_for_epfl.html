@@ -213,7 +213,7 @@
 	              
 	              <p>You will find applets dedicated to the three basic topics of crystallography, namely symmetry, diffraction and structure solution algorithms.</p>
 
-								<p>The symmetry applets range form learning the concept of point group symmetry, get familiar with the symmetry of periodic objects in two dimensions, and also learn about the space group concept for the description of crystalline structures in 3D. An additional applets will help you in finding the new atomic coordinates of a new unit cell provided the matrix transformation from the original unit cell to the new one.</p>
+								<p>The symmetry applets range form learning the concept of point group symmetry, get familiar with the symmetry of periodic objects in two dimensions, and also learn about the space group concept for the description of crystalline structures in 3D. An additional applet will help you in finding the new atomic coordinates of a new unit cell provided the matrix transformation from the original unit cell to the new one.</p>
 
 								<p>For diffraction, a simple animation of Bragg’s law will help to find  the constructive interferences depending on the diffraction angle. Another applet will teach how to obtain the reciprocal lattice based on the original unit cell. Two applets illustrate the concept of Ewald sphere in order to understand the diffraction principles and simulate various diffraction methods. The user will be able to play with the concept of Fourier transform to generate the crystalline structures on the basis of diffraction patterns. From any CIF file (a crystallographic standard to describe atomic structures), the user will be able to simulate either the powder of single crystals difraction pattern.</p>
 
@@ -401,6 +401,9 @@
 	                        <a class="btn themed" href="applets/fft.jar" download>
 	                          <span class="icon icon-download" role="presentation" hidden="hidden"></span> Download
 	                        </a>
+	                        <a class="btn themed" data-toggle="modal" data-target="#infoModalDiffraction">
+	                      		<span class="icon icon-plus" role="presentation" hidden="hidden"></span> More info
+	                      	</a>
 	                      </div>
 	                    </div>
 	                  </div>
@@ -801,7 +804,7 @@
 	                </p>
 	              </div>
 	              <div class="modal-body">
-	                <p>Every symmetry operation of an object (polyhedron, molecule, etc) which leaves at least on point invariant (i.e. unchanged) is described by its point group symmetry. If we limit ourselves to rotations of order 1, 2, 3, 4 or 6, we can find a total of 32 different groups, the so called 32 point group symmetries.</p>
+	                <p>Every symmetry operation of an object (polyhedron, molecule, etc) which leaves at least one point invariant (i.e. unchanged) is described by its point group symmetry. If we limit ourselves to rotations of order 1, 2, 3, 4 or 6, we can find a total of 32 different groups, the so called 32 point group symmetries.</p>
 									<p>The symbols of the 32 point groups in the international notation are given in the following table</p>
 									<div class="table-container">
 								    <table class="table" summary="Some summary describing the table and how to read it" max-width="80%">
@@ -876,6 +879,33 @@
 	                and <span style="font-weight: bold;">c</span> are the lattice
 	                constants and u, v and w are integers. For each value of the triplet,
 	                the lattice plane can be shifted by parrallel displacement.
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+
+	        <div class="modal fade" id="infoModalDiffraction" tabindex="-1" aria-labelledby="imageModalLabel">
+	          <div class="modal-dialog modal-lg" role="document">
+	            <div class="modal-content maodal-lg">
+	              <div class="modal-header">
+	                <a class="btn btn-inline btn-abort" data-dismiss="modal" style="float: right; border: none;" href="#"><span class="icon icon-cross" role="presentation" hidden="hidden"></span></a>
+	                <h2 class="modal-title" id="imageModalLabel">Diffraction and Fourier transform</h2>
+	                <p>
+	                  By: Nicolas
+	                  Schoeni and <a href="mailto:gervais.chapuis@epfl.ch">Gervais Chapuis</a><br>
+	                  École Polytechnique Fédérale de
+	                  Lausanne, Switzerland
+	                </p>
+	              </div>
+	              <div class="modal-body">
+					
+					<p>This applet is based on the fast Fourier transform algorithm. It can calculate the 2D Fourier transform (FT) of a density function ρ(x) which is either periodic or non periodic yielding the function G(S). It can also calculate the inverse FT, namely FT-1 not only of G(S) but also of ∣G(S)∣2 and other variations.</p>
+
+					<p>The density function ρ(x) can be drawn by hand on the screen. For example, a crystal structure can be simulated and its FT can be calculated. The corresponding Patterson function can be obtained by inverse FT.</p>
+
+					<p>Pictures can also be uploaded and the corresponding FT and FT-1 can be obtained. The user can for example exchange the phases and amplitudes of Fourier transformed pictures. </p>
+
+					<p>The effect of resolution can also be tested by limiting the extension of the periodicity of the pattern along two separate dimensions. </p>
 	              </div>
 	            </div>
 	          </div>
