@@ -4,8 +4,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
@@ -37,21 +35,20 @@ public class rlattice  {
 	
 	private static void runApp() {
 		JFrame frame = new JFrame("Reciprocal Lattice Calculator");
-		frame.setSize(600, 360);
+		frame.setSize(1000, 800);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		Container c = frame.getContentPane();
 		c.setLayout(new BorderLayout());
 		Pane pan;
-		Canvas canvas;
 		c.add("East", (pan = new Pane()).toJPanel());
 		try {
 			//c.add("Center", id = new imgDisplay("save_0.gif", pan, new URL("http://marie.epfl.ch/crystallo/reciprocal/"), false, 0, null));
 			//c.add("Center", canvas = new imgDisplay("index_2619.gif", pan, new URL("http://marie.epfl.ch/crystallo/reciprocal/"), false, 46, null));
 			//c.add("Center", canvas = new ImgDisplay2("index_2619.gif", pan, new URL("http://marie.epfl.ch/crystallo/reciprocal/"), false, 46, null, false));
 
-			c.add("Center", canvas = new imgDisplay(imageName, pan, frame, false, 46, null));
+			c.add("Center", new imgDisplay(imageName, pan, frame, false, 46, null));
 
 
 		} catch (Exception e) {throw new RuntimeException(e);}

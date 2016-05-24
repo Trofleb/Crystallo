@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 import javax.imageio.ImageIO;
 import javax.swing.JApplet;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -287,6 +288,9 @@ class imgDisplay extends Canvas {
 			//showDescription("begin.html");
 			newpts = 0;
 			panel.clear();
+			
+			if(!panel.ck1.isSelected())
+				panel.ck1.doClick();
 			panel.setupPanel("<html>Here is the selected periodic pattern. You can scroll it anytime by dragging the mouse.<br><br>Please click anywhere on the pattern in order to find other points which are strictly identical.",null,null);
 			if (quick) {
 				cx = truecx-1;
@@ -1088,6 +1092,7 @@ class imgDisplay extends Canvas {
 
 				panel.clear();
 				panel.setupPanel(t, null, "Continue");
+				this.frame.pack();
 
 			} catch (Exception e) {
 				System.err.println("Unable to show web description.");
